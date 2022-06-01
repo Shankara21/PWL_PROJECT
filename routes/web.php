@@ -32,3 +32,7 @@ Route::get('/contact', function () {
 Route::get('/testimonial', function () {
     return view('homepage.testimonial');
 });
+
+Route::get('/dashboard', function () {
+    return view('admin.index');
+});
