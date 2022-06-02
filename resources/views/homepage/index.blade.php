@@ -18,7 +18,7 @@
                     Us</a>
             </div>
             <div class="col-lg-6 text-center text-lg-start">
-                <img class="img-fluid" src="./img/hero.png" alt="">
+                <img class="img-fluid" src="./img/rentcar.png" alt="">
             </div>
         </div>
     </div>
