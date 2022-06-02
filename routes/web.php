@@ -1,13 +1,11 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KendaraanController;
-use Illuminate\Support\Facades\Route;
-=======
+
 use App\Models\Kendaraan;
->>>>>>> eaab769838d4889914046a4431078ca5eff6a800
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +47,8 @@ Route::get('/tes', function () {
     return view('auth.layouts.layouts-auth');
 });
 
+
+//! Routing Dashboard
 Auth::routes();
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
