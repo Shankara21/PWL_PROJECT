@@ -23,10 +23,8 @@
                 </div>
                 <a href="/contact" class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
             </div>
-            <a href="{{ route('login') }}"
-                class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Sign In</a>
-                <a href="{{ route('register') }}"
-                class="btn btn-light text-dark rounded-pill py-2 px-4 ms-3">Sign Up</a>
+            <a href="{{ route('login') }}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Sign In</a>
+            <a href="{{ route('register') }}" class="btn btn-light text-dark rounded-pill py-2 px-4 ms-3">Sign Up</a>
         </div>
     </nav>
 
