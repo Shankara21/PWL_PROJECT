@@ -5,7 +5,7 @@
                 <h5 class="text-white mb-4">Get In Touch</h5>
                 <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
                 <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <p><i class="fa fa-envelope me-3"></i>gorent@gmail.com</p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -15,12 +15,12 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <h5 class="text-white mb-4">Popular Link</h5>
-                <a class="btn btn-link" href="">About Us</a>
-                <a class="btn btn-link" href="">Contact Us</a>
-                <a class="btn btn-link" href="">Privacy Policy</a>
-                <a class="btn btn-link" href="">Terms & Condition</a>
-                <a class="btn btn-link" href="">Career</a>
+                <h5 class="text-white mb-4">Go To</h5>
+                <a class="btn btn-link" href="/about">About Us</a>
+                <a class="btn btn-link" href="/contact">Contact Us</a>
+                <a class="btn btn-link" href="/service">Service</a>
+                <a class="btn btn-link" href="/project">Kendaraan</a>
+                <a class="btn btn-link" href="/chart">Chart</a>
             </div>
             <div class="col-md-6 col-lg-3">
                 <h5 class="text-white mb-4">Project Gallery</h5>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <h5 class="text-white mb-4">Newsletter</h5>
+                <h5 class="text-white mb-4 fst-italic">GO Rent</h5>
                 <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit
                     non vulpu</p>
                 <div class="position-relative w-100 mt-3">
