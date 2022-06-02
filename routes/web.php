@@ -1,10 +1,17 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KendaraanController;
 use Illuminate\Support\Facades\Route;
+=======
+use App\Models\Kendaraan;
+>>>>>>> eaab769838d4889914046a4431078ca5eff6a800
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +34,9 @@ Route::get('/service', function () {
     return view('homepage.service');
 });
 Route::get('/project', function () {
-    return view('homepage.project');
+    return view('homepage.project', [
+        'kendaraan' => Kendaraan::latest()->paginate(6)
+    ]);
 });
 Route::get('/contact', function () {
     return view('homepage.contact');
@@ -48,4 +57,3 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/kendaraan', KendaraanController::class);
 });
-

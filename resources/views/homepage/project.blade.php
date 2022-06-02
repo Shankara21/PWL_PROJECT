@@ -36,84 +36,25 @@
             </div>
         </div>
         <div class="row g-4 portfolio-container">
-            <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.1s">
-                <div class="position-relative rounded overflow-hidden">
-                    <img class="img-fluid w-100" src="{{ asset('img/portfolio-1.jpg') }}" alt="">
+            @foreach ($kendaraan as $item)
+            <div class="col-lg-4 col-md-6 portfolio-item wow zoomIn" data-wow-delay="0.1s" style="height: 300px;">
+                <div class=" rounded overflow-hidden">
+                    <img class="img-fluid w-100" src="{{ asset('img/kendaraan/'.$item -> slug.'.png') }}" alt="">
                     <div class="portfolio-overlay">
                         <a class="btn btn-light" href="{{ asset('img/portfolio-1.jpg') }}" data-lightbox="portfolio"><i
                                 class="fa fa-plus fa-2x text-primary"></i></a>
                         <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
+                            <small class="text-white"><i
+                                    class="fa fa-folder me-2"></i>{{ $item -> brand -> nama }}</small>
+                            <a class="h5 d-block text-white mt-1 mb-0" href="">{{ $item -> nama }}</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.3s">
-                <div class="position-relative rounded overflow-hidden">
-                    <img class="img-fluid w-100" src="{{ asset('img/portfolio-2.jpg') }}" alt="">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('img/portfolio-2.jpg') }}" data-lightbox="portfolio"><i
-                                class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.6s">
-                <div class="position-relative rounded overflow-hidden">
-                    <img class="img-fluid w-100" src="{{ asset('img/portfolio-3.jpg') }}" alt="">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('img/portfolio-3.jpg') }}" data-lightbox="portfolio"><i
-                                class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.1s">
-                <div class="position-relative rounded overflow-hidden">
-                    <img class="img-fluid w-100" src="{{ asset('img/portfolio-4.jpg') }}" alt="">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('img/portfolio-4.jpg') }}" data-lightbox="portfolio"><i
-                                class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.3s">
-                <div class="position-relative rounded overflow-hidden">
-                    <img class="img-fluid w-100" src="{{ asset('img/portfolio-5.jpg') }}" alt="">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('img/portfolio-5.jpg') }}" data-lightbox="portfolio"><i
-                                class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.6s">
-                <div class="position-relative rounded overflow-hidden">
-                    <img class="img-fluid w-100" src="{{ asset('img/portfolio-6.jpg') }}" alt="">
-                    <div class="portfolio-overlay">
-                        <a class="btn btn-light" href="{{ asset('img/portfolio-6.jpg') }}" data-lightbox="portfolio"><i
-                                class="fa fa-plus fa-2x text-primary"></i></a>
-                        <div class="mt-auto">
-                            <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                            <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+        </div>
+        <div class="d-flex justify-content-center" style="margin-top: 100px">
+            {{ $kendaraan -> links() }}
         </div>
     </div>
 </div>
