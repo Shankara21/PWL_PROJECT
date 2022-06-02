@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//! Routing Homepage 
+//! Routing Homepage
 Route::get('/', function () {
     return view('homepage.index');
 });
@@ -33,10 +33,13 @@ Route::get('/testimonial', function () {
     return view('homepage.testimonial');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.index');
+    });
+});
+
