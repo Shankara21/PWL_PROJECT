@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -27,7 +28,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.brand.create');
     }
 
     /**
@@ -38,7 +39,14 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255|unique:brands',
+        ]);
+        Brand::create([
+            'nama' => $request->nama,
+            'slug' => Str::slug($request->nama),
+        ]);
+        return redirect('/dashboard/brand')->with('toast_success', 'Brand baru telah ditambahkan!');
     }
 
     /**
@@ -60,7 +68,9 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('admin.brand.edit', [
+            'brand' => $brand,
+        ]);
     }
 
     /**
@@ -72,7 +82,18 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        $request->validate([
+            'nama' => 'required|max:255|unique:brands,nama',
+
+        ]);
+
+        Brand::where('id', $brand->id)
+        ->update([
+            'nama' => $request->nama,
+            'slug' => Str::slug($request->nama)
+        ]);
+
+        return redirect('/dashboard/brand')->with('toast_success', 'Brand berhasil di edit!');
     }
 
     /**
@@ -83,6 +104,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        Brand::destroy($brand->id);
+        return redirect('/dashboard/brand')->with('toast_success', 'Brand berhasil di hapus!');
     }
 }
