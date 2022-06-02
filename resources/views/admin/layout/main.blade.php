@@ -22,6 +22,11 @@
 	<link href="{{asset('admin/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('admin/vendor/nouislider/nouislider.min.css')}}">
 
+    <!-- Datatable -->
+    <link href="{{asset('admin/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+	<link href="{{asset('admin/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
+
 	<!-- Style css -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
@@ -90,6 +95,12 @@
 	<script src="{{asset('admin/js/dashboard/dashboard-1.js')}}"></script>
 
 	<script src="{{asset('admin/vendor/owl-carousel/owl.carousel.js')}}"></script>
+
+    <!-- Datatable -->
+    <script src="{{asset('admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins-init/datatables.init.js')}}"></script>
+
+	<script src="{{asset('admin/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
 
     <script src="{{asset('admin/js/custom.min.js')}}"></script>
 	<script src="{{asset('admin/js/dlabnav-init.js')}}"></script>

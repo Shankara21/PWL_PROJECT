@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\KendaraanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -41,5 +44,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.index');
     });
+    Route::resource('/brand', BrandController::class);
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/kendaraan', KendaraanController::class);
 });
 
