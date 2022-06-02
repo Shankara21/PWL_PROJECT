@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function kendaraan()
+    {
+        return $this->hasMany(Kendaraan::class);
+    }
 }

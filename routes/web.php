@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Kendaraan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +27,9 @@ Route::get('/service', function () {
     return view('homepage.service');
 });
 Route::get('/project', function () {
-    return view('homepage.project');
+    return view('homepage.project', [
+        'kendaraan' => Kendaraan::latest()->paginate(6)
+    ]);
 });
 Route::get('/contact', function () {
     return view('homepage.contact');
