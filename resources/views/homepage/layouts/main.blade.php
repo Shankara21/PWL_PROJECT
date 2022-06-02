@@ -36,6 +36,11 @@
     <!-- Template Stylesheet -->
     <link href="./css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <link rel="icon" href="{{ asset('img/icon.png') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/css/all.min.css') }}">
+    --}}
+
 </head>
 
 <body>
