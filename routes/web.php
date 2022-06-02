@@ -38,7 +38,9 @@ Route::get('/testimonial', function () {
     return view('homepage.testimonial');
 });
 
-
+Route::get('/tes', function () {
+    return view('auth.layouts.layouts-auth');
+});
 
 Auth::routes();
 
