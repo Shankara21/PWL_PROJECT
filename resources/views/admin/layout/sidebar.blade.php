@@ -9,17 +9,17 @@
                         <span class="nav-text">Dashboard</span>
                     </a>
                     </li>
-                    <li><a href="/brand" class="" aria-expanded="false">
+                    <li><a href="/dashboard/brand" class="" aria-expanded="false">
                         <i class="fas fa-tag"></i>
                         <span class="nav-text">Brand</span>
                     </a>
                     </li>
-                    <li><a href="/category" class="" aria-expanded="false">
+                    <li><a href="/dashboard/category" class="" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                         <span class="nav-text">Category</span>
                     </a>
                     </li>
-                    <li><a href="/kendaraan" class="" aria-expanded="false">
+                    <li><a href="/dashboard/kendaraan" class="" aria-expanded="false">
                         <i class="fas fa-car"></i>
                         <span class="nav-text">Kendaraan</span>
                     </a>

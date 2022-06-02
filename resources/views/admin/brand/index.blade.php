@@ -14,7 +14,10 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Patient</h4>
+                        <h4 class="card-title">Brand</h4>
+                        <div><a href="/dashboard/brand/create" class="btn btn-primary">
+                            <i class="fas fa-plus"> Tambah Data</i>
+                        </a></div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -23,7 +26,8 @@
                                     <tr>
                                         <th>
                                             <div class="form-check custom-checkbox ms-2">
-                                                <input type="checkbox" class="form-check-input" id="checkAll" required="">
+                                                <input type="checkbox" class="form-check-input" id="checkAll"
+                                                    required="">
                                                 <label class="form-check-label" for="checkAll"></label>
                                             </div>
                                         </th>
@@ -36,16 +40,23 @@
                                     <tr>
                                         <td>
                                             <div class="form-check custom-checkbox ms-2">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2" required="">
+                                                <input type="checkbox" class="form-check-input" id="customCheckBox2"
+                                                    required="">
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
                                         <td>{{ $brand->nama }}</td>
                                         <td>
                                             <div class="d-flex">
-														<a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-														<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-													</div>
+                                                <a href="/dashboard/brand/{{$brand->slug}}/edit" class="btn btn-primary shadow btn-xs sharp me-1"><i
+                                                        class="fas fa-pencil-alt"></i></a>
+                                                <form action="/dashboard/brand/{{ $brand->slug }}" method="POST" class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Yakin?')"><i
+                                                        class="fa fa-trash"></i></button>
+                                                </form>
+                                            </div>
                                         </td>
                                         @endforeach
                                 </tbody>
@@ -57,4 +68,6 @@
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
+
 @endsection
