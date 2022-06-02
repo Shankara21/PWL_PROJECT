@@ -3,7 +3,7 @@
 use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-//! Routing Homepage 
+//! Routing Homepage
 Route::get('/', function () {
     return view('homepage.index');
 });
@@ -38,10 +38,12 @@ Route::get('/testimonial', function () {
     return view('homepage.testimonial');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.index');
+    });
+});
