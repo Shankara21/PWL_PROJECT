@@ -14,4 +14,8 @@ class Category extends Model
     {
         return $this->hasMany(Kendaraan::class);
     }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

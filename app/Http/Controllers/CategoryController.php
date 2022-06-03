@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -27,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kategori.create');
     }
 
     /**
@@ -38,7 +39,16 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255|unique:categories,nama'
+        ]);
+
+        Category::create([
+            'nama' => $request->nama,
+            'slug' => Str::slug($request->nama),
+        ]);
+
+        return redirect('/dashboard/category')->with('toast_success', 'Kategori baru telah ditambahkan!');
     }
 
     /**
@@ -60,7 +70,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.kategori.edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -72,7 +84,16 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255|unique:categories,nama'
+        ]);
+        Category::where('id', $category->id)
+        ->update([
+            'nama' => $request->nama,
+            'slug' => Str::slug($request->nama)
+        ]);
+
+        return redirect('/dashboard/category')->with('toast_success', 'Kategori berhasil di edit!');
     }
 
     /**
@@ -83,6 +104,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('/dashboard/category')->with('toast_success', 'Kategori berhasil di hapus!');
     }
 }

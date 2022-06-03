@@ -21,4 +21,8 @@ class Kendaraan extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -12,17 +12,17 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Edit Brand</h4>
+                        <h4 class="card-title">Edit Kategori</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/dashboard/brand/{{ $brand->slug }}" method="POST" class="mb-5" enctype="multipart/form-data">
+                        <form action="/dashboard/category/{{ $category->slug }}" method="POST" class="mb-5" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row mb-3">
-                              <label class="col-sm-2 col-form-label" for="nama">Nama Brand</label>
+                              <label class="col-sm-2 col-form-label" for="nama">Nama Kategori</label>
                               <div class="col-sm-10">
                                 <input type="text" class="form-control @error('nama') is-invalid
-                                @enderror" id="nama" name="nama" required autofocus value="{{ old('nama', $brand->nama) }}">
+                                @enderror" id="nama" name="nama" required autofocus value="{{ old('nama', $category->nama) }}">
                                 @error('nama')
                                   <div class="invalid-feedback">
                                     {{ $message }}
@@ -32,7 +32,7 @@
                             </div>
                             <div class="row justify-content-end">
                               <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Edit Brand</button>
+                                <button type="submit" class="btn btn-primary">Edit Kategori</button>
                               </div>
                             </div>
                           </form>
