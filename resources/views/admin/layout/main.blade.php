@@ -27,6 +27,10 @@
     <!-- Custom Stylesheet -->
 	<link href="{{asset('admin/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/css/trix.css')}}">
+    <script type="text/javascript" src="{{asset('admin/js/trix.js')}}"></script>
+
 	<!-- Style css -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
