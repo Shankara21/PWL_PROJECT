@@ -14,7 +14,10 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Patient</h4>
+                        <h4 class="card-title">Kendaraan</h4>
+                        <div><a href="/dashboard/kendaraan/create" class="btn btn-primary">
+                                <i class="fas fa-plus"> Tambah Data</i>
+                            </a></div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -47,6 +50,11 @@
                                         </td>
                                         <td><img src="{{ asset('img/kendaraan/'.$kendaraan->slug.'.png') }}"
                                                 width="250px"></td>
+                                        <td><img src="@if ($kendaraan -> image == null)
+                                            {{ asset('img/products/'.$kendaraan -> slug.'.jpg') }}
+                                            @else
+                                            {{asset('storage/'.$kendaraan->image)}}
+                                          @endif" width="100px" height="100px"></td>
                                         <td>{{ $kendaraan->nama }}</td>
                                         <td>{{ $kendaraan->warna }}</td>
                                         <td>{{ $kendaraan->harga }}</td>
@@ -64,9 +72,18 @@
                                                     </svg>
                                                 </div>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Show</a>
-                                                    <a class="dropdown-item" href="#">Edit</a>
-                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                    <a class="dropdown-item"
+                                                        href="/dashboard/kendaraan/{{$kendaraan->slug}}">Show</a>
+                                                    <a class="dropdown-item"
+                                                        href="/dashboard/kendaraan/{{$kendaraan->slug}}/edit">Edit</a>
+                                                    <form action="/dashboard/kendaraan/{{ $kendaraan->slug }}"
+                                                        method="POST" class="d-inline">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="dropdown-item"
+                                                            onclick="return confirm('Yakin?')">Delete</button>
+                                                    </form>
+
                                                 </div>
                                             </div>
                                         </td>
@@ -80,4 +97,4 @@
         </div>
     </div>
 </div>
-@endsection
+<<<<<<< HEAD @endsection=======@include('sweetalert::alert') @endsection>>>>>>> 5f30929de99c4ebc5b7c937b322efea5e0d898a9

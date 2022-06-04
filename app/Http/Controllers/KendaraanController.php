@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Kendaraan;
 use App\Http\Requests\StoreKendaraanRequest;
 use App\Http\Requests\UpdateKendaraanRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class KendaraanController extends Controller
 {
@@ -27,7 +31,10 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kendaraan.create', [
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -38,7 +45,26 @@ class KendaraanController extends Controller
      */
     public function store(StoreKendaraanRequest $request)
     {
-        //
+        $validatedata = $request->validate([
+            'nama' => 'required|string|max:255',
+            'brand_id' => 'required',
+            'category_id' => 'required',
+            'image' => 'image|file',
+            'warna' => 'required',
+            'tahun' => 'required',
+            'harga' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        $validatedata['slug'] = Str::slug($validatedata['nama']);
+
+        if ($request->file('image')) {
+            $validatedata['image'] = $request->file('image')->store('kendaraan', 'public');
+        }
+
+        Kendaraan::create($validatedata);
+
+        return redirect('/dashboard/kendaraan')->with('toast_success', 'Kendaraan berhasil ditambahkan!');
     }
 
     /**
@@ -49,7 +75,11 @@ class KendaraanController extends Controller
      */
     public function show(Kendaraan $kendaraan)
     {
-        //
+        return view('admin.kendaraan.show', [
+            'kendaraan' => $kendaraan,
+            'brand' => Brand::all(),
+            'category' => Category::all(),
+        ]);
     }
 
     /**
@@ -60,7 +90,11 @@ class KendaraanController extends Controller
      */
     public function edit(Kendaraan $kendaraan)
     {
-        //
+        return view('admin.kendaraan.edit', [
+            'kendaraan' => $kendaraan,
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -72,7 +106,32 @@ class KendaraanController extends Controller
      */
     public function update(UpdateKendaraanRequest $request, Kendaraan $kendaraan)
     {
-        //
+        $rules = [
+            'nama' => 'required|string|max:255',
+            'brand_id' => 'required',
+            'category_id' => 'required',
+            'image' => 'image|file',
+            'warna' => 'required',
+            'tahun' => 'required',
+            'harga' => 'required',
+            'deskripsi' => 'required',
+        ];
+
+        $validatedata = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedata['image'] = $request->file('image')->store('kendaraan', 'public');
+        }
+
+        $validatedata['slug'] = Str::slug($validatedata['nama']);
+
+        Kendaraan::where('id', $kendaraan->id)->update($validatedata);
+
+
+        return redirect('/dashboard/kendaraan')->with('toast_success', 'Kendaraan berhasil di edit!');
     }
 
     /**
@@ -83,6 +142,7 @@ class KendaraanController extends Controller
      */
     public function destroy(Kendaraan $kendaraan)
     {
-        //
+        Kendaraan::destroy($kendaraan->id);
+        return redirect('/dashboard/kendaraan')->with('toast_success', 'Kendaraan berhasil di hapus!');
     }
 }
