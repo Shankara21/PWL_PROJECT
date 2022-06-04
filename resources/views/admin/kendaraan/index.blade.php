@@ -23,7 +23,8 @@
                                     <tr>
                                         <th>
                                             <div class="form-check custom-checkbox ms-2">
-                                                <input type="checkbox" class="form-check-input" id="checkAll" required="">
+                                                <input type="checkbox" class="form-check-input" id="checkAll"
+                                                    required="">
                                                 <label class="form-check-label" for="checkAll"></label>
                                             </div>
                                         </th>
@@ -39,18 +40,28 @@
                                     <tr>
                                         <td>
                                             <div class="form-check custom-checkbox ms-2">
-                                                <input type="checkbox" class="form-check-input" id="customCheckBox2" required="">
+                                                <input type="checkbox" class="form-check-input" id="customCheckBox2"
+                                                    required="">
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td><img src=""></td>
+                                        <td><img src="{{ asset('img/kendaraan/'.$kendaraan->slug.'.png') }}"
+                                                width="250px"></td>
                                         <td>{{ $kendaraan->nama }}</td>
                                         <td>{{ $kendaraan->warna }}</td>
                                         <td>{{ $kendaraan->harga }}</td>
                                         <td>
                                             <div class="dropdown ms-auto text-end">
                                                 <div class="btn-link" data-bs-toggle="dropdown">
-                                                    <svg width="24px" height="24px" viewbox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
+                                                    <svg width="24px" height="24px" viewbox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                            fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                                            <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                            <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                            <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                        </g>
+                                                    </svg>
                                                 </div>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="#">Show</a>
