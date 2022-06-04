@@ -33,7 +33,8 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="images/logo-full.png" alt=""></a>
+                                        <a href="index.html"><img src="{{ asset('img/login-bg.jpg') }}" alt=""
+                                                width="250px"></a>
                                     </div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
                                     <form method="POST" action="{{ route('login') }}">

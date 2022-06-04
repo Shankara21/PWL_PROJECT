@@ -48,13 +48,11 @@
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td><img src="{{ asset('img/kendaraan/'.$kendaraan->slug.'.png') }}"
-                                                width="250px"></td>
-                                        <td><img src="@if ($kendaraan -> image == null)
-                                            {{ asset('img/products/'.$kendaraan -> slug.'.jpg') }}
+                                        <td><img src="@if (!$kendaraan -> image)
+                                            {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
                                             @else
                                             {{asset('storage/'.$kendaraan->image)}}
-                                          @endif" width="100px" height="100px"></td>
+                                          @endif" width="250px"></td>
                                         <td>{{ $kendaraan->nama }}</td>
                                         <td>{{ $kendaraan->warna }}</td>
                                         <td>{{ $kendaraan->harga }}</td>
@@ -97,4 +95,4 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD @endsection=======@include('sweetalert::alert') @endsection>>>>>>> 5f30929de99c4ebc5b7c937b322efea5e0d898a9
+@endsection

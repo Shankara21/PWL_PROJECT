@@ -23,17 +23,18 @@
 
 </head>
 
-<body class="vh-100">
-    <div class="authincation h-100">
-        <div class="container h-100">
-            <div class="row justify-content-center h-100 align-items-center">
+<body class="">
+    <div class="authincation ">
+        <div class="container ">
+            <div class="row justify-content-center  align-items-center">
                 <div class="col-md-6">
                     <div class="authincation-content">
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="images/logo-full.png" alt=""></a>
+                                        <a href="index.html"><img src="{{ asset('img/register-bg.png') }}" alt=""
+                                                width="250px"></a>
                                     </div>
                                     <h4 class="text-center mb-4">Sign up your account</h4>
                                     <form method="POST" action="{{ route('register') }}">
@@ -48,7 +49,6 @@
                                             </span>
                                             @enderror
                                         </div>
-
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Email</strong></label>
                                             <input id="email" type="email"
@@ -79,7 +79,7 @@
                                                 name="password_confirmation" required autocomplete="new-password">
                                         </div>
                                         <input type="hidden" name="level" value="user">
-                                        <div class="text-center mt-4">
+                                        <div class="text-center mt-3">
                                             <button type="submit" class="btn btn-primary btn-block">Register</button>
                                         </div>
                                     </form>

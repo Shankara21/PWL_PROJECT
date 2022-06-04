@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\KendaraanController;
-
 use App\Models\Kendaraan;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BrandController;
+
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\KendaraanController;
+use App\Models\Contacts;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::get('/testimonial', function () {
 Route::get('/tes', function () {
     return view('auth.layouts.layouts-auth');
 });
+Route::post('/contact', [ContactsController::class, 'store']);
 
 
 //! Routing Dashboard
@@ -58,4 +60,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/dashboard/brand', BrandController::class);
     Route::resource('/dashboard/category', CategoryController::class);
     Route::resource('/dashboard/kendaraan', KendaraanController::class);
+    Route::resource('/dashboard/contacts', ContactsController::class);
 });
