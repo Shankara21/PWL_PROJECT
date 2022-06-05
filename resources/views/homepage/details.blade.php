@@ -86,6 +86,15 @@
                                                 <h4>{{ $kendaraan -> tahun }}</h4>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <th>
+                                                <h5>Tipe</h5>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>{{ $kendaraan -> type -> nama }}</h4>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
