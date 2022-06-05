@@ -54,6 +54,19 @@
                                     </select>
                                   </div>
                                   <div class="mb-3">
+                                    <label for="type" class="form-label">Tipe</label>
+                                    <select class="default-select form-control wide mb-3" name="type_id">
+                                      @foreach ($types as $type)
+                                        @if (old('type_id') == $type->id)
+
+                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
+                                        @else
+                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
+                                        @endif
+                                      @endforeach
+                                    </select>
+                                  </div>
+                                  <div class="mb-3">
                                     <label for="warna" class="form-label">Warna Kendaraan</label>
                                     <input type="text" class="form-control form-control-lg @error('warna') is-invalid
                                     @enderror" id="warna" name="warna" required autofocus value="{{ old('warna') }}">

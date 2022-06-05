@@ -7,6 +7,7 @@ use App\Http\Requests\StoreKendaraanRequest;
 use App\Http\Requests\UpdateKendaraanRequest;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Type;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,6 +35,7 @@ class KendaraanController extends Controller
         return view('admin.kendaraan.create', [
             'brands' => Brand::all(),
             'categories' => Category::all(),
+            'types' => Type::all(),
         ]);
     }
 
@@ -49,6 +51,7 @@ class KendaraanController extends Controller
             'nama' => 'required|string|max:255',
             'brand_id' => 'required',
             'category_id' => 'required',
+            'type_id' => 'required',
             'image' => 'image|file',
             'warna' => 'required',
             'tahun' => 'required',
@@ -79,6 +82,7 @@ class KendaraanController extends Controller
             'kendaraan' => $kendaraan,
             'brand' => Brand::all(),
             'category' => Category::all(),
+            'type' => Type::all(),
         ]);
     }
 
@@ -94,6 +98,7 @@ class KendaraanController extends Controller
             'kendaraan' => $kendaraan,
             'brands' => Brand::all(),
             'categories' => Category::all(),
+            'types' => Type::all(),
         ]);
     }
 
@@ -110,6 +115,7 @@ class KendaraanController extends Controller
             'nama' => 'required|string|max:255',
             'brand_id' => 'required',
             'category_id' => 'required',
+            'type_id' => 'required',
             'image' => 'image|file',
             'warna' => 'required',
             'tahun' => 'required',
