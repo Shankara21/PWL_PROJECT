@@ -55,9 +55,7 @@ class KendaraanController extends Controller
             'harga' => 'required',
             'deskripsi' => 'required',
         ]);
-
         $validatedata['slug'] = Str::slug($validatedata['nama']);
-
         if ($request->file('image')) {
             $validatedata['image'] = $request->file('image')->store('kendaraan', 'public');
         }

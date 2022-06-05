@@ -41,14 +41,10 @@ class HomepageController extends Controller
     {
 
         $kendaraan = Kendaraan::latest();
-        // $brand = Brand::all();
-        // // Mengambil kolom nama dalam table brand
-        // // $brand_name = $brand->nama;
-        // // dd($brand_name);
-        // // $category = Category::all();
+        $kiw = Kendaraan::join('brands', 'brands.id', '=', 'kendaraans.brand_id')->where('kendaraans.nama', 'like', '%' . request('search') . '%')->get();
 
         if (request('search')) {
-            $kendaraan->where('nama', 'like', '%' . request('search') . '%');
+            $kendaraan->$kiw;
         }
 
         return view('homepage.project', [
