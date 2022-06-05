@@ -25,7 +25,6 @@
                     </div>
                 </div>
 
-
             </div>
             @guest
             @if (Route::has('login'))
@@ -38,8 +37,12 @@
 
             @if (Auth::user()->level == 'admin')
             <div class="navbar-nav">
-                <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart"
-                        style="font-size: 1.5em"></i></a>
+                <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart" style="font-size: 1.5em"></i>
+                    {{-- <span class="badge bg-danger"
+                        style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
+                        <!-- Tempat Menyimpan Bagdes! -->
+                    </span> --}}
+                </a>
             </div>
             <div class="dropdown text-end navbar-nav">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown nav-item nav-link" id="dropdownUser1"
