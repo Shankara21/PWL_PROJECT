@@ -33,6 +33,9 @@
                                         </th>
                                         <th>Gambar</th>
                                         <th>Nama Kendaraan</th>
+                                        <th>Brand</th>
+                                        <th>Category</th>
+                                        <th>Tipe</th>
                                         <th>Warna</th>
                                         <th>Harga</th>
                                         <th>Action</th>
@@ -54,6 +57,9 @@
                                             {{asset('storage/'.$kendaraan->image)}}
                                           @endif" width="250px"></td>
                                         <td>{{ $kendaraan->nama }}</td>
+                                        <td>{{ $kendaraan->brand->nama }}</td>
+                                        <td>{{ $kendaraan->category->nama }}</td>
+                                        <td>{{ $kendaraan->type->nama }}</td>
                                         <td>{{ $kendaraan->warna }}</td>
                                         <td>{{ $kendaraan->harga }}</td>
                                         <td>

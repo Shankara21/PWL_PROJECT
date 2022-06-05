@@ -24,6 +24,11 @@
                     <span class="nav-text">Category</span>
                 </a>
             </li>
+            <li><a href="/dashboard/type" class="" aria-expanded="false">
+                <i class="fas fa-tag"></i>
+                <span class="nav-text">Type</span>
+            </a>
+            </li>
             <li><a href="/dashboard/kendaraan" class="" aria-expanded="false">
                     <i class="fas fa-car"></i>
                     <span class="nav-text">Kendaraan</span>
