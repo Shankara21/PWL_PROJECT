@@ -29,58 +29,151 @@
         </div>
         <div class="row  mb-4">
             <div class="col-md-6">
-                <img src="{{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}" alt="" width="500px">
+                <div class="text-center">
+                    <img src="{{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}" alt="" width="500px">
+                    <a class="btn btn-light" href="{{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}"
+                        data-lightbox="portfolio" title="Zoom in"><i class="fas fa-eye fa-2x text-primary"></i></a>
+                </div>
             </div>
             <div class="col-md-6">
-                <table class="table align-baseline">
-                    <tbody>
-                        <tr>
-                            <th>
-                                <h5>Nama</h5>
-                            </th>
-                            <th>:</th>
-                            <td>
-                                <h1>{{ $kendaraan -> nama }}</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <h5>Merk</h5>
-                            </th>
-                            <th>:</th>
-                            <td>
-                                <h4>{{ $kendaraan -> brand -> nama }}</h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <h5>Warna</h5>
-                            </th>
-                            <th>:</th>
-                            <td>
-                                <h4>{{ $kendaraan -> warna }}</h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <h5>Tahun</h5>
-                            </th>
-                            <th>:</th>
-                            <td>
-                                <h4>{{ $kendaraan -> tahun }}</h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <h5>Harga</h5>
-                            </th>
-                            <th>:</th>
-                            <td>
-                                <h4>Rp.{{ number_format($kendaraan -> harga) }} / hari</h4>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="accordion mb-4" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h5 style="padding-right:1em">Informasi Kendaraan</h5> <img src="/img/information.png"
+                                    alt="" width="40px">
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table align-baseline">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                <h5>Nama</h5>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h1>{{ $kendaraan -> nama }}</h1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <h5>Merk</h5>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>{{ $kendaraan -> brand -> nama }}</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <h5>Warna</h5>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>{{ $kendaraan -> warna }}</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <h5>Tahun</h5>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>{{ $kendaraan -> tahun }}</h4>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h5 style="padding-right:1em">Spesifikasi Kendaraan</h5> <img src="/img/test.png" alt=""
+                                    width="40px">
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-6 mb-2">
+                                        <img src="/img/gas.png" alt="" width="20px">
+                                        <h6 class="d-inline" style="padding-left:.5em">Fuel</h6>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <img src="/img/seat.png" alt="" width="20px">
+                                        <h6 class="d-inline" style="padding-left:.5em">6 Seat</h6>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <img src="/img/audio.png" alt="" width="20px">
+                                        <h6 class="d-inline" style="padding-left:.5em">Audio</h6>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <img src="/img/ac.png" alt="" width="20px">
+                                        <h6 class="d-inline" style="padding-left:.5em">AC</h6>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <img src="/img/p3k.png" alt="" width="20px">
+                                        <h6 class="d-inline" style="padding-left:.5em">Obat-obatan</h6>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <img src="/img/charger.png" alt="" width="20px">
+                                        <h6 class="d-inline" style="padding-left:.5em">charger</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <h5 style="padding-right:1em">Harga Sewa</h5> <img src="/img/pricing.png" alt=""
+                                    width="40px">
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <h5>Lepas Kunci</h5>
+                                <ul>
+                                    <li>
+                                        <h6>Rp. 275.000 / 12 Jam</h6>
+                                    </li>
+                                    <li>
+                                        <h6>Rp. 350.000 / 24 Jam</h6>
+                                    </li>
+                                </ul>
+                                <h5>Dengan Sopir</h5>
+                                <ul>
+                                    <li>
+                                        <h6>Rp. 275.000 / 12 Jam</h6>
+                                    </li>
+                                    <li>
+                                        <h6>Rp. 350.000 / 24 Jam</h6>
+                                    </li>
+                                </ul>
+                                <h5>Dengan Sopir + BBM</h5>
+                                <ul>
+                                    <li>
+                                        <h6>Rp. 275.000 / 12 Jam</h6>
+                                    </li>
+                                    <li>
+                                        <h6>Rp. 350.000 / 24 Jam</h6>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="order ">
                     @guest
 

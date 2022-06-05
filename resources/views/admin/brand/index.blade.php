@@ -16,8 +16,8 @@
                     <div class="card-header">
                         <h4 class="card-title">Brand</h4>
                         <div><a href="/dashboard/brand/create" class="btn btn-primary">
-                            <i class="fas fa-plus"> Tambah Data</i>
-                        </a></div>
+                                <i class="fas fa-plus"> Tambah Data</i>
+                            </a></div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,6 +31,7 @@
                                                 <label class="form-check-label" for="checkAll"></label>
                                             </div>
                                         </th>
+                                        <th>Image</th>
                                         <th>Nama Brand</th>
                                         <th>Action</th>
                                     </tr>
@@ -45,16 +46,21 @@
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
+                                        <td><img src="https://source.unsplash.com/250x250/?car,{{ $brand -> nama }}"
+                                                alt="" style="object-fit: cover" class="rounded"></td>
                                         <td>{{ $brand->nama }}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="/dashboard/brand/{{$brand->slug}}/edit" class="btn btn-primary shadow btn-xs sharp me-1"><i
+                                                <a href="/dashboard/brand/{{$brand->slug}}/edit"
+                                                    class="btn btn-primary shadow btn-xs sharp me-1"><i
                                                         class="fas fa-pencil-alt"></i></a>
-                                                <form action="/dashboard/brand/{{ $brand->slug }}" method="POST" class="d-inline">
+                                                <form action="/dashboard/brand/{{ $brand->slug }}" method="POST"
+                                                    class="d-inline">
                                                     @method('delete')
                                                     @csrf
-                                                    <button class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Yakin?')"><i
-                                                        class="fa fa-trash"></i></button>
+                                                    <button class="btn btn-danger shadow btn-xs sharp"
+                                                        onclick="return confirm('Yakin?')"><i
+                                                            class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </td>
