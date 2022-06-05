@@ -18,8 +18,9 @@
     <title>Admin Dashboard</title>
 
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <link href="./admin/css/style.css" rel="stylesheet">
+    <link rel="icon" href="/img/icon.png">
+    <link href="/admin/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
 
 </head>
 
@@ -31,9 +32,9 @@
                     <div class="authincation-content">
                         <div class="row no-gutters">
                             <div class="col-xl-12">
-                                <div class="auth-form">
+                                <div class="auth-form border-1">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="{{ asset('img/register-bg.png') }}" alt=""
+                                        <a href="#"><img src="{{ asset('img/register-bg.png') }}" alt=""
                                                 width="250px"></a>
                                     </div>
                                     <h4 class="text-center mb-4">Sign up your account</h4>
@@ -42,7 +43,7 @@
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Name</strong></label>
                                             <input type="text" class="form-control" placeholder="name" name="name"
-                                                autofocus>
+                                                autofocus style="border: 0.2px solid rgba(0, 0, 0, 0.2)">
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -53,7 +54,8 @@
                                             <label class="mb-1"><strong>Email</strong></label>
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email">
+                                                value="{{ old('email') }}" required autocomplete="email"
+                                                style="border: 0.2px solid rgba(0, 0, 0, 0.2)">
 
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -65,7 +67,8 @@
                                             <label class="mb-1"><strong>Password</strong></label>
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="new-password">
+                                                name="password" required autocomplete="new-password"
+                                                style="border: 0.2px solid rgba(0, 0, 0, 0.2)">
 
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -76,7 +79,8 @@
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Confirm Password</strong></label>
                                             <input id="password-confirm" type="password" class="form-control"
-                                                name="password_confirmation" required autocomplete="new-password">
+                                                name="password_confirmation" required autocomplete="new-password"
+                                                style="border: 0.2px solid rgba(0, 0, 0, 0.2)">
                                         </div>
                                         <input type="hidden" name="level" value="user">
                                         <div class="text-center mt-3">
@@ -101,10 +105,10 @@
 	Scripts
 ***********************************-->
     <!-- Required vendors -->
-    <script src=".admin/vendor/global/global.min.js"></script>
-    <script src=".admin/js/custom.min.js"></script>
-    <script src=".admin/js/dlabnav-init.js"></script>
-    <script src=".admin/js/styleSwitcher.js"></script>
+    <script src="/admin/vendor/global/global.min.js"></script>
+    <script src="/admin/js/custom.min.js"></script>
+    <script src="/admin/js/dlabnav-init.js"></script>
+    <script src="/admin/js/styleSwitcher.js"></script>
 </body>
 
 </html>

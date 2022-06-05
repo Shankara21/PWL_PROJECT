@@ -23,38 +23,13 @@
                 <a class="btn btn-link" href="/chart">Chart</a>
             </div>
             <div class="col-md-6 col-lg-3">
-                <h5 class="text-white mb-4">Project Gallery</h5>
-                <div class="row g-2">
-                    <div class="col-4">
-                        <img class="img-fluid" src="./img/portfolio-1.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="./img/portfolio-2.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="./img/portfolio-3.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="./img/portfolio-4.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="./img/portfolio-5.jpg" alt="Image">
-                    </div>
-                    <div class="col-4">
-                        <img class="img-fluid" src="./img/portfolio-6.jpg" alt="Image">
-                    </div>
-                </div>
+
             </div>
             <div class="col-md-6 col-lg-3">
                 <h5 class="text-white mb-4 fst-italic">GO Rent</h5>
                 <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit
                     non vulpu</p>
-                <div class="position-relative w-100 mt-3">
-                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                        placeholder="Your Email" style="height: 48px;">
-                    <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                            class="fa fa-paper-plane text-primary fs-4"></i></button>
-                </div>
+
             </div>
         </div>
     </div>

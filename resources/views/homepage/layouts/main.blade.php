@@ -22,22 +22,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="./lib/animate/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
-    <link href="./lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}">
-    <link href="./lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('lib/lightbox/css/lightbox.min.css') }}">
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}"> --}}
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}"> --}}
+    <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('lib/lightbox/css/lightbox.min.css') }}"> --}}
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> --}}
 
     <!-- Template Stylesheet -->
-    <link href="./css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="/css/style.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
 
     <link rel="icon" href="{{ asset('img/icon.png') }}">
+    <link rel="icon" href="/img/icon.png">
     {{-- <link rel="stylesheet" href="{{ asset('fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/css/all.min.css') }}">
     --}}
 
@@ -72,23 +73,23 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+    {{-- <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('lib/isotope/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="./lib/wow/wow.min.js"></script>
-    <script src="./lib/easing/easing.min.js"></script>
-    <script src="./lib/waypoints/waypoints.min.js"></script>
-    <script src="./lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="./lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="./lib/lightbox/js/lightbox.min.js"></script>
+    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script> --}}
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="/lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="./js/main.js"></script>
+    <script src="/js/main.js"></script>
     <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}"></script>
+    {{-- <script src="{{ asset('js/main.js') }}"></script> --}}
 </body>
 
 </html>

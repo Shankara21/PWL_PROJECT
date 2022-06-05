@@ -422,7 +422,7 @@ class KendaraanSeeder extends Seeder
                 'harga' => 100000,
                 'brand_id' => 8,
                 'category_id' => 2,
-                'warna' => 'Hijau',
+                'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'Ninja 250 merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
             ],

@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/about.jpg">
+                <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="/img/about.jpg">
             </div>
         </div>
     </div>

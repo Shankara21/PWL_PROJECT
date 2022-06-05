@@ -43,7 +43,8 @@
                                             <label class="mb-1"><strong>Email Address</strong></label>
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                value="{{ old('email') }}" required autocomplete="email" autofocus
+                                                style="border: 0.2px solid rgba(0, 0, 0, 0.2)">
 
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -55,7 +56,8 @@
                                             <label class="mb-1"><strong>Password</strong></label>
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="current-password">
+                                                name="password" required autocomplete="current-password"
+                                                style="border: 0.2px solid rgba(0, 0, 0, 0.2)">
 
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">

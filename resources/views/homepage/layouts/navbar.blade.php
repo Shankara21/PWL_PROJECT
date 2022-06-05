@@ -1,6 +1,6 @@
 <div class="container-xxl position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-        <a href="" class="navbar-brand p-0">
+        <a href="/" class="navbar-brand p-0">
             <h1 class="m-0"><i class="fa fa-search me-2"></i>GO<span class="fs-5">Rent</span></h1>
             <!-- <img src="img/logo.png" alt="Logo"> -->
         </a>
@@ -12,14 +12,14 @@
                 <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                 <a href="/about" class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">About</a>
                 <a href="/service" class="nav-item nav-link {{ Request::is('service') ? 'active' : '' }}">Service</a>
-                <a href="/project" class="nav-item nav-link {{ Request::is('project') ? 'active' : '' }}">Kendaraan</a>
+                <a href="/project"
+                    class="nav-item nav-link {{ Request::is('project') || Request::is('detail/{kendaraan}') ? 'active' : '' }}">Kendaraan</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle {{ Request::is('contact')? 'active' : '' }}"
                         data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
                         <a href="/team" class="dropdown-item"><i class="fas fa-user-friends"></i> Our Team</a>
                         <a href="/testimonial" class="dropdown-item"><i class="fas fa-thumbs-up"></i> Testimonial</a>
-                        <a href="404" class="dropdown-item">404 Page</a>
                         <a href="/contact" class="dropdown-item {{ Request::is('contact') ? 'active' : '' }}"><i
                                 class="fas fa-envelope"></i> Contact</a>
                     </div>
