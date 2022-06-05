@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\TypeController;
 use App\Models\Contacts;
 
 /*
@@ -36,7 +37,7 @@ Route::controller(HomepageController::class)->group(function () {
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 
-//! Routing Auth 
+//! Routing Auth
 Auth::routes();
 
 //! Routing Dashboard
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     });
     Route::resource('/dashboard/brand', BrandController::class);
     Route::resource('/dashboard/category', CategoryController::class);
+    Route::resource('/dashboard/type', TypeController::class);
     Route::resource('/dashboard/kendaraan', KendaraanController::class);
     Route::resource('/dashboard/contacts', ContactsController::class);
 });

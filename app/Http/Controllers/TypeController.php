@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use App\Models\Type;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -15,7 +16,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tipe.index', [
+            'types' => Type::all(),
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tipe.create');
     }
 
     /**
@@ -36,7 +39,16 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255|unique:categories,nama'
+        ]);
+
+        Type::create([
+            'nama' => $request->nama,
+            'slug' => Str::slug($request->nama),
+        ]);
+
+        return redirect('/dashboard/type')->with('toast_success', 'Tipe baru telah ditambahkan!');
     }
 
     /**
@@ -58,7 +70,9 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.tipe.edit', [
+            'type' => Type::all(),
+        ]);
     }
 
     /**
@@ -70,7 +84,16 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:255|unique:categories,nama'
+        ]);
+        Type::where('id', $type->id)
+        ->update([
+            'nama' => $request->nama,
+            'slug' => Str::slug($request->nama)
+        ]);
+
+        return redirect('/dashboard/type')->with('toast_success', 'Tipe berhasil di edit!');
     }
 
     /**
@@ -81,6 +104,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        Type::destroy($type->id);
+        return redirect('/dashboard/type')->with('toast_success', 'Tipe berhasil di hapus!');
     }
 }
