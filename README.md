@@ -4,6 +4,7 @@
 
 -   Multi User
 -   Manajemen Data Brand
+-   Manajemen Data Tipe
 -   Manajemen Data Kategori
 -   Manajemen Data Kendaraan
 -   Manajemen Data Member
