@@ -14,11 +14,61 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Kendaraan</h4>
-                        <div><a href="/dashboard/kendaraan/create" class="btn btn-primary">
-                                <i class="fas fa-plus"> Tambah Data</i>
-                            </a></div>
+                        <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Kendaraan</h4>
+                            </div>
+                            <div class="col col-lg-2">
+                                <a href="/dashboard/kendaraan/create" class="btn btn-primary">
+                                    <i class="fas fa-plus"> Tambah Data</i>
+                                </a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                    <label for="brand" class="form-label text-center">Brand</label>
+                                            <select class="default-select form-control wide mb-3" name="brand_id">
+                                              @foreach ($brands as $brand)
+                                                @if (old('brand_id') == $brand->id)
+
+                                                <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
+                                                @else
+                                                <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
+                                                @endif
+                                              @endforeach
+                                            </select>
+                            </div>
+                            <div class="col">
+                                    <label for="category" class="form-label text-center">Category</label>
+                                            <select class="default-select form-control wide mb-3" name="category_id">
+                                              @foreach ($categories as $category)
+                                                @if (old('category_id') == $category->id)
+
+                                                <option value="{{ $category->id }}">{{ $category->nama }}</option>
+                                                @else
+                                                <option value="{{ $category->id }}">{{ $category->nama }}</option>
+                                                @endif
+                                              @endforeach
+                                            </select>
+                            </div>
+                            <div class="col">
+                                    <label for="type" class="form-label text-center">Tipe</label>
+                                    <select class="default-select form-control wide mb-3" name="type_id">
+                                      @foreach ($types as $type)
+                                        @if (old('type_id') == $type->id)
+
+                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
+                                        @else
+                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
+                                        @endif
+                                      @endforeach
+                                    </select>
+                            </div>
+                        </div>
                     </div>
+                </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example5" class="display" style="min-width: 1000px">

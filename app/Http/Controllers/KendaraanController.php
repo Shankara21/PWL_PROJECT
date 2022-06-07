@@ -22,6 +22,9 @@ class KendaraanController extends Controller
     {
         return view('admin.kendaraan.index', [
             'kendaraans' => Kendaraan::all(),
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
+            'types' => Type::all(),
         ]);
     }
 
