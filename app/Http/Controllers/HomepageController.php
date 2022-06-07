@@ -41,10 +41,10 @@ class HomepageController extends Controller
     {
 
         $kendaraan = Kendaraan::latest();
-        $kiw = Kendaraan::join('brands', 'brands.id', '=', 'kendaraans.brand_id')->where('kendaraans.nama', 'like', '%' . request('search') . '%')->get();
+        // $kiw = Kendaraan::join('brands', 'brands.id', '=', 'kendaraans.brand_id')->where('kendaraans.nama', 'like', '%' . request('search') . '%')->get();
 
         if (request('search')) {
-            $kendaraan->$kiw;
+            $kendaraan->where('nama', 'like', '%' . request('search') . '%');
         }
 
         return view('homepage.project', [

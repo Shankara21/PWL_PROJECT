@@ -9,9 +9,8 @@
                 <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Kendaraan</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Kendaraan</li>
                     </ol>
                 </nav>
             </div>
@@ -41,7 +40,11 @@
             @foreach ($kendaraan as $item)
             <div class="col-lg-4 col-md-6 portfolio-item wow zoomIn" data-wow-delay="0.1s" style="height: 300px;">
                 <div class=" rounded overflow-hidden">
-                    <img class="img-fluid w-100" src="{{ asset('img/kendaraan/'.$item -> slug.'.png') }}" alt="">
+                    <img class="img-fluid w-100" src="@if (!$item -> image)
+                                            {{ asset('img/kendaraan/'.$item -> slug.'.png') }}
+                                            @else
+                                            {{asset('storage/'.$item->image)}}
+                                          @endif" alt="">
                     <a class="btn btn-light" href="/detail/{{ $item -> slug }}"><i
                             class="fa fa-plus fa-2x text-primary"></i>
                     </a>

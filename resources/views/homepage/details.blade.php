@@ -200,7 +200,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h5>Deskripsi</h5>
+                <h5>Deskripsi {{ $kendaraan -> category -> nama }}</h5>
                 <p>{{ $kendaraan -> deskripsi }}</p>
             </div>
         </div>
@@ -220,7 +220,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                <form>
+                <form action="{{ route('order.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" value="{{ $kendaraan -> id }}" name="kendaraan_id">
+                    <input type="hidden" value="{{ Auth::user() -> id }}" name="user_id">
                     <div class="mb-3">
                         <label class="form-label ">Nama Pemesan <i class="fas fa-user"></i></label>
                         <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}" autofocus
@@ -228,27 +231,29 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email <i class="fas fa-envelope"></i></label>
-                        <input type="email" class="form-control" value="{{ Auth::user() -> email }}" required>
+                        <input type="email" class="form-control" value="{{ Auth::user() -> email }}" name="email"
+                            required>
                     </div>
                     <div class="mb-3">
                         <label for="sopir" class="form-label">Opsi Pemesanan <img src="/img/steer.png" alt=""
                                 width="20px"></label>
-                        <select class="form-select" id="sopir" name="" required>
-                            <option value="1">Dengan Sopir</option>
-                            <option value="2">Tanpa Sopir</option>
+                        <select class="form-select" id="sopir" name="opsi" required>
+                            <option value="1">Tanpa Sopir</option>
+                            <option value="2">Dengan Sopir</option>
+                            <option value="3">Dengan Sopir + BBM</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <div class="row">
                             <div class="col-6">
-                                <label for="" class="form-label">Tanggal Pesan <i
+                                <label for="" class="form-label">Tanggal Sewa <i
                                         class="fas fa-calendar-alt"></i></label>
-                                <input type="date" class="form-control" required>
+                                <input type="datetime-local" class="form-control" name="tanggal_sewa" required>
                             </div>
                             <div class="col-6">
                                 <label for="" class="form-label">Tanggal Kembali <i
                                         class="fas fa-calendar-alt"></i></label>
-                                <input type="date" class="form-control" required>
+                                <input type="datetime-local" class="form-control" name="tanggal_kembali" required>
                             </div>
                         </div>
                     </div>
@@ -258,13 +263,13 @@
                             @elseif ($kendaraan -> category -> nama == 'Motor')
                             Jumlah Motor <i class="fas fa-motorcycle"></i>
                             @endif</label>
-                        <input type="number" min="0" class="form-control" required>
+                        <input type="number" min="0" class="form-control" name="jumlah_sewa" required>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Lanjut Pembayaran</button>
+                </form>
             </div>
         </div>
     </div>

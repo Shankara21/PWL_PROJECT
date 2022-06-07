@@ -10,6 +10,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\tespesanan;
 use App\Http\Controllers\TypeController;
 use App\Models\Contacts;
 
@@ -33,9 +35,10 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/team', 'team');
     Route::get('/contact', 'contact');
     Route::get('/testimonial', 'testimonial');
-    Route::get('/detail/{kendaraan}', 'show');
+    Route::get('/detail/{kendaraan}', 'show')->middleware('auth');
 });
 Route::post('/contact', [ContactsController::class, 'store']);
+Route::resource('/order', OrderController::class);
 
 //! Routing Auth
 Auth::routes();
