@@ -20,9 +20,14 @@ class HomepageController extends Controller
 
     public function show(Kendaraan $kendaraan)
     {
+        // Memecah string menjadi array dengan delimiter ','
+        $warna = explode(" ", $kendaraan->deskripsi);
+
         return view('homepage.details', [
             'kendaraan' => $kendaraan,
             'title' => 'Details ' . $kendaraan->name,
+            'warna' => $warna,
+
         ]);
     }
     public function service()

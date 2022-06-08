@@ -65,7 +65,6 @@ class KendaraanController extends Controller
         if ($request->file('image')) {
             $validatedata['image'] = $request->file('image')->store('kendaraan', 'public');
         }
-
         Kendaraan::create($validatedata);
 
         return redirect('/dashboard/kendaraan')->with('toast_success', 'Kendaraan berhasil ditambahkan!');

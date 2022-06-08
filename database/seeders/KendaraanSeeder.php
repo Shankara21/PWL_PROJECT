@@ -476,7 +476,7 @@ class KendaraanSeeder extends Seeder
                 'type_id' => 1,
                 'warna' => 'Hijau',
                 'tahun' => '2020',
-                'deskripsi' => 'KLX merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'deskripsi' => 'KLX merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. &&&&',
             ]
         ]);
     }

@@ -30,24 +30,42 @@
         <div class="row  mb-4">
             <div class="col-md-6">
                 <div class="text-center">
-                    <img src="{{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}" alt="" width="500px">
+                    <img class="rounded" src="@if (!$kendaraan -> image)
+                                            {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
+                                            @else
+                                            {{asset('storage/'.$kendaraan->image)}}
+                                          @endif" alt="" width="500px">
                     <a class="btn btn-light" href="{{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}"
                         data-lightbox="portfolio" title="Zoom in"><i class="fas fa-eye fa-2x text-primary"></i></a>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="accordion mb-4" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <h5 style="padding-right:1em">Informasi Kendaraan</h5> <img src="/img/information.png"
-                                    alt="" width="40px">
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab"
+                                    data-bs-target="#profile-overview">Informasi
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Fasilitas
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#profile-change-password">Harga
+                                    Sewa</button>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content pt-2">
+
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <table class="table align-baseline">
                                     <tbody>
                                         <tr>
@@ -56,7 +74,7 @@
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h1>{{ $kendaraan -> nama }}</h1>
+                                                <h2>{{ $kendaraan -> nama }}</h2>
                                             </td>
                                         </tr>
                                         <tr>
@@ -98,19 +116,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <h5 style="padding-right:1em">Spesifikasi Kendaraan</h5> <img src="/img/test.png" alt=""
-                                    width="40px">
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
                                 <div class="row">
                                     <div class="col-6 mb-2">
                                         <img src="/img/gas.png" alt="" width="20px">
@@ -138,19 +146,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <h5 style="padding-right:1em">Harga Sewa</h5> <img src="/img/pricing.png" alt=""
-                                    width="40px">
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+
+                            <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <h5>Lepas Kunci</h5>
                                 <ul>
                                     <li>
@@ -182,31 +179,32 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="order ">
-                    @guest
-
-                    <span class="text-danger text-start"><strong class="fst-italic">*Anda harus login terlebih
-                            dahulu!</strong></span>
-                    @endguest
-                    <div class="btn-modal text-center">
-                        <button type="button" class="btn btn-primary w-75" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop" @guest disabled @endguest>
-                            Lanjut Pemesanan
-                        </button>
+            </div>
+            <div class="row">
+                <div class="col align-self-end">
+                    <div class="order ">
+                        @guest
+                        <span class="text-danger text-start"><strong class="fst-italic">*Anda harus login terlebih
+                                dahulu!</strong></span>
+                        @endguest
+                        <div class="btn-modal text-end" style="padding-right: 7em">
+                            <button type="button" class="btn btn-primary w-25 " data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" @guest disabled @endguest>
+                                Lanjut Pemesanan <i class="fas fa-credit-card"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <h5>Deskripsi {{ $kendaraan -> category -> nama }}</h5>
                 <p>{{ $kendaraan -> deskripsi }}</p>
             </div>
         </div>
     </div>
 </div>
-<!-- Portfolio End -->
 
 
 <!-- Modal -->

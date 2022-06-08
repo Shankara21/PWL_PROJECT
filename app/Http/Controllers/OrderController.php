@@ -7,6 +7,7 @@ use DateInterval;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreKendaraanRequest;
 
 
 class OrderController extends Controller
@@ -37,7 +38,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreKendaraanRequest $request)
     {
         // Menghitung selisih hari antara tanggal kembali dan tanggal sewa
 
@@ -67,7 +68,7 @@ class OrderController extends Controller
         if ($akhir < $awal) {
             return 'Tanggal atau waktu tidak boleh kurang dari tanggal sewa';
         }
-        return 'OKE!';
+
         $tes = $request->validate([
             'user_id' => 'required',
             'nama' => 'required',
@@ -78,6 +79,7 @@ class OrderController extends Controller
             'tanggal_kembali' => 'required',
             'jumlah_sewa' => 'required',
         ]);
+        dd($tes);
     }
 
     /**
