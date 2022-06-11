@@ -27,8 +27,11 @@
             </div>
             <div class="col-md-6 col-lg-3">
                 <h5 class="text-white mb-4 fst-italic">GO Rent</h5>
-                <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit
-                    non vulpu</p>
+                <p>
+                    GO Rent merupakan sebuah aplikasi yang dapat digunakan untuk membantu anda dalam mencari kendaraan
+                    yang anda inginkan. Kami menyediakan harga yang terjangkau dan kami juga menyediakan layanan yang
+                    lengkap.
+                </p>
 
             </div>
         </div>
@@ -42,14 +45,7 @@
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="footer-menu">
-                        <a href="">Home</a>
-                        <a href="">Cookies</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

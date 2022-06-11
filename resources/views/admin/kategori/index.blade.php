@@ -6,7 +6,7 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Datatable</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Category</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -14,10 +14,10 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Kategori</h4>
+                        <h4 class="card-title">Categories</h4>
                         <div><a href="/dashboard/category/create" class="btn btn-primary">
-                            <i class="fas fa-plus"> Tambah Data</i>
-                        </a></div>
+                                <i class="fas fa-plus"> Tambah Data</i>
+                            </a></div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -48,13 +48,16 @@
                                         <td>{{ $category->nama }}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="/dashboard/category/{{$category->slug}}/edit" class="btn btn-primary shadow btn-xs sharp me-1"><i
+                                                <a href="/dashboard/category/{{$category->slug}}/edit"
+                                                    class="btn btn-primary shadow btn-xs sharp me-1"><i
                                                         class="fas fa-pencil-alt"></i></a>
-                                                <form action="/dashboard/category/{{ $category->slug }}" method="POST" class="d-inline">
+                                                <form action="/dashboard/category/{{ $category->slug }}" method="POST"
+                                                    class="d-inline">
                                                     @method('delete')
                                                     @csrf
-                                                    <button class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Yakin?')"><i
-                                                        class="fa fa-trash"></i></button>
+                                                    <button class="btn btn-danger shadow btn-xs sharp"
+                                                        onclick="return confirm('Yakin?')"><i
+                                                            class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </td>

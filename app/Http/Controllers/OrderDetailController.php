@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Models\OrderDetail;
+use App\Http\Requests\StoreOrderDetailRequest;
+use App\Http\Requests\UpdateOrderDetailRequest;
 
-class OrderController extends Controller
+class OrderDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,32 +31,19 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
+     * @param  \App\Http\Requests\StoreOrderDetailRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrderRequest $request)
+    public function store(StoreOrderDetailRequest $request)
     {
-        // Menghitung selisih hari antara tanggal kembali dan tanggal sewa
-
-        //!  Percobaan 1
-        // $tgl_sewa = Carbon::parse($request->tanggal_sewa);
-        // $tgl_kembali = Carbon::parse($request->tanggal_kembali);
-        // $selisih = $tgl_kembali->diffInDays($tgl_sewa);
-
-        //! Percobaan 2
-        // $tanggal1 = new DateTime($request->tanggal_sewa);
-        // $tanggal2 = new DateTime($request->tanggal_kembali);
-        // $interval = $tanggal1->diff($tanggal2);
-        // $kiw = $interval->format('%R%a Hari');
-        // dd($interval);
-
         //! Percobaan 3 (Berhasil)
         $awal = date_create($request->tanggal_sewa);
         $akhir = date_create($request->tanggal_kembali);
         $diff = date_diff($akhir, $awal);
 
+        $durasi = $request->lama_sewa * 24;
         // Menambah 12jam 
-        $input = date('Y-m-d-H-i-s', strtotime($request->tanggal_sewa . '+12 hours'));
+        $input = date('Y-m-d-H-i-s', strtotime($request->tanggal_sewa . '+' . $durasi . 'hours'));
 
 
 
@@ -65,26 +52,27 @@ class OrderController extends Controller
             return 'Tanggal atau waktu tidak boleh kurang dari tanggal sewa';
         }
 
-        $tes = $request->validate([
+        $validateData = $request->validate([
+            'kendaraan_id' => 'required',
             'user_id' => 'required',
-            'nama' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'opsi' => 'required',
-            'kendaraan_id' => 'required',
             'tanggal_sewa' => 'required',
-            'jumlah_sewa' => 'required',
+            'lama_sewa' => 'required',
             'catatan' => 'required',
         ]);
-        dd($tes);
+
+        dd($validateData);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(OrderDetail $orderDetail)
     {
         //
     }
@@ -92,10 +80,10 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(OrderDetail $orderDetail)
     {
         //
     }
@@ -103,11 +91,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $order
+     * @param  \App\Http\Requests\UpdateOrderDetailRequest  $request
+     * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(UpdateOrderDetailRequest $request, OrderDetail $orderDetail)
     {
         //
     }
@@ -115,10 +103,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(OrderDetail $orderDetail)
     {
         //
     }

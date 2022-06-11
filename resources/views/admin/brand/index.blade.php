@@ -6,7 +6,7 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Datatable</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Brands</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -14,7 +14,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Brand</h4>
+                        <h4 class="card-title">Brands</h4>
                         <div><a href="/dashboard/brand/create" class="btn btn-primary">
                                 <i class="fas fa-plus"> Tambah Data</i>
                             </a></div>

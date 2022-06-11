@@ -20,13 +20,11 @@ class HomepageController extends Controller
 
     public function show(Kendaraan $kendaraan)
     {
-        // Memecah string menjadi array dengan delimiter ','
-        $warna = explode(" ", $kendaraan->deskripsi);
+        // Menampilkan tanggal sekarang
 
         return view('homepage.details', [
             'kendaraan' => $kendaraan,
             'title' => 'Details ' . $kendaraan->name,
-            'warna' => $warna,
 
         ]);
     }
@@ -73,6 +71,18 @@ class HomepageController extends Controller
     {
         return view('homepage.testimonial', [
             'title' => 'Testimonial',
+        ]);
+    }
+    public function cart()
+    {
+        return view('homepage.cart', [
+            'title' => 'Cart',
+        ]);
+    }
+    public function checkout()
+    {
+        return view('homepage.checkout', [
+            'title' => 'Checkout',
         ]);
     }
 }

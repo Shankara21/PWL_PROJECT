@@ -65,7 +65,8 @@
                         </ul>
                         <div class="tab-content pt-2">
 
-                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview"
+                                style="height: 300px">
                                 <table class="table align-baseline">
                                     <tbody>
                                         <tr>
@@ -117,64 +118,62 @@
                                 </table>
                             </div>
 
-                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit" style="height: 300px">
 
                                 <div class="row">
-                                    <div class="col-6 mb-2">
-                                        <img src="/img/gas.png" alt="" width="20px">
-                                        <h6 class="d-inline" style="padding-left:.5em">Fuel</h6>
+                                    <div class="col-6 mb-5">
+                                        <img src="/img/gas.png" alt="" width="40px">
+                                        <h5 class="d-inline" style="padding-left:.5em">Fuel</h5>
                                     </div>
-                                    <div class="col-6 mb-2">
-                                        <img src="/img/seat.png" alt="" width="20px">
-                                        <h6 class="d-inline" style="padding-left:.5em">6 Seat</h6>
+                                    <div class="col-6 mb-5">
+                                        <img src="/img/seat.png" alt="" width="40px">
+                                        <h5 class="d-inline" style="padding-left:.5em">6 Seat</h5>
                                     </div>
-                                    <div class="col-6 mb-2">
-                                        <img src="/img/audio.png" alt="" width="20px">
-                                        <h6 class="d-inline" style="padding-left:.5em">Audio</h6>
+                                    <div class="col-6 mb-5">
+                                        <img src="/img/audio.png" alt="" width="40px">
+                                        <h5 class="d-inline" style="padding-left:.5em">Audio</h5>
                                     </div>
-                                    <div class="col-6 mb-2">
-                                        <img src="/img/ac.png" alt="" width="20px">
-                                        <h6 class="d-inline" style="padding-left:.5em">AC</h6>
+                                    <div class="col-6 mb-5">
+                                        <img src="/img/ac.png" alt="" width="40px">
+                                        <h5 class="d-inline" style="padding-left:.5em">AC</h5>
                                     </div>
-                                    <div class="col-6 mb-2">
-                                        <img src="/img/p3k.png" alt="" width="20px">
-                                        <h6 class="d-inline" style="padding-left:.5em">Obat-obatan</h6>
+                                    <div class="col-6 mb-5">
+                                        <img src="/img/p3k.png" alt="" width="40px">
+                                        <h5 class="d-inline" style="padding-left:.5em">Obat-obatan</h5>
                                     </div>
-                                    <div class="col-6 mb-2">
-                                        <img src="/img/charger.png" alt="" width="20px">
-                                        <h6 class="d-inline" style="padding-left:.5em">charger</h6>
+                                    <div class="col-6 mb-5">
+                                        <img src="/img/charger.png" alt="" width="40px">
+                                        <h5 class="d-inline" style="padding-left:.5em">Charger</h5>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade pt-3" id="profile-change-password">
+                            <div class="tab-pane fade pt-3" id="profile-change-password" style="height: 300px">
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-danger " data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal1">
+                                        *Lihat persyaratan
+                                    </button>
+                                </div>
                                 <h5>Lepas Kunci</h5>
                                 <ul>
                                     <li>
-                                        <h6>Rp. 275.000 / 12 Jam</h6>
-                                    </li>
-                                    <li>
-                                        <h6>Rp. 350.000 / 24 Jam</h6>
+                                        <h6>Rp. 350.000</h6>
                                     </li>
                                 </ul>
                                 <h5>Dengan Sopir</h5>
                                 <ul>
                                     <li>
-                                        <h6>Rp. 275.000 / 12 Jam</h6>
-                                    </li>
-                                    <li>
-                                        <h6>Rp. 350.000 / 24 Jam</h6>
+                                        <h6>Rp. 350.000</h6>
                                     </li>
                                 </ul>
                                 <h5>Dengan Sopir + BBM</h5>
                                 <ul>
                                     <li>
-                                        <h6>Rp. 275.000 / 12 Jam</h6>
-                                    </li>
-                                    <li>
-                                        <h6>Rp. 350.000 / 24 Jam</h6>
+                                        <h6>Rp. 350.000</h6>
                                     </li>
                                 </ul>
+
                             </div>
                         </div>
                     </div>
@@ -208,6 +207,7 @@
 
 
 <!-- Modal -->
+{{-- Pemesanan --}}
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -218,7 +218,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-                <form action="{{ route('order.store') }}" method="POST">
+                <form action="/orderDetail" method="POST">
                     @csrf
                     <input type="hidden" value="{{ $kendaraan -> id }}" name="kendaraan_id">
                     <input type="hidden" value="{{ Auth::user() -> id }}" name="user_id">
@@ -232,6 +232,7 @@
                         <input type="email" class="form-control" value="{{ Auth::user() -> email }}" name="email"
                             required>
                     </div>
+                    @if ($kendaraan -> category -> nama == 'Mobil')
                     <div class="mb-3">
                         <label for="sopir" class="form-label">Opsi Pemesanan <img src="/img/steer.png" alt=""
                                 width="20px"></label>
@@ -241,33 +242,72 @@
                             <option value="3">Dengan Sopir + BBM</option>
                         </select>
                     </div>
+                    @endif
                     <div class="mb-3">
                         <div class="row">
                             <div class="col-6">
                                 <label for="" class="form-label">Tanggal Sewa <i
                                         class="fas fa-calendar-alt"></i></label>
-                                <input type="datetime-local" class="form-control" name="tanggal_sewa" required>
+                                <input type="date" class="form-control" name="tanggal_sewa" required
+                                    value="{{ date('Y-m-d') }}">
                             </div>
                             <div class="col-6">
-                                <label for="" class="form-label">Tanggal Kembali <i
-                                        class="fas fa-calendar-alt"></i></label>
-                                <input type="datetime-local" class="form-control" name="tanggal_kembali" required>
+                                <label class="form-label">Lama sewa @if ($kendaraan -> category -> nama == 'Mobil')
+                                    <i class="fas fa-car"></i>
+                                    @elseif ($kendaraan -> category -> nama == 'Motor') <i
+                                        class="fas fa-motorcycle"></i>
+                                    @endif</label>
+                                <input type="number" min="0" class="form-control" name="lama_sewa" required>
+                                <small>*dalam hari</small>
                             </div>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">@if ($kendaraan -> category -> nama == 'Mobil')
-                            Jumlah Mobil <i class="fas fa-car"></i>
-                            @elseif ($kendaraan -> category -> nama == 'Motor')
-                            Jumlah Motor <i class="fas fa-motorcycle"></i>
-                            @endif</label>
-                        <input type="number" min="0" class="form-control" name="jumlah_sewa" required>
+                        <label class="form-label">Catatan <i class="fas fa-edit"></i></label>
+                        <textarea class="form-control" name="catatan" style="height: 100px"></textarea>
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Lanjut Pembayaran</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Syarat dan ketentuan --}}
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Syarat dan Ketentuan Sewa @if ($kendaraan -> category ->
+                    nama == 'Mobil')
+                    Lepas Kunci
+                    @endif</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Berkas yang diperlukan!</h5>
+                <ul>
+                    <li>
+                        <h6>KTP (Asli)</h6>
+                    </li>
+                    <li>
+                        <h6>*KTM (Asli)</h6>
+                    </li>
+                    <li>
+                        <h6>Bersedia Menunjukkan SIM @if ($kendaraan -> category -> nama == 'Mobil')
+                            A
+                            @elseif ($kendaraan -> category -> nama == 'Motor') C
+                            @endif</h6>
+                    </li>
+                </ul>
+                <p>*Keterangan (*) bila ada</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary">Mengerti!</button>
             </div>
         </div>
     </div>
