@@ -139,5 +139,9 @@
       imgPreview.src = oFREvent.target.result;
     }
   }
+
+  document.addEventListener('trix-file-accept', function(e){
+    e.preventDefault()
+  })
     </script>
 @endsection

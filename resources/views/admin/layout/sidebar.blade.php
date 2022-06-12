@@ -34,6 +34,11 @@
                     <span class="nav-text">Kendaraan</span>
                 </a>
             </li>
+            <li><a href="/dashboard/user" class="" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">User</span>
+                </a>
+            </li>
             <li><a href="/dashboard/contacts" class="" aria-expanded="false">
                     <i class="fas fa-comment-dots"></i>
                     <span class="nav-text">Contact</span>
