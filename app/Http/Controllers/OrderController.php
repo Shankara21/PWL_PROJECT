@@ -64,18 +64,14 @@ class OrderController extends Controller
         if ($akhir < $awal) {
             return 'Tanggal atau waktu tidak boleh kurang dari tanggal sewa';
         }
+        $rules = [
+            'payments' => 'required',
+            'berkas' => 'image|file',
+            'bukti_pembayaran' => 'image|file',
+        ];
+        $validatedata = $request->validate($rules);
 
-        $tes = $request->validate([
-            'user_id' => 'required',
-            'nama' => 'required',
-            'email' => 'required',
-            'opsi' => 'required',
-            'kendaraan_id' => 'required',
-            'tanggal_sewa' => 'required',
-            'jumlah_sewa' => 'required',
-            'catatan' => 'required',
-        ]);
-        dd($tes);
+        dd($validatedata);
     }
 
     /**

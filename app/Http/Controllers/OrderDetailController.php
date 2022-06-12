@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Kendaraan;
 use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreOrderDetailRequest;
 use App\Http\Requests\UpdateOrderDetailRequest;
 
@@ -36,34 +39,56 @@ class OrderDetailController extends Controller
      */
     public function store(StoreOrderDetailRequest $request)
     {
-        //! Percobaan 3 (Berhasil)
-        $awal = date_create($request->tanggal_sewa);
-        $akhir = date_create($request->tanggal_kembali);
-        $diff = date_diff($akhir, $awal);
-
-        $durasi = $request->lama_sewa * 24;
-        // Menambah 12jam 
-        $input = date('Y-m-d-H-i-s', strtotime($request->tanggal_sewa . '+' . $durasi . 'hours'));
-
-
-
-        // dd($awal);
-        if ($akhir < $awal) {
-            return 'Tanggal atau waktu tidak boleh kurang dari tanggal sewa';
+        $date = date_create($request->tanggal_sewa);
+        if (empty(Order::where('user_id', $request->user_id)->where('status', 0)->first())) {
+            Order::insert([
+                'user_id' => $request->user_id,
+                'status' => 0,
+                'total' => 0,
+            ]);
         }
+        $kendaraan = Kendaraan::find($request->kendaraan_id);
+        $orderUserStatus = Order::where('user_id', $request->user_id)->where('status', 0)->first();
+        $detailOrderId = OrderDetail::where('order_id', $orderUserStatus->id)->where('kendaraan_id', $kendaraan)->first();
+        $addOrder = [];
+        if (empty($detailOrderId)) {
+            $addOrder = [
+                'order_id' => $orderUserStatus->id,
+                'kendaraan_id' => $kendaraan->id,
+                'harga_sewa' => $kendaraan->harga * $request->lama_sewa,
+                'tanggal_sewa' => $date,
+                'opsi' => $request->opsi,
+                'catatan' => $request->catatan,
+            ];
+            if ($request->lama_sewa != 0) {
+                $addOrder['lama_sewa'] = $request->lama_sewa;
+            } else {
+                return redirect('/detail/' . $kendaraan->slug)->with('error', 'Lama Sewa tidak boleh 0');
+            }
+            OrderDetail::insert($addOrder);
+        } else {
+            $detailOrderId->harga_sewa += $kendaraan->harga * $request->lama_sewa;
+            if ($request->lama_sewa != 0) {
+                $detailOrderId->lama_sewa = $request->lama_sewa;
+            } else {
+                return redirect('/detail/' . $kendaraan->slug)->with('error', 'Lama Sewa tidak boleh 0');
+            }
+        }
+        $orderUserStatus->total += $kendaraan->harga * $request->lama_sewa;
+        $orderUserStatus->update();
+        return redirect('/detail/' . $kendaraan->slug)->with('success', 'Berhasil menambahkan pesanan');
 
-        $validateData = $request->validate([
-            'kendaraan_id' => 'required',
-            'user_id' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            'opsi' => 'required',
-            'tanggal_sewa' => 'required',
-            'lama_sewa' => 'required',
-            'catatan' => 'required',
-        ]);
+        // $validateData = $request->validate([
+        //     'kendaraan_id' => 'required',
+        //     'user_id' => 'required',
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'opsi' => 'required',
+        //     'tanggal_sewa' => 'required',
+        //     'lama_sewa' => 'required',
+        //     'catatan' => 'required',
+        // ]);
 
-        dd($validateData);
     }
 
     /**
@@ -97,7 +122,22 @@ class OrderDetailController extends Controller
      */
     public function update(UpdateOrderDetailRequest $request, OrderDetail $orderDetail)
     {
-        //
+        $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $validateData = $request->validate([
+            'berkas' => 'image|file',
+            'payments' => 'required',
+            'bukti_pembayaran' => 'image|file',
+        ]);
+        dd($validateData);
+        if ($request->file('berkas')) {
+            $validateData['berkas'] = $request->file('berkas')->store('berkas', 'public');
+        }
+        if ($request->file('bukti_pembayaran')) {
+            $validateData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
+        }
+        $order->status = 1;
+        Order::where('user_id', Auth::user()->id)->update($validateData);
+        return redirect('/cart')->with('success', 'Pembayaran berhasil');
     }
 
     /**
@@ -108,6 +148,14 @@ class OrderDetailController extends Controller
      */
     public function destroy(OrderDetail $orderDetail)
     {
-        //
+        $orderDetailId = OrderDetail::where('id', $orderDetail->id)->first();
+        $orderId = Order::where('id', $orderDetailId->order_id)->first();
+        $orderId->total -= $orderDetailId->harga_sewa;
+        $orderId->update();
+        $orderDelete = Order::where('status', 0)->first();
+
+        $orderDetailId->delete();
+        $orderDelete->delete();
+        return redirect('/cart')->with('success', 'Berhasil menghapus pesanan');
     }
 }

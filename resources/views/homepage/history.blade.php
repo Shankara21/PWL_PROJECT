@@ -30,6 +30,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
         <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="position-relative d-inline text-primary ps-4">Keranjang</h6>
             <h2 class="mt-2">Pesanan anda</h2>
+
         </div>
         <div class="row mb-3">
             <div class="col-md-12">
@@ -46,18 +47,27 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
             </div>
         </div>
         <div class="row g-4">
-            <div class="col-8">
+            <div class="col-12">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Berikan penilaianmu
+                    </button>
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <table class="table text-center">
                             <thead class="justify-center">
                                 <tr>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Image</th>
                                     <th scope="col">Kendaraan</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Tanggal Sewa</th>
                                     <th scope="col">Durasi</th>
                                     <th scope="col">Option</th>
                                     <th scope="col">Harga</th>
+                                    <th scope="col">Catatan</th>
                                 </tr>
                             </thead>
                             <tbody class="align-baseline">
@@ -65,17 +75,30 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                 @foreach ($orderDetails as $item)
                                 <tr>
                                     <td>
-                                        <form action="/orderDetail/{{ $item -> id }}" method="Post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                        </form>
+                                        {{-- <form action="/orderDetail/{{ $item -> id }}" method="Post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                        </form> --}}
+                                        {{ $loop -> iteration }}
                                     </td>
-                                    <td><img src="@if (!$item -> kendaraan -> image)
+                                    <td>
+                                        <img src="@if (!$item -> kendaraan -> image)
                                                                                 {{ asset('img/kendaraan/'.$item -> kendaraan -> slug.'.png') }}
                                                                                 @else
                                                                                 {{asset('storage/'.$item -> kendaraan->image)}}
-                                                                              @endif" alt="" width="200px"></td>
+                                                                              @endif" alt="" width="200px">
+                                    </td>
+                                    <td>{{ $item -> kendaraan -> nama }}</td>
+                                    <td>
+                                        @if ($item -> order -> status == 0)
+                                        <span class="badge rounded-pill bg-danger">Belum bayar</span>
+                                        @elseif ($item -> order -> status == 1)
+                                        <span class="badge rounded-pill bg-warning">Dalam Peminjaman</span>
+                                        @elseif ($item -> order -> status == 2)
+                                        <span class="badge rounded-pill bg-success">Selesai</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $item -> tanggal_sewa }}</td>
                                     <td>{{ $item -> lama_sewa }}</td>
                                     <td>@if ($item -> opsi == 1)
@@ -86,6 +109,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                         {{ 'Dengan Supir + BBM' }}
                                         @endif</td>
                                     <td>Rp.{{ number_format($item -> harga_sewa) }}</td>
+                                    <td>{{ $item -> catatan }}</td>
                                 </tr>
                                 @endforeach
                                 @else
@@ -100,38 +124,38 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h3 class="card-title text-center">Total</h3>
-                        <hr>
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Total</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">Harga</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (!empty($order -> total))
-                                <tr>
-                                    <td>Total</td>
-                                    <td></td>
-                                    <td>Rp.{{ number_format($order -> total) }}</td>
-                                </tr>
-                                @else
-                                <tr>
-                                    <td colspan="3">Tidak ada pesanan</td>
-                                </tr>
-                                @endif
-                        </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="/testimoni" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Testimoni</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @csrf
+                    {{-- <input type="text" name="user_id" value="{{ auth() -> user() -> id }}"> --}}
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
+                            value="{{ auth()->user()->name }}" autofocus>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Masukkan Penilaian Anda</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            name="comment"></textarea>
                     </div>
                 </div>
-                <a href="/checkout" class="btn btn-primary w-100 @if (empty($order))
-                    disabled
-                @endif">Checkout</a>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

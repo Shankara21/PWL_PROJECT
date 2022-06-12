@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandController;
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\tespesanan;
+use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\TypeController;
 use App\Models\Contacts;
 
@@ -39,10 +41,13 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/detail/{kendaraan}', 'show')->middleware('auth');
     Route::get('/cart', 'cart')->middleware('auth');
     Route::get('/checkout', 'checkout')->middleware('auth');
+    Route::get('/onProcess', 'onProcess')->middleware('auth');
+    Route::get('/history', 'history')->middleware('auth');
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 Route::resource('/orderDetail', OrderDetailController::class);
-
+Route::post('/checkout', [CheckoutController::class, 'store']);
+Route::resource('/testimoni', TestimoniController::class);
 
 //! Routing Auth
 Auth::routes();

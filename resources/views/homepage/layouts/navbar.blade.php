@@ -34,14 +34,24 @@
                 Up</a>
             @endif
             @else
+            @php
+            $order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 0) -> first();
 
+            if(!empty($order)){
+            $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> count();
+            }
+
+            @endphp
             @if (Auth::user()->level == 'admin')
             <div class="navbar-nav">
                 <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart" style="font-size: 1.5em"></i>
-                    {{-- <span class="badge bg-danger"
+                    @if (!empty($orderDetails))
+                    <span class="badge bg-danger"
                         style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
-                        <!-- Tempat Menyimpan Bagdes! -->
-                    </span> --}}
+                        {{ $orderDetails }}
+                    </span>
+                    @else
+                    @endif
                 </a>
             </div>
             <div class="dropdown text-end navbar-nav">
@@ -74,8 +84,15 @@
 
             @if (Auth::user()->level == 'user')
             <div class="navbar-nav">
-                <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart"
-                        style="font-size: 1.5em"></i></a>
+                <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart" style="font-size: 1.5em"></i>
+                    @if (!empty($mainOrder))
+                    <span class="badge bg-danger"
+                        style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
+                        {{ $notifications }}
+                    </span>
+                    @else
+                    @endif
+                </a>
             </div>
             <div class="dropdown text-end navbar-nav">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle nav-item nav-link"

@@ -25,6 +25,18 @@
             <h6 class="position-relative d-inline text-primary ps-4">Our Projects</h6>
             <h2 class="mt-2">Details Product</h2>
         </div>
+        <div class="row">
+            <div class="col-md-8 align-self-center">
+                @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show p-3" role="alert">
+                    <strong>{{ session('success') }} <i class="fa-solid fa-circle-check"></i></strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+            </div>
+        </div>
         <div class="row mt-n2 wow fadeInUp justify-content-center" data-wow-delay="0.1s">
         </div>
         <div class="row  mb-4">
@@ -257,7 +269,7 @@
                                     @elseif ($kendaraan -> category -> nama == 'Motor') <i
                                         class="fas fa-motorcycle"></i>
                                     @endif</label>
-                                <input type="number" min="0" class="form-control" name="lama_sewa" required>
+                                <input type="number" min="0" class="form-control" name="lama_sewa" value="1" required>
                                 <small>*dalam hari</small>
                             </div>
                         </div>
@@ -269,7 +281,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Lanjut Pembayaran</button>
+                <button type="submit" class="btn btn-primary" @if ($status) disabled @endif>Simpan Pesanan</button>
+                @if ($status)
+                <small class="text-danger">*Untuk memesan kendaraan, selesaikan peminjaman dahulu</small>
+                @endif
                 </form>
             </div>
         </div>

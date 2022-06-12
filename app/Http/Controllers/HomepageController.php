@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Kendaraan;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomepageController extends Controller
 {
@@ -20,12 +24,13 @@ class HomepageController extends Controller
 
     public function show(Kendaraan $kendaraan)
     {
-        // Menampilkan tanggal sekarang
+        $main = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
+
 
         return view('homepage.details', [
             'kendaraan' => $kendaraan,
             'title' => 'Details ' . $kendaraan->name,
-
+            'status' => $main,
         ]);
     }
     public function service()
@@ -69,8 +74,10 @@ class HomepageController extends Controller
     }
     public function testimonial()
     {
+        $testimoni = Testimoni::all();
         return view('homepage.testimonial', [
             'title' => 'Testimonial',
+            'testimoni' => $testimoni,
         ]);
     }
     public function cart()
@@ -81,8 +88,32 @@ class HomepageController extends Controller
     }
     public function checkout()
     {
+        $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        $orderDetail = OrderDetail::where('order_id', $order->id)->first();
         return view('homepage.checkout', [
             'title' => 'Checkout',
+            'order' => $order,
+            'orderDetail' => $orderDetail,
+        ]);
+    }
+    public function onProcess()
+    {
+        // $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        return view('homepage.onProcess', [
+            'title' => 'Checkout',
+            // 'order' => $order,
+            // 'orderDetail' => $orderDetail,
+        ]);
+    }
+    public function history()
+    {
+        // $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        return view('homepage.history', [
+            'title' => 'History',
+            // 'order' => $order,
+            // 'orderDetail' => $orderDetail,
         ]);
     }
 }

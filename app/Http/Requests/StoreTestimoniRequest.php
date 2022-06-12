@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateOrderDetailRequest extends FormRequest
+class StoreTestimoniRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class UpdateOrderDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            'berkas' => 'image|file',
-            'payments' => 'required',
-            'bukti_pembayaran' => 'image|file',
+            //
         ];
     }
 }
