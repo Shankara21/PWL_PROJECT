@@ -37,6 +37,9 @@
             <li><a href="/dashboard/order" class="" aria-expanded="false">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="nav-text">Order</span>
+            <li><a href="/dashboard/user" class="" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">User</span>
                 </a>
             </li>
             <li><a href="/dashboard/contacts" class="" aria-expanded="false">

@@ -6,7 +6,7 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Kendaraan</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Data User</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -17,54 +17,12 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <h4 class="card-title">Kendaraan</h4>
+                                    <h4 class="card-title">User</h4>
                                 </div>
                                 <div class="col col-lg-2">
-                                    <a href="/dashboard/kendaraan/create" class="btn btn-primary">
+                                    <a href="/dashboard/user/create" class="btn btn-primary">
                                         <i class="fas fa-plus"> Tambah Data</i>
                                     </a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="brand" class="form-label text-center">Brand</label>
-                                    <select class="default-select form-control wide mb-3" name="brand_id">
-                                        @foreach ($brands as $brand)
-                                        @if (old('brand_id') == $brand->id)
-
-                                        <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
-                                        @else
-                                        <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <label for="category" class="form-label text-center">Category</label>
-                                    <select class="default-select form-control wide mb-3" name="category_id">
-                                        @foreach ($categories as $category)
-                                        @if (old('category_id') == $category->id)
-
-                                        <option value="{{ $category->id }}">{{ $category->nama }}</option>
-                                        @else
-                                        <option value="{{ $category->id }}">{{ $category->nama }}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <label for="type" class="form-label text-center">Tipe</label>
-                                    <select class="default-select form-control wide mb-3" name="type_id">
-                                        @foreach ($types as $type)
-                                        @if (old('type_id') == $type->id)
-
-                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
-                                        @else
-                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -81,18 +39,18 @@
                                                 <label class="form-check-label" for="checkAll"></label>
                                             </div>
                                         </th>
-                                        <th>Gambar</th>
-                                        <th>Nama Kendaraan</th>
-                                        <th>Brand</th>
-                                        <th>Category</th>
-                                        <th>Tipe</th>
-                                        <th>Warna</th>
-                                        <th>Harga</th>
+                                        <th>Foto</th>
+                                        <th>Nama User</th>
+                                        <th>Email</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Alamat</th>
+                                        <th>No Telepon</th>
+                                        <th>Level</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kendaraans as $kendaraan)
+                                    @foreach ($users as $user)
                                     <tr>
                                         <td>
                                             <div class="form-check custom-checkbox ms-2">
@@ -101,17 +59,17 @@
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td><img src="@if (!$kendaraan -> image)
-                                            {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
+                                        <td><img class="rounded-circle" src="@if (!$user -> image)
+                                            {{ asset('img/user/'.$user -> id.'.png') }}
                                             @else
-                                            {{asset('storage/'.$kendaraan->image)}}
-                                          @endif" width="250px"></td>
-                                        <td>{{ $kendaraan->nama }}</td>
-                                        <td>{{ $kendaraan->brand->nama }}</td>
-                                        <td>{{ $kendaraan->category->nama }}</td>
-                                        <td>{{ $kendaraan->type->nama }}</td>
-                                        <td>{{ $kendaraan->warna }}</td>
-                                        <td>{{ $kendaraan->harga }}</td>
+                                            {{asset('storage/'.$user->image)}}
+                                          @endif" width="100px" height="100px"></td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->gender }}</td>
+                                        <td>{!! $user->address !!}</td>
+                                        <td>{{ $user->phone }}</td>
+                                        <td>{{ $user->level }}</td>
                                         <td>
                                             <div class="dropdown ms-auto text-end">
                                                 <div class="btn-link" data-bs-toggle="dropdown">
@@ -127,10 +85,10 @@
                                                 </div>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item"
-                                                        href="/dashboard/kendaraan/{{$kendaraan->slug}}">Show</a>
+                                                        href="/dashboard/user/{{$user->id}}">Show</a>
                                                     <a class="dropdown-item"
-                                                        href="/dashboard/kendaraan/{{$kendaraan->slug}}/edit">Edit</a>
-                                                    <form action="/dashboard/kendaraan/{{ $kendaraan->slug }}"
+                                                        href="/dashboard/user/{{$user->id}}/edit">Edit</a>
+                                                    <form action="/dashboard/user/{{ $user->id }}"
                                                         method="POST" class="d-inline">
                                                         @method('delete')
                                                         @csrf
