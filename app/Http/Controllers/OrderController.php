@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\OrderDetail;
 
 class OrderController extends Controller
 {
@@ -15,7 +16,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $order = Order::all();
+        return view('admin.order.index', [
+            'orders' => $order
+        ]);
     }
 
     /**
@@ -82,7 +86,12 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $mainOrder = Order::find($order->id);
+        $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        return view('admin.order.show', [
+            'order' => $mainOrder,
+            'orderDetail' => $orderDetail
+        ]);
     }
 
     /**

@@ -25,13 +25,18 @@
                 </a>
             </li>
             <li><a href="/dashboard/type" class="" aria-expanded="false">
-                <i class="fas fa-tag"></i>
-                <span class="nav-text">Type</span>
-            </a>
+                    <i class="fas fa-tag"></i>
+                    <span class="nav-text">Type</span>
+                </a>
             </li>
             <li><a href="/dashboard/kendaraan" class="" aria-expanded="false">
                     <i class="fas fa-car"></i>
                     <span class="nav-text">Kendaraan</span>
+                </a>
+            </li>
+            <li><a href="/dashboard/order" class="" aria-expanded="false">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="nav-text">Order</span>
                 </a>
             </li>
             <li><a href="/dashboard/contacts" class="" aria-expanded="false">

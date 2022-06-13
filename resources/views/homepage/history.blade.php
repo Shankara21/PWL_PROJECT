@@ -51,7 +51,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                 <div class="d-flex justify-content-end">
                     <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
-                        Berikan penilaianmu
+                        Berikan penilaianmu <i class="bi bi-chat-square-dots"></i>
                     </button>
                 </div>
                 <div class="card">
@@ -144,7 +144,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                         <label for="exampleFormControlInput1" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
                             value="{{ auth()->user()->name }}" autofocus>
-                    </div>
+                    </div>t
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Masukkan Penilaian Anda</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"

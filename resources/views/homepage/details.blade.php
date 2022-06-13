@@ -39,7 +39,7 @@
         </div>
         <div class="row mt-n2 wow fadeInUp justify-content-center" data-wow-delay="0.1s">
         </div>
-        <div class="row  mb-4">
+        <div class="row  mb-3">
             <div class="col-md-6">
                 <div class="text-center">
                     <img class="rounded" src="@if (!$kendaraan -> image)
@@ -170,39 +170,23 @@
                                 <h5>Lepas Kunci</h5>
                                 <ul>
                                     <li>
-                                        <h6>Rp. 350.000</h6>
+                                        <h6>Rp. {{ number_format($kendaraan -> harga) }}</h6>
                                     </li>
                                 </ul>
                                 <h5>Dengan Sopir</h5>
                                 <ul>
                                     <li>
-                                        <h6>Rp. 350.000</h6>
+                                        <h6>Rp. {{ number_format($dengan_sopir) }}</h6>
                                     </li>
                                 </ul>
                                 <h5>Dengan Sopir + BBM</h5>
                                 <ul>
                                     <li>
-                                        <h6>Rp. 350.000</h6>
+                                        <h6>Rp. {{ number_format($sopir_bbm) }}</h6>
                                     </li>
                                 </ul>
 
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col align-self-end">
-                    <div class="order ">
-                        @guest
-                        <span class="text-danger text-start"><strong class="fst-italic">*Anda harus login terlebih
-                                dahulu!</strong></span>
-                        @endguest
-                        <div class="btn-modal text-end" style="padding-right: 7em">
-                            <button type="button" class="btn btn-primary w-25 " data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop" @guest disabled @endguest>
-                                Lanjut Pemesanan <i class="fas fa-credit-card"></i>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -212,6 +196,20 @@
             <div class="col-md-6">
                 <h5>Deskripsi {{ $kendaraan -> category -> nama }}</h5>
                 <p>{{ $kendaraan -> deskripsi }}</p>
+            </div>
+            <div class="col-md-6">
+                <div class="order ">
+                    @guest
+                    <span class="text-danger text-start"><strong class="fst-italic">*Anda harus login terlebih
+                            dahulu!</strong></span>
+                    @endguest
+                    <div class="btn-modal text-end" style="padding-right: 7em">
+                        <button type="button" class="btn btn-primary w-75 " data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" @guest disabled @endguest>
+                            Lanjut Pemesanan <i class="fas fa-credit-card"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

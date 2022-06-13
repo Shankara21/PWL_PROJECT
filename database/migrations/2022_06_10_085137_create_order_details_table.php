@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained();
             $table->foreignId('kendaraan_id')->constrained();
-            $table->dateTime('tanggal_sewa');
-            $table->dateTime('tanggal_kembali')->nullable();
+            $table->date('tanggal_sewa');
+            $table->date('tanggal_kembali')->nullable();
             $table->integer('lama_sewa');
             $table->integer('harga_sewa');
             $table->integer('denda')->nullable();

@@ -46,7 +46,7 @@ Route::controller(HomepageController::class)->group(function () {
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 Route::resource('/orderDetail', OrderDetailController::class);
-Route::post('/checkout', [CheckoutController::class, 'store']);
+Route::post('/checkout/{id}', [CheckoutController::class, 'store']);
 Route::resource('/testimoni', TestimoniController::class);
 
 //! Routing Auth
@@ -62,4 +62,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/dashboard/type', TypeController::class);
     Route::resource('/dashboard/kendaraan', KendaraanController::class);
     Route::resource('/dashboard/contacts', ContactsController::class);
+    Route::resource('/dashboard/order', OrderController::class);
 });

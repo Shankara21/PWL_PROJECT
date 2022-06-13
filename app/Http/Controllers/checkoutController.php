@@ -10,12 +10,12 @@ use App\Http\Requests\StoreOrderDetailRequest;
 
 class checkoutController extends Controller
 {
-    public function store(Request $request)
+    public function store(StoreOrderDetailRequest $request, $id)
     {
-        dd($request->all());
+
         $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
         $validatedData = $request->validate([
-            'payments' => 'required',
+            'payment' => 'required',
             'berkas' => 'image|file',
             'bukti_pembayaran' => 'image|file',
         ]);
@@ -25,8 +25,8 @@ class checkoutController extends Controller
         if ($request->file('bukti_pembayaran')) {
             $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
         }
-        $order->status = 1;
-        Order::where('user_id', Auth::user()->id)->update($request->all());
+        $validatedData['status'] = $order->status = 1;
+        Order::where('user_id', Auth::user()->id)->update($validatedData);
         return redirect('/cart')->with('success', 'Pembayaran berhasil');
     }
 }

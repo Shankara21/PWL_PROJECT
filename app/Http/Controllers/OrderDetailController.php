@@ -39,7 +39,7 @@ class OrderDetailController extends Controller
      */
     public function store(StoreOrderDetailRequest $request)
     {
-        $date = date_create($request->tanggal_sewa);
+        // $date = date_create($request->tanggal_sewa);
         if (empty(Order::where('user_id', $request->user_id)->where('status', 0)->first())) {
             Order::insert([
                 'user_id' => $request->user_id,
@@ -56,7 +56,7 @@ class OrderDetailController extends Controller
                 'order_id' => $orderUserStatus->id,
                 'kendaraan_id' => $kendaraan->id,
                 'harga_sewa' => $kendaraan->harga * $request->lama_sewa,
-                'tanggal_sewa' => $date,
+                'tanggal_sewa' => $request->tanggal_sewa,
                 'opsi' => $request->opsi,
                 'catatan' => $request->catatan,
             ];
@@ -122,13 +122,22 @@ class OrderDetailController extends Controller
      */
     public function update(UpdateOrderDetailRequest $request, OrderDetail $orderDetail)
     {
+        return $request->all();
+        dd($request->all());
         $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
         $validateData = $request->validate([
             'berkas' => 'image|file',
-            'payments' => 'required',
+            'payment' => 'required',
             'bukti_pembayaran' => 'image|file',
         ]);
-        dd($validateData);
+        $cek = $this->validate($request, [
+            'berkas' => 'image|file',
+            'payment' => 'required',
+            'bukti_pembayaran' => 'image|file',
+        ]);
+        dd($cek);
+
+        // dd($validateData);
         if ($request->file('berkas')) {
             $validateData['berkas'] = $request->file('berkas')->store('berkas', 'public');
         }
@@ -136,6 +145,7 @@ class OrderDetailController extends Controller
             $validateData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
         }
         $order->status = 1;
+        // dd($validateData);
         Order::where('user_id', Auth::user()->id)->update($validateData);
         return redirect('/cart')->with('success', 'Pembayaran berhasil');
     }

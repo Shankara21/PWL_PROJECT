@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<form action="/checkout" method="POST">
+<form action="/checkout/{{ $orderDetail -> id }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="container-xxl py-5">
         <div class="container px-lg-5">
@@ -25,10 +25,19 @@
                 <h6 class="position-relative d-inline text-primary ps-4">Checkout</h6>
                 <h2 class="mt-2">Selesaikan Pesanan Anda</h2>
             </div>
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="row g-4">
                 <div class="col-8 col-md-8 col-sm-12">
                     <h4 class="mb-5">Pilih metode pembayaran!</h4>
-                    @error('payments')
+                    @error('payment')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <table class="text-center mb-5" style="border-spacing: 10px">
@@ -40,7 +49,7 @@
                                             <img src="{{ asset('img/payments/Shopeepay.png') }}" alt="" height="100px"
                                                 style="object-fit: fill;border-radius: 20px;" class="img-target">
                                         </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="payments"
+                                        <input class="form-check-input d-none opt-radio" type="radio" name="payment"
                                             id="exampleRadios1" value="Shopeepay">
                                     </div>
                                 </td>
@@ -50,7 +59,7 @@
                                             <img src="{{ asset('img/payments/LinkAja.png') }}" alt="" height="100px"
                                                 style="border-radius: 20px;" class="img-target">
                                         </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="payments"
+                                        <input class="form-check-input d-none opt-radio" type="radio" name="payment"
                                             id="exampleRadios2" value="LinkAja">
                                     </div>
                                 </td>
@@ -60,7 +69,7 @@
                                             <img src="{{ asset('img/payments/Gopay.png') }}" alt="" height="100px"
                                                 style="border-radius: 20px;" class="img-target">
                                         </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="payments"
+                                        <input class="form-check-input d-none opt-radio" type="radio" name="payment"
                                             id="exampleRadios3" value="Gopay">
                                     </div>
                                 </td>
@@ -72,7 +81,7 @@
                                             <img src="{{ asset('img/payments/BCA.png') }}" alt="" height="100px"
                                                 style="border-radius: 20px;" class="img-target">
                                         </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="payments"
+                                        <input class="form-check-input d-none opt-radio" type="radio" name="payment"
                                             id="exampleRadios4" value="BCA">
                                     </div>
                                 </td>
@@ -82,7 +91,7 @@
                                             <img src="{{ asset('img/payments/BRI.png') }}" alt="" height="100px"
                                                 style="border-radius: 20px;" class="img-target">
                                         </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="payments"
+                                        <input class="form-check-input d-none opt-radio" type="radio" name="payment"
                                             id="exampleRadios5" value="BRI">
                                     </div>
                                 </td>
@@ -92,7 +101,7 @@
                                             <img src="{{ asset('img/payments/Mandiri.png') }}" alt="" height="100px"
                                                 style="border-radius: 20px;" class="img-target">
                                         </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="payments"
+                                        <input class="form-check-input d-none opt-radio" type="radio" name="payment"
                                             id="exampleRadios6" value="Mandiri">
                                     </div>
                                 </td>
@@ -191,7 +200,6 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
-
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Total Pesanan</h4>

@@ -35,23 +35,28 @@
             @endif
             @else
             @php
-            $order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 0) -> first();
-
-            if(!empty($order)){
-            $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> count();
+            $order = \App\Models\Order::where('user_id', Auth::user()->id) -> where('status', 0) -> first();
+            // dd($order);
+            if ($order) {
+            $notifications = \App\Models\OrderDetail::where('order_id', $order -> id)->count();
+            }else{
+            $notifications = '';
             }
-
             @endphp
             @if (Auth::user()->level == 'admin')
             <div class="navbar-nav">
                 <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart" style="font-size: 1.5em"></i>
-                    @if (!empty($orderDetails))
+                    {{-- @if ($orderDetails != null) --}}
+                    @if ($notifications)
                     <span class="badge bg-danger"
                         style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
-                        {{ $orderDetails }}
+                        {{ $notifications }}
                     </span>
                     @else
+                    <span></span>
                     @endif
+                    {{-- @else
+                    @endif --}}
                 </a>
             </div>
             <div class="dropdown text-end navbar-nav">
@@ -85,7 +90,7 @@
             @if (Auth::user()->level == 'user')
             <div class="navbar-nav">
                 <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart" style="font-size: 1.5em"></i>
-                    @if (!empty($mainOrder))
+                    @if (!empty($orderDetails))
                     <span class="badge bg-danger"
                         style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
                         {{ $notifications }}

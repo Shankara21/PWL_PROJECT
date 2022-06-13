@@ -25,12 +25,15 @@ class HomepageController extends Controller
     public function show(Kendaraan $kendaraan)
     {
         $main = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
-
+        $dengan_sopir = $kendaraan->harga + 50000;
+        $sopir_bbm = $kendaraan->harga + 100000;
 
         return view('homepage.details', [
             'kendaraan' => $kendaraan,
             'title' => 'Details ' . $kendaraan->name,
             'status' => $main,
+            'dengan_sopir' => $dengan_sopir,
+            'sopir_bbm' => $sopir_bbm,
         ]);
     }
     public function service()

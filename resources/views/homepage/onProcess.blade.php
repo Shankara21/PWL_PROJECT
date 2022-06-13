@@ -1,5 +1,5 @@
 @php
-$order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 0) -> first();
+$order = \App\Models\Order::where('user_id', Auth::user() -> id) -> where('status', 1) -> first();
 
 if(!empty($order)){
 $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();

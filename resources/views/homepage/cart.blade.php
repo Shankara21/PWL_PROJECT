@@ -77,7 +77,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                                                                 {{asset('storage/'.$item -> kendaraan->image)}}
                                                                               @endif" alt="" width="200px"></td>
                                     <td>{{ $item -> tanggal_sewa }}</td>
-                                    <td>{{ $item -> lama_sewa }}</td>
+                                    <td>{{ $item -> lama_sewa }} hari</td>
                                     <td>@if ($item -> opsi == 1)
                                         {{ 'Tanpa Sopir' }}
                                         @elseif ($item -> opsi == 2)
