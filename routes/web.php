@@ -45,6 +45,8 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/checkout', 'checkout')->middleware('auth');
     Route::get('/onProcess', 'onProcess')->middleware('auth');
     Route::get('/history', 'history')->middleware('auth');
+    Route::get('/profile', 'profile')->middleware('auth');
+    Route::Post('/profile', 'update')->middleware('auth');
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 Route::resource('/orderDetail', OrderDetailController::class);

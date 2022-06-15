@@ -21,7 +21,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example5" class="display" style="min-width: 1000px">
+                            <table id="example5" class="display text-center" style="min-width: 1000px">
                                 <thead>
                                     <tr>
                                         <th>
@@ -61,15 +61,19 @@
                                         </td>
                                         <td>
                                             @if(!empty($order -> payment))
-                                            <img src="{{ asset('img/payments/'.$order -> payment) }}" alt=""
-                                                width="50px">
+                                            <img src="{{ asset('img/payments/'.$order -> payment.'.png') }}" alt=""
+                                                width="100px">
+                                            @else
+                                            <strong class="text-danger">Belum melakukan <br>pembayaran!</strong>
                                             @endif
                                         </td>
                                         <td>Rp. {{ number_format($order -> total) }}</td>
                                         <td>
-                                            @if(!empty($order -> payment))
-                                            <img src="{{ asset('storage/'.$order -> payment) }}" alt="" width="50px">
+                                            @if(!empty($order -> bukti_pembayaran))
+                                            <img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt=""
+                                                width="100px">
                                             @endif
+
                                         <td>
                                             <div class="d-flex">
                                                 <form action="">

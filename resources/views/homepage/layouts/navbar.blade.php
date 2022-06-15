@@ -67,6 +67,7 @@
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1"
                     style="transform: translateX(-3em)">
+                    <li><a class="dropdown-item" href="/profile"><i class="fas fa-home"></i> Profile</a>
                     <li><a class="dropdown-item" href="/dashboard"><i class="fas fa-home"></i> Dashboard</a>
                     </li>
                     <li>

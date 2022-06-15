@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Brand;
+use App\Models\Order;
 use App\Models\Category;
 use App\Models\Kendaraan;
-use App\Models\Order;
-use App\Models\OrderDetail;
 use App\Models\Testimoni;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HomepageController extends Controller
 {
@@ -118,5 +120,36 @@ class HomepageController extends Controller
             // 'order' => $order,
             // 'orderDetail' => $orderDetail,
         ]);
+    }
+    public function profile()
+    {
+        $user = User::find(Auth::user()->id);
+        return view('homepage.profile', [
+            'user' => $user,
+            'title' => 'Profile',
+
+        ]);
+    }
+    public function update(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+
+        $validateData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'username' => 'required',
+            'image' => 'image|file',
+            'gender' => 'required'
+        ]);
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete('public/' . $request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('user', 'public');
+        }
+        User::where('id', Auth::user()->id)->update($validateData);
+        return redirect('/profile')->with('success', 'Data berhasil diubah');
     }
 }

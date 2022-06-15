@@ -42,7 +42,7 @@
                                                     @if ($order -> status == 0)
                                                     <span class="badge badge-danger">Belum Dibayar</span>
                                                     @elseif ($order -> status == 1)
-                                                    <span class="badge badge-warning">Sedang Diproses</span>
+                                                    <span class="badge badge-warning">Dalam Peminjaman</span>
                                                     @elseif ($order -> status == 2)
                                                     <span class="badge badge-success">Selesai</span>
                                                     @endif
@@ -65,6 +65,36 @@
                                             <th>:</th>
                                             <td>
                                                 <h4>{{ $orderDetail -> tanggal_sewa }}</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <h4>Tanggal Kembali</h4>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>
+                                                    @if ($orderDetail -> tanggal_kembali)
+                                                    {{ $orderDetail -> tanggal_kembali }}
+                                                    @else
+                                                    -
+                                                    @endif
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <h4>Denda</h4>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>
+                                                    @if ($orderDetail -> denda)
+                                                    Rp. {{ number_format($orderDetail -> denda) }}
+                                                    @else
+                                                    -
+                                                    @endif
+                                                </h4>
                                             </td>
                                         </tr>
                                         <tr>
