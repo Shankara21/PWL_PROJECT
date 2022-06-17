@@ -282,30 +282,39 @@
 									</div>
 									<div class="col-xl-6 col-sm-6">
 										<div class="card">
-											<div class="card-body px-4 pb-0">
-												<h4 class="fs-18 font-w600 mb-5 text-nowrap">Total Brand</h4>
-												<div class="d-flex align-items-center">
-													<h2 class="fs-32 font-w700 mb-0">{{ $brand }}</h2>
+											<div class="card-body d-flex px-4 pb-0 justify-content-between">
+												<div>
+													<h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Brand</h4>
+													<div class="d-flex align-items-center">
+														<h2 class="fs-32 font-w700 mb-0">{{ $brand }}</h2>
+													</div>
+
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="col-xl-6 col-sm-6">
 										<div class="card">
-											<div class="card-body px-4 pb-0">
-												<h4 class="fs-18 font-w600 mb-5 text-nowrap">Total Category</h4>
-												<div class="d-flex align-items-center">
-													<h2 class="fs-32 font-w700 mb-0">{{ $category }}</h2>
+											<div class="card-body d-flex px-4 pb-0 justify-content-between">
+												<div>
+													<h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Category</h4>
+													<div class="d-flex align-items-center">
+														<h2 class="fs-32 font-w700 mb-0">{{ $category }}</h2>
+													</div>
+
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="col-xl-6 col-sm-6">
 										<div class="card">
-											<div class="card-body px-4 pb-0">
-												<h4 class="fs-18 font-w600 mb-5 text-nowrap">Total Kendaraan</h4>
-												<div class="d-flex align-items-center">
-													<h2 class="fs-32 font-w700 mb-0">{{ $Kendaraan }}</h2>
+											<div class="card-body d-flex px-4 pb-0 justify-content-between">
+												<div>
+													<h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Kendaraan</h4>
+													<div class="d-flex align-items-center">
+														<h2 class="fs-32 font-w700 mb-0">{{ $kendaraan }}</h2>
+													</div>
+
 												</div>
 											</div>
 										</div>
