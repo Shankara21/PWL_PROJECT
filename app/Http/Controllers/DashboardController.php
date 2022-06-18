@@ -21,7 +21,7 @@ class DashboardController extends Controller
             'user' => User::count(),
             'brand' => Brand::count(),
             'category' => Category::count(),
-            'Kendaraan' => Kendaraan::count(),
+            'kendaraan' => Kendaraan::count(),
         ]);
     }
 
