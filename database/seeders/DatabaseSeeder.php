@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             TypeSeeder::class,
             KendaraanSeeder::class,
+            BankSeeder::class,
         ]);
     }
 }
