@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->integer('status');
-            $table->string('payment')->nullable();
+            $table->foreignId('bank_id')->constrained();
             $table->bigInteger('total');
             $table->string('bukti_pembayaran')->nullable();
             $table->string('berkas')->nullable();

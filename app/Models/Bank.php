@@ -14,6 +14,6 @@ class Bank extends Model
 
     public function order()
     {
-        $this->hasMany(Order::class);
+        return $this->hasMany(Order::class);
     }
 }
