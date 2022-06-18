@@ -43,7 +43,7 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/testimonial', 'testimonial');
     Route::get('/detail/{kendaraan}', 'show')->middleware('auth');
     Route::get('/cart', 'cart')->middleware('auth');
-    Route::get('/checkout', 'checkout')->middleware('auth');
+    Route::get('/checkout', [checkoutController::class, 'create'])->middleware('auth');
     Route::get('/onProcess', 'onProcess')->middleware('auth');
     Route::get('/history', 'history')->middleware('auth');
     Route::get('/profile', 'profile')->middleware('auth');
@@ -51,7 +51,7 @@ Route::controller(HomepageController::class)->group(function () {
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 Route::resource('/orderDetail', OrderDetailController::class);
-Route::post('/checkout/{id}', [CheckoutController::class, 'store']);
+Route::post('/checkout/{id}', [checkoutController::class, 'store']);
 Route::resource('/testimoni', TestimoniController::class);
 
 //! Routing Auth

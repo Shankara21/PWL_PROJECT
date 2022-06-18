@@ -48,7 +48,7 @@
                                             </div>
                                         </td>
                                         <td><img src="@if (!$bank -> image)
-                                            {{ asset('img/bank/'.$bank -> slug.'.png') }}
+                                            {{ asset('img/payments/'.$bank -> name.'.png') }}
                                             @else
                                             {{asset('storage/'.$bank->image)}}
                                           @endif" width="250px"></td>

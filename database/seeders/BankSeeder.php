@@ -22,31 +22,37 @@ class BankSeeder extends Seeder
                 'name' => 'Shopeepay',
                 'slug' => 'shopeepay',
                 'norek' => '081334552124',
+                'image' => 'img/payments/Shopeepay.png',
             ],
             [
                 'name' => 'Linkaja',
                 'slug' => 'linkaja',
                 'norek' => '081334552124',
+                'image' => 'img/payments/LinkAja.png',
             ],
             [
                 'name' => 'Gopay',
                 'slug' => 'gopay',
                 'norek' => '081334552124',
+                'image' => 'img/payments/Gopay.png',
             ],
             [
                 'name' => 'BCA',
                 'slug' => 'bca',
                 'norek' => '122081334552124',
+                'image' => 'img/payments/BCA.png',
             ],
             [
                 'name' => 'BRI',
                 'slug' => 'bri',
                 'norek' => '112081334552124',
+                'image' => 'img/payments/BRI.png',
             ],
             [
                 'name' => 'Mandiri',
                 'slug' => 'mandiri',
                 'norek' => '893081334552124',
+                'image' => 'img/payments/Mandiri.png',
             ],
         ]);
     }
