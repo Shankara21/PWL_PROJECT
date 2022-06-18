@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bank;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class BankController extends Controller
 {
@@ -14,7 +16,9 @@ class BankController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.bank.index', [
+            'banks' => Bank::all(),
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class BankController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.bank.create');
     }
 
     /**
@@ -35,7 +39,18 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedata = $request->validate([
+            'name' => 'required|string|max:255',
+            'norek' => 'required',
+            'image' => 'image|file',
+        ]);
+        $validatedata['slug'] = Str::slug($validatedata['name']);
+        if ($request->file('image')) {
+            $validatedata['image'] = $request->file('image')->store('bank', 'public');
+        }
+        Bank::create($validatedata);
+
+        return redirect('/dashboard/bank')->with('toast_success', 'Bank berhasil ditambahkan!');
     }
 
     /**
@@ -57,7 +72,9 @@ class BankController extends Controller
      */
     public function edit(Bank $bank)
     {
-        //
+        return view('admin.bank.edit', [
+            'bank' => $bank,
+        ]);
     }
 
     /**
@@ -69,7 +86,27 @@ class BankController extends Controller
      */
     public function update(Request $request, Bank $bank)
     {
-        //
+        $rules = [
+            'name' => 'required|string|max:255',
+            'norek' => 'required',
+            'image' => 'required',
+        ];
+
+        $validatedata = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedata['image'] = $request->file('image')->store('bank', 'public');
+        }
+
+        $validatedata['slug'] = Str::slug($validatedata['name']);
+
+        Bank::where('id', $bank->id)->update($validatedata);
+
+
+        return redirect('/dashboard/bank')->with('toast_success', 'Bank berhasil di edit!');
     }
 
     /**
@@ -80,6 +117,7 @@ class BankController extends Controller
      */
     public function destroy(Bank $bank)
     {
-        //
+        Bank::destroy($bank->id);
+        return redirect('/dashboard/bank')->with('toast_success', 'Bank berhasil di hapus!');
     }
 }

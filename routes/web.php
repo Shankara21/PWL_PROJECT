@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BankController;
 use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,7 @@ Auth::routes();
 //! Routing Dashboard
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/dashboard/bank', BankController::class);
     Route::resource('/dashboard/brand', BrandController::class);
     Route::resource('/dashboard/category', CategoryController::class);
     Route::resource('/dashboard/type', TypeController::class);

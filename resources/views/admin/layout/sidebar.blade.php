@@ -14,6 +14,11 @@
                     <span class="nav-text">Homepage</span>
                 </a>
             </li>
+            <li><a href="/dashboard/bank" class="" aria-expanded="false">
+                <i class="fas fa-university"></i>
+                <span class="nav-text">Bank</span>
+            </a>
+            </li>
             <li><a href="/dashboard/brand" class="" aria-expanded="false">
                     <i class="fas fa-tag"></i>
                     <span class="nav-text">Brand</span>
