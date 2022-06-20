@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use App\Models\User;
 use App\Models\Brand;
 use App\Models\Order;
@@ -99,6 +100,7 @@ class HomepageController extends Controller
             'title' => 'Checkout',
             'order' => $order,
             'orderDetail' => $orderDetail,
+            'banks' => Bank::all(),
         ]);
     }
     public function onProcess()

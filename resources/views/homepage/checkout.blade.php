@@ -35,97 +35,104 @@
             </div>
             @endif
             <div class="row g-4">
-                <div class="col-8 col-md-8 col-sm-12">
+                <div class="col-lg-8 col-md-8 col-sm-12">
                     <h4 class="mb-5">Pilih metode pembayaran!</h4>
                     @error('payment')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <table class="text-center mb-5" style="border-spacing: 10px">
+                    {{-- <table class="text-center mb-5" style="border-spacing: 10px">
                         <tbody>
                             <tr>
-                                @foreach ($banks->slice(0, 3) as $bank)
-                                <td style="padding:10px;">
-                                    <div class="form-check">
-                                        <label class="form-check-label " for="exampleRadios1">
-                                            <img src="{{ asset('storage/'.$bank->image) }}" alt="" height="100px"
-                                                style="object-fit: fill;border-radius: 20px;" class="img-target">
-                                        </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="bank_id"
-                                            id="exampleRadios1" value="{{ $bank->id }}">
-                                    </div>
-                                </td>
-                                @endforeach
-                            </tr>
-                            <tr>
-                                @foreach ($banks->slice(3, 6) as $bank)
-                                <td style="padding:10px;">
-                                    <div class="form-check">
-                                        <label class="form-check-label " for="exampleRadios1">
-                                            <img src="{{ asset('storage/'.$bank->image) }}" alt="" height="100px"
-                                                style="object-fit: fill;border-radius: 20px;" class="img-target">
-                                        </label>
-                                        <input class="form-check-input d-none opt-radio" type="radio" name="bank_id"
-                                            id="exampleRadios1" value="{{ $bank->id }}">
-                                    </div>
-                                </td>
-                                @endforeach
-                            </tr>
-
-                        </tbody>
-                    </table>
-                    <h4 class="mb-3">Instruksi Pembayaran</h4>
-                    <div class="accordion" id="accordionExample">
-                        @foreach ($banks as $bank)
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    {{ $bank->name }} <img src="{{ asset('storage/'.$bank->image) }}" alt="" width="75px">
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <ul>
-                                        <li>No Rekening : {{ $bank->norek }}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-
-                    </div>
+                                <div class="row">
+                                    @foreach ($banks as $bank)
+                                    <div class="col-4">
+                                        <td style="padding:10px;">
+                                            <div class="form-check">
+                                                <label class="form-check-label " for="exampleRadios1">
+                                                    <img src="{{ asset($bank->image) }}" alt="" height="100px"
+                    style="object-fit: fill;border-radius: 20px;"
+                    class="img-target">
+                    </label>
+                    <input class="form-check-input d-none opt-radio" type="radio" name="bank_id" id="exampleRadios1"
+                        value="{{ $bank->id }}">
                 </div>
-                <div class="col-lg-4 col-md-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Total Pesanan</h4>
-                            @if (!empty($order))
-                            <h6 class="card-subtitle mb-2">Rp.{{ number_format($order->total) }}</h6>
-                            @else
-                            <h6 class="card-subtitle mb-2">Rp. 0</h6>
-                            @endif
-                            <hr>
-                            @if ($orderDetail->opsi == 1)
-                            <div class="mb-3">
-                                <label for="berkas" class="form-label">Upload berkas penyewaan</label>
-                                <input type="file" class="form-control" id="berkas" name="berkas" required>
-                            </div>
-                            @endif
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">
-                                    <h6>*Upload bukti pembayaran</h6>
-                                </label>
-                                <input class="form-control" type="file" id="formFile" name="bukti_pembayaran" required>
-                            </div>
-                        </div>
+                </td>
+            </div>
+            @endforeach
+        </div>
+        </tr>
+        </tbody>
+        </table> --}}
+        <div class="row">
+            @foreach ($banks as $bank)
+            <div class="col-4 mb-4">
+                <td style="padding:10px;">
+                    <div class="form-check">
+                        <label class="form-check-label " for="exampleRadios{{ $loop -> iteration }}">
+                            <img src="{{ asset($bank->image) }}" alt="" height="100px"
+                                style="object-fit: fill;border-radius: 20px;" class="img-target">
+                        </label>
+                        <input class="form-check-input d-none opt-radio" type="radio" name="bank_id"
+                            id="exampleRadios{{ $loop -> iteration }}" value="{{ $bank->id }}">
                     </div>
-                    <div class="mt-3">
-                        <button type="submit" class="btn btn-primary w-100">Selesaikan pesanan</button>
+                </td>
+            </div>
+            @endforeach
+        </div>
+        <h4 class="mb-3">Instruksi Pembayaran</h4>
+        <div class="accordion" id="accordionExample">
+            @foreach ($banks as $bank)
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ $loop -> iteration }}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ $loop -> iteration }}" aria-expanded="false"
+                        aria-controls="collapse{{ $loop -> iteration }}">
+                        {{ $bank->name }} <img src="{{ asset($bank->image) }}" alt="" width="75px">
+                    </button>
+                </h2>
+                <div id="collapse{{ $loop -> iteration }}" class="accordion-collapse collapse"
+                    aria-labelledby="heading{{ $loop -> iteration }}" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>No Rekening : {{ $bank->norek }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            @endforeach
+
         </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Total Pesanan</h4>
+                @if (!empty($order))
+                <h6 class="card-subtitle mb-2">Rp.{{ number_format($order->total) }}</h6>
+                @else
+                <h6 class="card-subtitle mb-2">Rp. 0</h6>
+                @endif
+                <hr>
+                @if ($orderDetail->opsi == 1)
+                <div class="mb-3">
+                    <label for="berkas" class="form-label">Upload berkas penyewaan</label>
+                    <input type="file" class="form-control" id="berkas" name="berkas" required>
+                </div>
+                @endif
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">
+                        <h6>*Upload bukti pembayaran</h6>
+                    </label>
+                    <input class="form-control" type="file" id="formFile" name="bukti_pembayaran" required>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary w-100">Selesaikan pesanan</button>
+        </div>
+    </div>
+    </div>
+    </div>
     </div>
 </form>
 

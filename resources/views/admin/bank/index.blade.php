@@ -50,8 +50,8 @@
                                         <td><img src="@if (!$bank -> image)
                                             {{ asset('img/payments/'.$bank -> name.'.png') }}
                                             @else
-                                            {{asset('storage/'.$bank->image)}}
-                                          @endif" width="250px"></td>
+                                            {{asset($bank->image)}}
+                                          @endif" width="200px"></td>
                                         <td>{{ $bank->name }}</td>
                                         <td>{{ $bank->norek }}</td>
                                         <td>

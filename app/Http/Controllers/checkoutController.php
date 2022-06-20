@@ -14,6 +14,8 @@ class checkoutController extends Controller
 {
     public function create(OrderDetail $orderDetail)
     {
+        $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
+        $orderDetail = OrderDetail::where('order_id', $order->id)->get();
         return view('homepage.checkout', [
             'orderDetail' => $orderDetail,
             'order' => Order::where('user_id', Auth::user()->id)->where('status', 0)->first(),
