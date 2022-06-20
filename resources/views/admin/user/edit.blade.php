@@ -20,7 +20,6 @@
               @csrf
               <div class="mb-3">
                 <label class="form-label" for="name">Nama User</label>
-
                   <input type="text" class="form-control form-control-lg @error('name') is-invalid
                   @enderror" id="name" name="name" placeholder="Nama User" value="{{ old('name', $user->name) }}" />
                   @error('name')
@@ -44,7 +43,6 @@
 
               <div class="mb-3">
                 <label class="form-label" for="email">Email</label>
-
                   <input type="text" class="form-control form-control-lg @error('email') is-invalid
                   @enderror" id="email" name="email" placeholder="email" value="{{ old('email', $user->email) }}"/>
                   @error('email')

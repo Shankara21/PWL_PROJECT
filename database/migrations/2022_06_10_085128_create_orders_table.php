@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->integer('status');
-            $table->string('payment')->nullable();
+            $table->unsignedBigInteger('bank_id')->nullable();
+            $table->foreign('bank_id')->references('id')->on('banks');
             $table->bigInteger('total');
             $table->string('bukti_pembayaran')->nullable();
             $table->string('berkas')->nullable();

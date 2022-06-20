@@ -93,7 +93,8 @@ class UserDashboardController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validateData = $request->validate([
+
+       $rules = [
             'name' => 'required',
             'username' => 'required',
             'phone' => 'required',
@@ -102,9 +103,9 @@ class UserDashboardController extends Controller
             'image' => 'image|file',
             'level' => 'required',
             'email' => 'required',
-            'password' => 'required',
-        ]);
-        dd($validateData);
+        ];
+
+        $validateData = $request->validate($rules);
         if ($request->file('image')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
@@ -112,9 +113,7 @@ class UserDashboardController extends Controller
             $validateData['image'] = $request->file('image')->store('profile', 'public');
             // $validateData['image'] = $request->file('image')->store('user', 'public');
         }
-
-        User::where('id', $user->id)
-            ->update($validateData);
+        User::where('id', $user->id)->update($validateData);
         return redirect('/dashboard/user')->with('toast_success', 'User telah diupdate!');
     }
 
