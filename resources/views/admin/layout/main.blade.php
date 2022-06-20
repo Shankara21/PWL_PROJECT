@@ -37,6 +37,7 @@
 	<!-- Style css -->
 	<link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
+
 </head>
 
 <body>

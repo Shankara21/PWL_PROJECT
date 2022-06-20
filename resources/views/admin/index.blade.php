@@ -1,5 +1,6 @@
 @extends('admin.layout.main')
 @section('content')
+
 <!--**********************************
             Content body start
         ***********************************-->
@@ -266,58 +267,91 @@
 					<div class="col-xl-6">
 						<div class="row">
 							<div class="col-xl-12">
+
 								<div class="row">
 									<div class="col-xl-6 col-sm-6">
-										<div class="card">
-											<div class="card-body d-flex px-4 pb-0 justify-content-between">
-												<div>
-													<h4 class="fs-18 font-w600 mb-4 text-nowrap">Total User</h4>
-													<div class="d-flex align-items-center">
-														<h2 class="fs-32 font-w700 mb-0">{{ $user }}</h2>
-													</div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                              <div class="card-title d-flex align-items-start justify-content-between">
+                                                <i class="fas fa-user fa-2x" style="color: orange"></i>
 
-												</div>
-											</div>
-										</div>
+                                              </div>
+                                              <h4 class="fw-semibold d-block mb-1">Users</h4>
+                                              <h4>
+                                                <h3 class="card-title mb-2 d-inline pr-3">{{ $user }}</h3>
+                                              </h4>
+                                            </div>
+                                        </div>
 									</div>
 									<div class="col-xl-6 col-sm-6">
 										<div class="card">
-											<div class="card-body d-flex px-4 pb-0 justify-content-between">
-												<div>
-													<h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Brand</h4>
-													<div class="d-flex align-items-center">
-														<h2 class="fs-32 font-w700 mb-0">{{ $brand }}</h2>
-													</div>
+                                            <div class="card-body">
+                                              <div class="card-title d-flex align-items-start justify-content-between">
+                                                <i class="fas fa-university fa-2x" style="color: orange"></i>
 
-												</div>
-											</div>
-										</div>
+                                              </div>
+                                              <h4 class="fw-semibold d-block mb-1">Bank</h4>
+                                              <h4>
+                                                <h3 class="card-title mb-2 d-inline pr-3">{{ $bank }}</h3>
+                                              </h4>
+                                            </div>
+                                        </div>
 									</div>
 									<div class="col-xl-6 col-sm-6">
 										<div class="card">
-											<div class="card-body d-flex px-4 pb-0 justify-content-between">
-												<div>
-													<h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Category</h4>
-													<div class="d-flex align-items-center">
-														<h2 class="fs-32 font-w700 mb-0">{{ $category }}</h2>
-													</div>
+                                            <div class="card-body">
+                                              <div class="card-title d-flex align-items-start justify-content-between">
+                                                <i class="fas fa-tag fa-2x" style="color: orange"></i>
 
-												</div>
-											</div>
-										</div>
+                                              </div>
+                                              <h4 class="fw-semibold d-block mb-1">Brand</h4>
+                                              <h4>
+                                                <h3 class="card-title mb-2 d-inline pr-3">{{ $brand }}</h3>
+                                              </h4>
+                                            </div>
+                                        </div>
 									</div>
 									<div class="col-xl-6 col-sm-6">
 										<div class="card">
-											<div class="card-body d-flex px-4 pb-0 justify-content-between">
-												<div>
-													<h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Kendaraan</h4>
-													<div class="d-flex align-items-center">
-														<h2 class="fs-32 font-w700 mb-0">{{ $kendaraan }}</h2>
-													</div>
+                                            <div class="card-body">
+                                              <div class="card-title d-flex align-items-start justify-content-between">
+                                                <i class="fas fa-bars fa-2x" style="color: orange"></i>
 
-												</div>
-											</div>
-										</div>
+                                              </div>
+                                              <h4 class="fw-semibold d-block mb-1">Category</h4>
+                                              <h4>
+                                                <h3 class="card-title mb-2 d-inline pr-3">{{ $category }}</h3>
+                                              </h4>
+                                            </div>
+                                        </div>
+									</div>
+                                    <div class="col-xl-6 col-sm-6">
+										<div class="card">
+                                            <div class="card-body">
+                                              <div class="card-title d-flex align-items-start justify-content-between">
+                                                <i class="fas fa-car fa-2x" style="color: orange"></i>
+
+                                              </div>
+                                              <h4 class="fw-semibold d-block mb-1">Kendaraan</h4>
+                                              <h4>
+                                                <h3 class="card-title mb-2 d-inline pr-3">{{ $kendaraan }}</h3>
+                                              </h4>
+                                            </div>
+                                        </div>
+									</div>
+                                    <div class="col-xl-6 col-sm-6">
+										<div class="card">
+                                            <div class="card-body">
+                                              <div class="card-title d-flex align-items-start justify-content-between">
+                                                <i class="fas fa-shopping-cart fa-2x" style="color: orange"></i>
+
+                                              </div>
+                                              <h4 class="fw-semibold d-block mb-1">Order</h4>
+                                              <h4>
+                                                <h3 class="card-title mb-2 d-inline pr-3">{{ $order }}</h3>
+                                              </h4>
+                                            </div>
+                                        </div>
 									</div>
 								</div>
 
