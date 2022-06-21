@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Kendaraan;
 use App\Models\Order;
+use App\Models\Bank;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,8 @@ class DashboardController extends Controller
             'brand' => Brand::count(),
             'category' => Category::count(),
             'kendaraan' => Kendaraan::count(),
+            'bank' => Bank::count(),
+            'order' => Order::count(),
             'gopay1' => Order::where('bank_id', 3)->count(),
                 'gopay2' => Order::where('bank_id', 3)->sum('total'),
                 'bri1' => Order::where('bank_id', 5)->count(),
