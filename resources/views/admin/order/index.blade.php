@@ -60,8 +60,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if(!empty($order -> payment))
-                                            <img src="{{ asset('img/payments/'.$order -> payment.'.png') }}" alt=""
+                                            @if(!empty($order -> bank_id))
+                                            <img src="{{ asset($order->bank->image) }}" alt=""
                                                 width="100px">
                                             @else
                                             <strong class="text-danger">Belum melakukan <br>pembayaran!</strong>
