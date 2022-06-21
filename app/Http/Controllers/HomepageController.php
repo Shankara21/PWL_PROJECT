@@ -13,6 +13,7 @@ use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class HomepageController extends Controller
 {
@@ -153,5 +154,28 @@ class HomepageController extends Controller
         }
         User::where('id', Auth::user()->id)->update($validateData);
         return redirect('/profile')->with('success', 'Data berhasil diubah');
+    }
+    public function pengembalian(Request $request)
+    {
+        $orderDetail = OrderDetail::where('order_id', $request->order_id)->first();
+        $durasi = $orderDetail->lama_sewa * 24;
+        $jangka = date('Y-m-d', strtotime($orderDetail->tanggal_sewa . '+' . $durasi . 'hours'));
+        $order = Order::where('id', $request->order_id)->first();
+
+
+        $tgl_kembali = Carbon::parse($request->tanggal_kembali);
+        $selisih = $tgl_kembali->diffInDays($jangka);
+        $denda = $selisih * $orderDetail->harga_sewa;
+        if ($request->tanggal_kembali > $jangka) {
+            return view('homepage.denda', [
+                'title' => 'Denda',
+                'orderDetail' => $orderDetail,
+                'denda' => $denda,
+                'banks' => Bank::all(),
+                'tanggal_kembali' => $request->tanggal_kembali,
+                'orderDetail' => $orderDetail,
+            ]);
+        }
+        return 'OKE';
     }
 }

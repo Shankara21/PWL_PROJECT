@@ -1,25 +1,26 @@
 <?php
 
-use App\Http\Controllers\BankController;
+use App\Models\Contacts;
 use App\Models\Kendaraan;
+use App\Http\Controllers\tespesanan;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BankController;
+use App\Http\Controllers\TypeController;
 use App\Http\Controllers\BrandController;
-
+use App\Http\Controllers\DendaController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\ContactsController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrderDetailController;
-use App\Http\Controllers\tespesanan;
 use App\Http\Controllers\TestimoniController;
-use App\Http\Controllers\TypeController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\UserDashboardController;
-use App\Models\Contacts;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,11 +49,14 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/history', 'history')->middleware('auth');
     Route::get('/profile', 'profile')->middleware('auth');
     Route::Post('/profile', 'update')->middleware('auth');
+    Route::post('/return', 'pengembalian')->middleware('auth');
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 Route::resource('/orderDetail', OrderDetailController::class);
 Route::post('/checkout/{id}', [checkoutController::class, 'store']);
 Route::resource('/testimoni', TestimoniController::class);
+Route::resource('/denda', DendaController::class);
+
 
 //! Routing Auth
 Auth::routes();

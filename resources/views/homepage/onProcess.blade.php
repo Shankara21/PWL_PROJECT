@@ -62,6 +62,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                     <th scope="col">Option</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Catatan</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="align-baseline">
@@ -69,11 +70,6 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                 @foreach ($orderDetails as $item)
                                 <tr>
                                     <td>
-                                        {{-- <form action="/orderDetail/{{ $item -> id }}" method="Post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                        </form> --}}
                                         {{ $loop -> iteration }}
                                     </td>
                                     <td>
@@ -104,12 +100,16 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                         @endif</td>
                                     <td>Rp.{{ number_format($item -> harga_sewa) }}</td>
                                     <td>{{ $item -> catatan }}</td>
+                                    <td><button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            <img src="{{ asset('img/back.png') }}" alt="" height="40px">
+                                        </button></td>
                                 </tr>
                                 @endforeach
                                 @else
                                 <tr>
-                                    <td colspan="6" class="text-center">
-                                        <h5>Keranjang kosong</h5>
+                                    <td colspan="9" class="text-center">
+                                        <h5>Masih belum ada pemesanan</h5>
                                     </td>
                                 </tr>
                                 @endif
@@ -119,6 +119,38 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <form action="/return" method="POST">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pengembalian Kendaraan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tanggal" class="form-label">Tanggal Kembali</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal_kembali"
+                            value="{{ date('Y-m-d') }}">
+                    </div>
+                    @if (!empty($order))
+                    @foreach ($orderDetails as $item)
+                    <div class="mb-3">
+                        <label for="tanggal" class="form-label">id</label>
+                        <input type="text" class="form-control" id="tanggal" name="order_id" value="{{ $item -> id }}">
+                    </div>
+                    @endforeach
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

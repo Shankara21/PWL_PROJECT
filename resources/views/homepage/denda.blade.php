@@ -5,25 +5,25 @@
     <div class="container my-5 py-5 px-lg-5">
         <div class="row g-5 py-5">
             <div class="col-12 text-center">
-                <h1 class="text-white animated zoomIn">Checkout</h1>
+                <h1 class="text-white animated zoomIn">Denda</h1>
                 <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Checkout</li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Denda</li>
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
 </div>
-<form action="/checkout/{{ $orderDetail->id }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('denda.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="container-xxl py-5">
         <div class="container px-lg-5">
             <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="position-relative d-inline text-primary ps-4">Checkout</h6>
-                <h2 class="mt-2">Selesaikan Pesanan Anda</h2>
+                <h6 class="position-relative d-inline text-primary ps-4">Denda</h6>
+                <h2 class="mt-2">Mohon bayar tagihan anda</h2>
             </div>
             @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -77,25 +77,17 @@
                             </div>
                         </div>
                         @endforeach
-
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Total Pesanan</h4>
-                            @if (!empty($order))
-                            <h6 class="card-subtitle mb-2">Rp.{{ number_format($order->total) }}</h6>
-                            @else
-                            <h6 class="card-subtitle mb-2">Rp. 0</h6>
-                            @endif
+                            <h4 class="card-title">Total Denda</h4>
+                            <h6 class="card-subtitle mb-2">Rp.{{ number_format($denda) }}</h6>
+                            <input type="hidden" value="{{ $tanggal_kembali }}" name="tanggal_kembali">
+                            <input type="hidden" value="{{ $orderDetail -> id }}" name="orderDetail">
+                            <input type="hidden" value="{{ $denda }}" name="total">
                             <hr>
-                            @if ($orderDetail->opsi == 1)
-                            <div class="mb-3">
-                                <label for="berkas" class="form-label">Upload berkas penyewaan</label>
-                                <input type="file" class="form-control" id="berkas" name="berkas" required>
-                            </div>
-                            @endif
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">
                                     <h6>*Upload bukti pembayaran</h6>

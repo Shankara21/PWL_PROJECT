@@ -1,5 +1,5 @@
 @php
-$order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 0) -> first();
+$order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 2) -> first();
 
 if(!empty($order)){
 $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
@@ -114,8 +114,8 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                 @endforeach
                                 @else
                                 <tr>
-                                    <td colspan="6" class="text-center">
-                                        <h5>Keranjang kosong</h5>
+                                    <td colspan="9" class="text-center">
+                                        <h5>Belum ada history peminjaman</h5>
                                     </td>
                                 </tr>
                                 @endif
@@ -144,7 +144,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                         <label for="exampleFormControlInput1" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
                             value="{{ auth()->user()->name }}" autofocus>
-                    </div>t
+                    </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Masukkan Penilaian Anda</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"

@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Testimoni::class);
     }
+    public function denda()
+    {
+        return $this->hasMany(Denda::class);
+    }
 }

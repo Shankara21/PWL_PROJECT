@@ -21,9 +21,10 @@ return new class extends Migration
             $table->date('tanggal_kembali')->nullable();
             $table->integer('lama_sewa');
             $table->integer('harga_sewa');
-            $table->integer('denda')->nullable();
+            $table->unsignedBigInteger('denda_id')->nullable();
             $table->integer('opsi')->nullable();
             $table->text('catatan');
+            $table->foreign('denda_id')->references('id')->on('dendas');
             $table->timestamps();
         });
     }
