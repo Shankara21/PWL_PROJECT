@@ -57,7 +57,9 @@ class HomepageController extends Controller
 
         $kendaraan = Kendaraan::latest();
         // $kiw = Kendaraan::join('brands', 'brands.id', '=', 'kendaraans.brand_id')->where('kendaraans.nama', 'like', '%' . request('search') . '%')->get();
-
+        $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->orWhere('status', 1)->first();
+        $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        $cek = $orderDetail->kendaraan_id;
         if (request('search')) {
             $kendaraan->where('nama', 'like', '%' . request('search') . '%');
         }
@@ -65,6 +67,7 @@ class HomepageController extends Controller
         return view('homepage.project', [
             'kendaraan' => $kendaraan->paginate(6),
             'title' => 'Collection',
+            'cek' => $cek,
         ]);
     }
     public function team()

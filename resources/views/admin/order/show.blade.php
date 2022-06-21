@@ -89,8 +89,8 @@
                                             <th>:</th>
                                             <td>
                                                 <h4>
-                                                    @if ($orderDetail -> denda)
-                                                    Rp. {{ number_format($orderDetail -> denda) }}
+                                                    @if ($orderDetail -> denda_id)
+                                                    Rp. {{ number_format($orderDetail -> denda -> total) }}
                                                     @else
                                                     -
                                                     @endif

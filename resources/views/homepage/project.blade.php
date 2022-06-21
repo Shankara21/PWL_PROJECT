@@ -45,13 +45,29 @@
                                             @else
                                             {{asset('storage/'.$item->image)}}
                                           @endif" alt="">
-                    <a class="btn btn-light" href="/detail/{{ $item -> slug }}"><i
-                            class="fa fa-plus fa-2x text-primary"></i>
+
+                    <a class="btn btn-light" href="/detail/{{ $item -> slug }}" @if ($item -> id == $cek)
+                        style="pointer-events: none"
+                        @endif><i class="fa fa-plus fa-2x text-primary"></i>
                     </a>
                     <div class="portfolio-overlay">
+                        @if ($item -> id == $cek)
+                        <h4>
+                            <span class="badge bg-warning w-75">
+                                Dalam Peminjaman <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                        </h4>
+                        @else
+                        <h4>
+                            <span class="badge bg-success w-50">
+                                Tersedia <i class="fas fa-check-circle"></i>
+                            </span>
+                        </h4>
+                        @endif
                         <div class="mt-auto">
-                            <small class="text-white"><i
-                                    class="fa fa-folder me-2"></i>{{ $item -> brand -> nama }}</small>
+                            <small class="text-white">
+                                <i class="fa fa-folder me-2"></i>{{ $item -> brand -> nama }}
+                            </small>
                             <a class="h5 d-block text-white mt-1 mb-0" href="">{{ $item -> nama }}</a>
                         </div>
                     </div>

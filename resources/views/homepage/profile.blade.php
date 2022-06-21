@@ -34,6 +34,8 @@
                         {{ asset('img/woman.png') }}
                         @elseif($user -> gender == 'Laki-laki')
                         {{ asset('img/man.png') }}
+                        @else
+                        {{ asset('img/user.png') }}
                     @endif" alt="" width="250px" class="rounded-circle img-thumbnail mb-3">
                     <h4 id="username">{{ $user -> username }}</h4>
                     <form method="POST" enctype="multipart/form-data">
