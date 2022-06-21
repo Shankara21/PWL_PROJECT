@@ -42,6 +42,13 @@
             <li><a href="/dashboard/order" class="" aria-expanded="false">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="nav-text">Order</span>
+                </a>
+            </li>
+            <li><a href="/dashboard/denda" class="" aria-expanded="false">
+                <i class="fas fa-calendar-times"></i>
+                <span class="nav-text">Denda</span>
+                </a>
+            </li>
             <li><a href="/dashboard/user" class="" aria-expanded="false">
                     <i class="fas fa-user"></i>
                     <span class="nav-text">User</span>

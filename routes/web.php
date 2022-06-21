@@ -17,6 +17,7 @@ use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardDendaController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\OrderDetailController;
@@ -72,4 +73,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/dashboard/contacts', ContactsController::class);
     Route::resource('/dashboard/order', OrderController::class);
     Route::resource('/dashboard/user', UserDashboardController::class);
+    Route::resource('/dashboard/denda', DashboardDendaController::class);
 });
