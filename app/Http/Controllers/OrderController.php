@@ -18,7 +18,7 @@ class OrderController extends Controller
     {
         $order = Order::all();
         return view('admin.order.index', [
-            'orders' => $order
+            'orders' => $order,
         ]);
     }
 
@@ -59,7 +59,7 @@ class OrderController extends Controller
         $akhir = date_create($request->tanggal_kembali);
         $diff = date_diff($akhir, $awal);
 
-        // Menambah 12jam 
+        // Menambah 12jam
         $input = date('Y-m-d-H-i-s', strtotime($request->tanggal_sewa . '+12 hours'));
 
 

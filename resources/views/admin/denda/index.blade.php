@@ -6,7 +6,7 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Order</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Denda</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -14,7 +14,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Orders</h4>
+                        <h4 class="card-title">Denda</h4>
                         <div><a href="/dashboard/category/create" class="btn btn-primary">
                                 <i class="fas fa-plus"> Tambah Data</i>
                             </a></div>
@@ -32,7 +32,6 @@
                                             </div>
                                         </th>
                                         <th>Nama</th>
-                                        <th>Status</th>
                                         <th>Payment</th>
                                         <th>Total</th>
                                         <th>Bukti Pembayaran</th>
@@ -40,7 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($orders as $order)
+                                    @foreach ($dendas as $denda)
                                     <tr>
                                         <td>
                                             <div class="form-check custom-checkbox ms-2">
@@ -49,28 +48,19 @@
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td>{{ $order->user->name }}</td>
+                                        <td>{{ $denda->user->name }}</td>
                                         <td>
-                                            @if ($order -> status == 0)
-                                            <span class="badge rounded-pill bg-danger">Belum bayar</span>
-                                            @elseif ($order -> status == 1)
-                                            <span class="badge rounded-pill bg-warning">Dalam Peminjaman</span>
-                                            @elseif ($order -> status == 2)
-                                            <span class="badge rounded-pill bg-success">Selesai</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if(!empty($order -> bank_id))
-                                            <img src="{{ asset($order->bank->image) }}" alt=""
+                                            @if(!empty($denda -> payment))
+                                            <img src="{{ asset('img/payments/'.$denda -> payment.'.png') }}" alt=""
                                                 width="100px">
                                             @else
                                             <strong class="text-danger">Belum melakukan <br>pembayaran!</strong>
                                             @endif
                                         </td>
-                                        <td>Rp. {{ number_format($order -> total) }}</td>
+                                        <td>Rp. {{ number_format($denda -> total) }}</td>
                                         <td>
-                                            @if(!empty($order -> bukti_pembayaran))
-                                            <img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt=""
+                                            @if(!empty($denda -> bukti_pembayaran))
+                                            <img src="{{ asset('storage/'.$denda -> bukti_pembayaran) }}" alt=""
                                                 width="100px">
                                             @endif
 
@@ -81,11 +71,11 @@
                                                             class="fas fa-check-circle"
                                                             style="font-size: 1.5em"></i></button>
                                                 </form>
-                                                <a href="/dashboard/order/{{$order->id}}"
+                                                <a href="/dashboard/denda/{{$denda->id}}"
                                                     class="btn btn-info shadow  sharp me-1"><i class="fas fa-eye "
                                                         style="font-size: 1.5em"></i>
                                                 </a>
-                                                <form action="/dashboard/category/{{ $order->slug }}" method="POST"
+                                                <form action="/dashboard/category/{{ $denda->slug }}" method="POST"
                                                     class="d-inline">
                                                     @method('delete')
                                                     @csrf
