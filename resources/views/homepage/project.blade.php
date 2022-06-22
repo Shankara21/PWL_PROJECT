@@ -1,3 +1,11 @@
+@php
+// $order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status', 0)->orWhere('status', 1)->first();
+// if($order != null){
+// $orderDetail = \App\Models\OrderDetail::where('order_id', $order->id)->first();
+// $cek = $orderDetail->kendaraan_id;
+// }
+// dd($cek);
+@endphp
 @extends('homepage.layouts.main')
 
 @section('content')
@@ -46,12 +54,11 @@
                                             {{asset('storage/'.$item->image)}}
                                           @endif" alt="">
 
-                    <a class="btn btn-light" href="/detail/{{ $item -> slug }}" @if ($item -> id == $cek)
-                        style="pointer-events: none"
-                        @endif><i class="fa fa-plus fa-2x text-primary"></i>
+                    <a class="btn btn-light" href="/detail/{{ $item -> slug }}"><i
+                            class="fa fa-plus fa-2x text-primary"></i>
                     </a>
                     <div class="portfolio-overlay">
-                        @if ($item -> id == $cek)
+                        {{-- @if ($item -> id == $cek -> kendaraan_id)
                         <h4>
                             <span class="badge bg-warning w-75">
                                 Dalam Peminjaman <i class="fas fa-exclamation-circle"></i>
@@ -63,7 +70,7 @@
                                 Tersedia <i class="fas fa-check-circle"></i>
                             </span>
                         </h4>
-                        @endif
+                        @endif --}}
                         <div class="mt-auto">
                             <small class="text-white">
                                 <i class="fa fa-folder me-2"></i>{{ $item -> brand -> nama }}
@@ -86,6 +93,5 @@
         @endif
     </div>
 </div>
-
 <!-- Portfolio End -->
 @endsection

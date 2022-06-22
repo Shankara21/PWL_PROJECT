@@ -1,9 +1,10 @@
 @php
-$order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 2) -> first();
+// $order = \App\Models\Order::where('user_id', auth()->user()->id) -> get();
 
-if(!empty($order)){
-$orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
-}
+// if(!empty($order)){
+// $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
+// }
+
 @endphp
 @extends('homepage.layouts.main')
 
@@ -24,13 +25,11 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
         </div>
     </div>
 </div>
-
 <div class="container-xxl py-5">
     <div class="container px-lg-5">
         <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="position-relative d-inline text-primary ps-4">Keranjang</h6>
             <h2 class="mt-2">Pesanan anda</h2>
-
         </div>
         <div class="row mb-3">
             <div class="col-md-12">
@@ -75,11 +74,6 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                 @foreach ($orderDetails as $item)
                                 <tr>
                                     <td>
-                                        {{-- <form action="/orderDetail/{{ $item -> id }}" method="Post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                        </form> --}}
                                         {{ $loop -> iteration }}
                                     </td>
                                     <td>
@@ -124,11 +118,9 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -139,7 +131,6 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                 </div>
                 <div class="modal-body">
                     @csrf
-                    {{-- <input type="text" name="user_id" value="{{ auth() -> user() -> id }}"> --}}
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="name"

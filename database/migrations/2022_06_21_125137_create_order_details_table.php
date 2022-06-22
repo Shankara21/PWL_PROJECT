@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('harga_sewa');
             $table->unsignedBigInteger('denda_id')->nullable();
             $table->integer('opsi')->nullable();
-            $table->text('catatan');
+            $table->text('catatan')->nullable();
             $table->foreign('denda_id')->references('id')->on('dendas');
             $table->timestamps();
         });

@@ -57,7 +57,7 @@ class DendaController extends Controller
 
         $order->status = 2;
         $order->update();
-        return redirect('/history');
+        return redirect('/history')->with('success', 'Pengembalian Diterima!');
     }
 
     /**

@@ -58,8 +58,9 @@ class HomepageController extends Controller
         $kendaraan = Kendaraan::latest();
         // $kiw = Kendaraan::join('brands', 'brands.id', '=', 'kendaraans.brand_id')->where('kendaraans.nama', 'like', '%' . request('search') . '%')->get();
         $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->orWhere('status', 1)->first();
-        $orderDetail = OrderDetail::where('order_id', $order->id)->first();
-        $cek = $orderDetail->kendaraan_id;
+        // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+
+        // $cek = $orderDetail->kendaraan_id;
         if (request('search')) {
             $kendaraan->where('nama', 'like', '%' . request('search') . '%');
         }
@@ -67,7 +68,7 @@ class HomepageController extends Controller
         return view('homepage.project', [
             'kendaraan' => $kendaraan->paginate(6),
             'title' => 'Collection',
-            'cek' => $cek,
+            // 'cek' => OrderDetail::where('order_id', $order->id)->first()
         ]);
     }
     public function team()
@@ -111,6 +112,15 @@ class HomepageController extends Controller
     {
         // $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
         // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        $order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
+        $length = $order->count();
+        if (!empty($order)) {
+            for ($i = 0; $i < $length - 1; $i++) {
+                $orderDetails = \App\Models\OrderDetail::where('order_id', $order[$i]->id)->get();
+            }
+        }
+        $tes = OrderDetail::where('order_id', $order[0]->id)->all();
+        dd($tes->harga_sewa);
         return view('homepage.onProcess', [
             'title' => 'Checkout',
             // 'order' => $order,
@@ -119,7 +129,7 @@ class HomepageController extends Controller
     }
     public function history()
     {
-        // $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        // $order = Order::where('user_id', auth()->user()->id)->get();
         // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
         return view('homepage.history', [
             'title' => 'History',
@@ -165,7 +175,6 @@ class HomepageController extends Controller
         $jangka = date('Y-m-d', strtotime($orderDetail->tanggal_sewa . '+' . $durasi . 'hours'));
         $order = Order::where('id', $request->order_id)->first();
 
-
         $tgl_kembali = Carbon::parse($request->tanggal_kembali);
         $selisih = $tgl_kembali->diffInDays($jangka);
         $denda = $selisih * $orderDetail->harga_sewa;
@@ -179,6 +188,11 @@ class HomepageController extends Controller
                 'orderDetail' => $orderDetail,
             ]);
         }
-        return 'OKE';
+        $orderDetail->tanggal_kembali = $request->tanggal_kembali;
+        $orderDetail->update();
+
+        $order->status = 2;
+        $order->update();
+        return redirect('/history')->with('success', 'Pengembalian Diterima!');
     }
 }

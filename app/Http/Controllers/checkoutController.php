@@ -40,7 +40,7 @@ class checkoutController extends Controller
             $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
         }
         $validatedData['status'] = $order->status = 1;
-        Order::where('user_id', Auth::user()->id)->update($validatedData);
+        Order::where('id', $order->id)->update($validatedData);
         return redirect('/cart')->with('success', 'Pembayaran berhasil');
     }
 }
