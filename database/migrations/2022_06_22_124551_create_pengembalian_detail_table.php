@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('pengembalianDetail', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->integer('status');
-            $table->unsignedBigInteger('bank_id')->nullable();
-            $table->foreign('bank_id')->references('id')->on('banks');
+            $table->unsignedBigInteger('pengembalian_id')->nullable();
+            $table->foreign('pengembalian_id')->references('id')->on('pengembalian');
+            $table->date('tanggal_kembali')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('pengembalianDetail');
     }
 };

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->integer('status');
-            $table->unsignedBigInteger('bank_id')->nullable();
-            $table->foreign('bank_id')->references('id')->on('banks');
-            $table->timestamps();
+        Schema::table('pengembalian', function (Blueprint $table) {
+           $table->unsignedBigInteger('denda_id')->after('bank_id')->nullable();
+           $table->foreign('denda_id')->references('id')->on('dendas');
         });
     }
 
@@ -30,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::table('pengembalian', function (Blueprint $table) {
+            $table->dropColumn('denda_id');
+        });
     }
 };

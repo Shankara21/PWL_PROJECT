@@ -18,13 +18,12 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained();
             $table->foreignId('kendaraan_id')->constrained();
             $table->date('tanggal_sewa');
-            $table->date('tanggal_kembali')->nullable();
             $table->integer('lama_sewa');
-            $table->integer('harga_sewa');
-            $table->unsignedBigInteger('denda_id')->nullable();
+            $table->integer('total_bayar');
             $table->integer('opsi')->nullable();
             $table->text('catatan')->nullable();
-            $table->foreign('denda_id')->references('id')->on('dendas');
+            $table->string('berkas')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
         });
     }
