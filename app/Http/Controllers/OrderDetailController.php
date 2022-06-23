@@ -43,8 +43,7 @@ class OrderDetailController extends Controller
         if (empty(Order::where('user_id', $request->user_id)->where('status', 0)->first())) {
             Order::insert([
                 'user_id' => $request->user_id,
-                'status' => 0,
-                'total' => 0,
+                'status' => 0
             ]);
         }
         $kendaraan = Kendaraan::find($request->kendaraan_id);
@@ -55,7 +54,7 @@ class OrderDetailController extends Controller
             $addOrder = [
                 'order_id' => $orderUserStatus->id,
                 'kendaraan_id' => $kendaraan->id,
-                'harga_sewa' => $kendaraan->harga * $request->lama_sewa,
+                'total_bayar' => $kendaraan->harga * $request->lama_sewa,
                 'tanggal_sewa' => $request->tanggal_sewa,
                 'opsi' => $request->opsi,
                 'catatan' => $request->catatan,
@@ -74,8 +73,6 @@ class OrderDetailController extends Controller
                 return redirect('/detail/' . $kendaraan->slug)->with('error', 'Lama Sewa tidak boleh 0');
             }
         }
-        $orderUserStatus->total += $kendaraan->harga * $request->lama_sewa;
-        $orderUserStatus->update();
         return redirect('/detail/' . $kendaraan->slug)->with('success', 'Berhasil menambahkan pesanan');
 
         // $validateData = $request->validate([

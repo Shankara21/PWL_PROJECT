@@ -49,27 +49,26 @@
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td>{{ $order->user->name }}</td>
+                                        <td>{{ $order->order->user->name }}</td>
                                         <td>
-                                            @if ($order -> status == 0)
+                                            @if ($order->order -> status == 0)
                                             <span class="badge rounded-pill bg-danger">Belum bayar</span>
-                                            @elseif ($order -> status == 1)
+                                            @elseif ($order->order -> status == 1)
                                             <span class="badge rounded-pill bg-warning">Dalam Peminjaman</span>
-                                            @elseif ($order -> status == 2)
+                                            @elseif ($order->order -> status == 2)
                                             <span class="badge rounded-pill bg-success">Selesai</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if(!empty($order -> bank_id))
-                                            <img src="{{ asset($order->bank->image) }}" alt=""
-                                                width="100px">
+                                            @if(!empty($order->order -> bank_id))
+                                            <img src="{{ asset($order->order->bank->image) }}" alt="" width="100px">
                                             @else
                                             <strong class="text-danger">Belum melakukan <br>pembayaran!</strong>
                                             @endif
                                         </td>
-                                        <td>Rp. {{ number_format($order -> total) }}</td>
+                                        <td>Rp. {{ number_format($order -> total_bayar) }}</td>
                                         <td>
-                                            @if(!empty($order -> bukti_pembayaran))
+                                            @if(!empty($order -> order -> bukti_pembayaran))
                                             <img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt=""
                                                 width="100px">
                                             @endif

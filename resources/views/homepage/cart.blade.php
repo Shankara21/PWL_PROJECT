@@ -85,7 +85,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                         @else
                                         {{ 'Dengan Supir + BBM' }}
                                         @endif</td>
-                                    <td>Rp.{{ number_format($item -> harga_sewa) }}</td>
+                                    <td>Rp.{{ number_format($item -> total_bayar) }}</td>
                                 </tr>
                                 @endforeach
                                 @else
@@ -114,12 +114,14 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (!empty($order -> total))
+                                @if (!empty($order))
+                                @foreach ($orderDetails as $item)
                                 <tr>
                                     <td>Total</td>
                                     <td></td>
-                                    <td>Rp.{{ number_format($order -> total) }}</td>
+                                    <td>Rp.{{ number_format($item -> total_bayar) }}</td>
                                 </tr>
+                                @endforeach
                                 @else
                                 <tr>
                                     <td colspan="3">Tidak ada pesanan</td>

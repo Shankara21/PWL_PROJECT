@@ -5,25 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Denda extends Model
+class Pengembalian extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function orderDetails()
+    public function bank()
     {
-        return $this->belongsTo(OrderDetail::class);
+        return $this->belongsTo(Bank::class);
     }
-    public function pengembalian()
+    public function denda()
     {
-        return $this->belongsTo(Pengembalian::class);
+        return $this->belongsTo(Denda::class);
     }
     public function pengembalianDetails()
     {
-        return $this->belongsTo(PengembalianDetail::class);
+        return $this->hasMany(PengembalianDetail::class);
     }
 }

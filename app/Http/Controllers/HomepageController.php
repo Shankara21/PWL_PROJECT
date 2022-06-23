@@ -112,15 +112,15 @@ class HomepageController extends Controller
     {
         // $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
         // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
-        $order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
-        $length = $order->count();
-        if (!empty($order)) {
-            for ($i = 0; $i < $length - 1; $i++) {
-                $orderDetails = \App\Models\OrderDetail::where('order_id', $order[$i]->id)->get();
-            }
-        }
-        $tes = OrderDetail::where('order_id', $order[0]->id)->all();
-        dd($tes->harga_sewa);
+        // $order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
+        // $length = $order->count();
+        // if (!empty($order)) {
+        //     for ($i = 0; $i < $length - 1; $i++) {
+        //         $orderDetails = \App\Models\OrderDetail::where('order_id', $order[$i]->id)->get();
+        //     }
+        // }
+        // $tes = OrderDetail::where('order_id', $order[0]->id)->all();
+        // dd($tes->harga_sewa);
         return view('homepage.onProcess', [
             'title' => 'Checkout',
             // 'order' => $order,

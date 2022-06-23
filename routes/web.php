@@ -58,7 +58,6 @@ Route::post('/checkout/{id}', [checkoutController::class, 'store']);
 Route::resource('/testimoni', TestimoniController::class);
 Route::resource('/denda', DendaController::class);
 
-
 //! Routing Auth
 Auth::routes();
 

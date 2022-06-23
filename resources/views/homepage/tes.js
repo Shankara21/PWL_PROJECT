@@ -1,1 +1,1 @@
-const bio = document.querySelectorAll
+

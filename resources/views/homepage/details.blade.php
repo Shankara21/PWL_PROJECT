@@ -26,16 +26,6 @@
             <h2 class="mt-2">Details Product</h2>
         </div>
         <div class="row">
-            <div class="col-md-8 align-self-center">
-                @if (session()->has('success'))
-                <div class="alert alert-success alert-dismissible fade show p-3" role="alert">
-                    <strong>{{ session('success') }} <i class="fa-solid fa-circle-check"></i></strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
-            </div>
         </div>
         <div class="row mt-n2 wow fadeInUp justify-content-center" data-wow-delay="0.1s">
         </div>

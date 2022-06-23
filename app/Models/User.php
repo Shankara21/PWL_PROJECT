@@ -50,4 +50,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Denda::class);
     }
+    public function pengembalians()
+    {
+        return $this->hasMany(Pengembalian::class);
+    }
 }

@@ -16,6 +16,10 @@ class Bank extends Model
     {
         return $this->hasMany(Order::class);
     }
+    public function pengembalian()
+    {
+        return $this->hasMany(Pengembalian::class);
+    }
     public function getRouteKeyName()
     {
         return 'slug';

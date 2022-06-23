@@ -26,12 +26,14 @@ class checkoutController extends Controller
 
     public function store(StoreOrderDetailRequest $request, $id)
     {
-
+        // dd($request->all());
         $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
         $validatedData = $request->validate([
-            'bank_id' => 'required',
             'berkas' => 'image|file',
             'bukti_pembayaran' => 'image|file',
+        ]);
+        $orderr = $request->validate([
+            'bank_id' => 'required',
         ]);
         if ($request->file('berkas')) {
             $validatedData['berkas'] = $request->file('berkas')->store('berkas', 'public');
@@ -39,8 +41,9 @@ class checkoutController extends Controller
         if ($request->file('bukti_pembayaran')) {
             $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
         }
-        $validatedData['status'] = $order->status = 1;
-        Order::where('id', $order->id)->update($validatedData);
+        OrderDetail::where('order_id', $order->id)->update($validatedData);
+        $orderr['status'] = $order->status = 1;
+        Order::where('id', $order->id)->update($orderr);
         return redirect('/cart')->with('success', 'Pembayaran berhasil');
     }
 }

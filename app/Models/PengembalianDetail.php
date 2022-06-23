@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderDetail extends Model
+class PengembalianDetail extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    public function order()
+
+    public function pengembalian()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Pengembalian::class);
     }
-    public function kendaraan()
+    public function denda()
     {
-        return $this->belongsTo(Kendaraan::class);
+        return $this->belongsTo(Denda::class);
     }
 }

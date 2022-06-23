@@ -85,7 +85,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Total Pesanan</h4>
                             @if (!empty($order))
-                            <h6 class="card-subtitle mb-2">Rp.{{ number_format($order->total) }}</h6>
+                            <h6 class="card-subtitle mb-2">Rp.{{ number_format($orderDetail->total_bayar) }}</h6>
                             @else
                             <h6 class="card-subtitle mb-2">Rp. 0</h6>
                             @endif
