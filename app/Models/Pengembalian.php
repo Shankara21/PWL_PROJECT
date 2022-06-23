@@ -26,4 +26,8 @@ class Pengembalian extends Model
     {
         return $this->hasMany(PengembalianDetail::class);
     }
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

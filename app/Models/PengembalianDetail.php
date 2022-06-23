@@ -9,6 +9,8 @@ class PengembalianDetail extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $table = 'pengembaliandetails';
+    protected $primaryKey = 'id';
 
     public function pengembalian()
     {

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('pengembalian', function (Blueprint $table) {
-           $table->unsignedBigInteger('denda_id')->after('bank_id')->nullable();
-           $table->foreign('denda_id')->references('id')->on('dendas');
+        Schema::table('pengembalians', function (Blueprint $table) {
+            $table->unsignedBigInteger('denda_id')->after('bank_id')->nullable();
+            $table->foreign('denda_id')->references('id')->on('dendas');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('pengembalian', function (Blueprint $table) {
+        Schema::table('pengembalians', function (Blueprint $table) {
             $table->dropColumn('denda_id');
         });
     }

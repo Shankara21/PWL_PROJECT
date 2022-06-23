@@ -26,4 +26,8 @@ class Denda extends Model
     {
         return $this->belongsTo(PengembalianDetail::class);
     }
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
+    }
 }

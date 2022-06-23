@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\OrderDetail;
+use App\Models\Pengembalian;
+use App\Models\PengembalianDetail;
 
 class OrderController extends Controller
 {
@@ -88,9 +90,14 @@ class OrderController extends Controller
     {
         $mainOrder = Order::find($order->id);
         $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        $pengembalian = Pengembalian::where('order_id', $mainOrder->id)->first();
+        $pengembalianDetail = PengembalianDetail::where('pengembalian_id', $pengembalian->id)->first();
+
         return view('admin.order.show', [
             'order' => $mainOrder,
-            'orderDetail' => $orderDetail
+            'orderDetail' => $orderDetail,
+            'pengembalian' => $pengembalian,
+            'pengembalianDetail' => $pengembalianDetail,
         ]);
     }
 

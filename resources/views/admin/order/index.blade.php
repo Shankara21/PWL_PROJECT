@@ -68,7 +68,7 @@
                                         </td>
                                         <td>Rp. {{ number_format($order -> total_bayar) }}</td>
                                         <td>
-                                            @if(!empty($order -> order -> bukti_pembayaran))
+                                            @if(!empty($order-> bukti_pembayaran))
                                             <img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt=""
                                                 width="100px">
                                             @endif

@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengembalian', function (Blueprint $table) {
+        Schema::create('pengembalians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('order_detail_id')->constrained();
-            $table->foreignId('bank_id')->constrained();
+            $table->foreignId('order_id')->constrained();
+            $table->unsignedBigInteger('bank_id')->nullable();
+            $table->foreign('bank_id')->references('id')->on('banks');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengembalian');
+        Schema::dropIfExists('pengembalians');
     }
 };

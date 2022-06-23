@@ -107,7 +107,7 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                 @endforeach
                                 @else
                                 <tr>
-                                    <td colspan="9" class="text-center">
+                                    <td colspan="10" class="text-center">
                                         <h5>Masih belum ada pemesanan</h5>
                                     </td>
                                 </tr>
@@ -135,11 +135,12 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                         <input type="date" class="form-control" id="tanggal" name="tanggal_kembali"
                             value="{{ date('Y-m-d') }}">
                     </div>
+
                     @if (!empty($order))
                     @foreach ($orderDetails as $item)
                     <div class="mb-3">
-                        <label for="tanggal" class="form-label">id</label>
-                        <input type="text" class="form-control" id="tanggal" name="order_id" value="{{ $item -> id }}">
+                        <input type="hidden" class="form-control" id="tanggal" name="order_id"
+                            value="{{ $item -> id }}">
                     </div>
                     @endforeach
                     @endif

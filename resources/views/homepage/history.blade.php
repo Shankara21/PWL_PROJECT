@@ -1,9 +1,11 @@
 @php
-// $order = \App\Models\Order::where('user_id', auth()->user()->id) -> get();
+$order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 2) -> first();
 
-// if(!empty($order)){
-// $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
-// }
+if(!empty($order)){
+$orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
+$pengembalian = \App\Models\Pengembalian::where('order_id', $order -> id)->first();
+$pengembalianDetail = \App\Models\PengembalianDetail::where('pengembalian_id', $pengembalian -> id) -> first();
+}
 
 @endphp
 @extends('homepage.layouts.main')
@@ -64,6 +66,7 @@
                                     <th scope="col">Status</th>
                                     <th scope="col">Tanggal Sewa</th>
                                     <th scope="col">Durasi</th>
+                                    <th scope="col">Tanggal Kembali</th>
                                     <th scope="col">Option</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Catatan</th>
@@ -95,6 +98,7 @@
                                     </td>
                                     <td>{{ $item -> tanggal_sewa }}</td>
                                     <td>{{ $item -> lama_sewa }}</td>
+                                    <td>{{ $pengembalianDetail -> tanggal_kembali }}</td>
                                     <td>@if ($item -> opsi == 1)
                                         {{ 'Tanpa Sopir' }}
                                         @elseif ($item -> opsi == 2)
@@ -102,8 +106,14 @@
                                         @else
                                         {{ 'Dengan Supir + BBM' }}
                                         @endif</td>
-                                    <td>Rp.{{ number_format($item -> harga_sewa) }}</td>
-                                    <td>{{ $item -> catatan }}</td>
+                                    <td>Rp.{{ number_format($item -> total_bayar) }}</td>
+                                    <td>
+                                        @if ($item -> catatan)
+                                        {{ $item -> catatan }}
+                                        @else
+                                        -
+                                        @endif
+                                    </td>
                                 </tr>
                                 @endforeach
                                 @else
@@ -121,6 +131,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

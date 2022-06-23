@@ -50,8 +50,8 @@
                                         </td>
                                         <td>{{ $denda->user->name }}</td>
                                         <td>
-                                            @if(!empty($denda -> payment))
-                                            <img src="{{ asset('img/payments/'.$denda -> payment.'.png') }}" alt=""
+                                            @if(!empty($denda -> bank_id))
+                                            <img src="{{ asset('img/payments/'.$denda -> bank -> name.'.png') }}" alt=""
                                                 width="100px">
                                             @else
                                             <strong class="text-danger">Belum melakukan <br>pembayaran!</strong>

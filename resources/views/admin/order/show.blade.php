@@ -74,8 +74,8 @@
                                             <th>:</th>
                                             <td>
                                                 <h4>
-                                                    @if ($orderDetail -> tanggal_kembali)
-                                                    {{ $orderDetail -> tanggal_kembali }}
+                                                    @if ($pengembalianDetail -> tanggal_kembali)
+                                                    {{ $pengembalianDetail -> tanggal_kembali }}
                                                     @else
                                                     -
                                                     @endif
@@ -89,8 +89,8 @@
                                             <th>:</th>
                                             <td>
                                                 <h4>
-                                                    @if ($orderDetail -> denda_id)
-                                                    Rp. {{ number_format($orderDetail -> denda -> total) }}
+                                                    @if ($pengembalian -> denda_id)
+                                                    Rp. {{ number_format($pengembalian -> denda -> total) }}
                                                     @else
                                                     -
                                                     @endif
@@ -108,11 +108,11 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Harga Sewa</h4>
+                                                <h4>Total Pembayaran</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>Rp.{{ number_format($orderDetail -> harga_sewa) }}</h4>
+                                                <h4>Rp.{{ number_format($orderDetail -> total_bayar) }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
@@ -157,8 +157,8 @@
                                         <div id="collapse3One" class="collapse accordion__body show"
                                             aria-labelledby="accord-3One" data-bs-parent="#accordion-three">
                                             <div class="accordion-body-text">
-                                                <img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt=""
-                                                    height="300px">
+                                                <img src="{{ asset('storage/'.$orderDetail -> bukti_pembayaran) }}"
+                                                    alt="" height="300px">
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                                         <div id="collapse3Two" class="collapse accordion__body"
                                             aria-labelledby="accord-3Two" data-bs-parent="#accordion-three">
                                             <div class="accordion-body-text">
-                                                <img src="{{ asset('storage/'.$order -> berkas) }}" alt=""
+                                                <img src="{{ asset('storage/'.$orderDetail -> berkas) }}" alt=""
                                                     height="300px">
                                             </div>
                                         </div>

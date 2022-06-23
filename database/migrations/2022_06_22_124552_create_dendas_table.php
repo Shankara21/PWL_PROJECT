@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('bank_id')->constrained();
             $table->foreignId('order_detail_id')->constrained();
             $table->unsignedBigInteger('pengembalianDetail_id')->nullable();
-            $table->foreign('pengembalianDetail_id')->references('id')->on('pengembalianDetail');
+            $table->foreign('pengembalianDetail_id')->references('id')->on('pengembalianDetails');
             $table->text('bukti_pembayaran');
             $table->integer('total');
             $table->timestamps();

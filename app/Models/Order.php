@@ -23,4 +23,8 @@ class Order extends Model
     {
         return $this->belongsTo(Bank::class);
     }
+    public function pengembalian()
+    {
+        return $this->hasOne(Pengembalian::class);
+    }
 }

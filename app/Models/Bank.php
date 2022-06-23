@@ -20,6 +20,10 @@ class Bank extends Model
     {
         return $this->hasMany(Pengembalian::class);
     }
+    public function denda()
+    {
+        return $this->hasMany(Denda::class);
+    }
     public function getRouteKeyName()
     {
         return 'slug';

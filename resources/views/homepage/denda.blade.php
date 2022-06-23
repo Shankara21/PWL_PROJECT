@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<form action="{{ route('denda.store') }}" method="POST" enctype="multipart/form-data">
+<form action="/denda" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="container-xxl py-5">
         <div class="container px-lg-5">

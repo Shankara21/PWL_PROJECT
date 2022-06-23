@@ -10,6 +10,8 @@ use App\Models\Category;
 use App\Models\Kendaraan;
 use App\Models\Testimoni;
 use App\Models\OrderDetail;
+use App\Models\Pengembalian;
+use App\Models\PengembalianDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -177,7 +179,8 @@ class HomepageController extends Controller
 
         $tgl_kembali = Carbon::parse($request->tanggal_kembali);
         $selisih = $tgl_kembali->diffInDays($jangka);
-        $denda = $selisih * $orderDetail->harga_sewa;
+        $denda = $selisih * $orderDetail->total_bayar;
+
         if ($request->tanggal_kembali > $jangka) {
             return view('homepage.denda', [
                 'title' => 'Denda',
@@ -188,11 +191,24 @@ class HomepageController extends Controller
                 'orderDetail' => $orderDetail,
             ]);
         }
-        $orderDetail->tanggal_kembali = $request->tanggal_kembali;
-        $orderDetail->update();
 
         $order->status = 2;
-        $order->update();
+        $order->save();
+
+        $pengembalian = new Pengembalian;
+
+        $pengembalian->user_id = Auth::user()->id;
+        $pengembalian->order_id = $request->order_id;
+        $pengembalian->save();
+
+        $target = Pengembalian::where('order_id', $request->order_id)->first();
+
+        $pengembalianDetail = new PengembalianDetail;
+        $pengembalianDetail->pengembalian_id = $target->id;
+        $pengembalianDetail->tanggal_kembali = $request->tanggal_kembali;
+        $pengembalianDetail->save();
+
+
         return redirect('/history')->with('success', 'Pengembalian Diterima!');
     }
 }

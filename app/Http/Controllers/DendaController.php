@@ -8,6 +8,8 @@ use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDendaRequest;
 use App\Http\Requests\UpdateDendaRequest;
+use App\Models\Pengembalian;
+use App\Models\PengembalianDetail;
 
 class DendaController extends Controller
 {
@@ -39,25 +41,50 @@ class DendaController extends Controller
      */
     public function store(StoreDendaRequest $request)
     {
-        $orderDetail = OrderDetail::find($request->orderDetail);
-        $order = Order::find($orderDetail->order_id);
+        $orderDetail = OrderDetail::where('order_id', $request->orderDetail)->first();
+        $order = Order::where('id', $request->orderDetail)->where('status', 1)->first();
+
+        //! Membuat Denda terlebih dahulu 
         $validateData = $request->validate([
-            'bank_id' => 'required',
             'bukti_pembayaran' => 'image|file',
             'total' => 'required',
+            'bank_id' => 'required'
         ]);
+        if ($request->file('bukti_pembayaran')) {
+            $validateData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_denda', 'public');
+        }
         $validateData['user_id'] = Auth::user()->id;
-        $validateData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('denda', 'public');
+        $validateData['order_detail_id'] = $orderDetail->id;
+
         Denda::create($validateData);
 
-        $denda = Denda::latest()->first();
-        $orderDetail->tanggal_kembali = $request->tanggal_kembali;
-        $orderDetail->denda_id = $denda->id;
-        $orderDetail->update();
+        $denda = Denda::where('order_detail_id', $order->id)->first();
 
+        //! Membuat data pada Pengembalian
+        $pengembalian = new Pengembalian;
+        $pengembalian->user_id = Auth::user()->id;
+        $pengembalian->order_id = $order->id;
+        $pengembalian->bank_id = $request->bank_id;
+        $pengembalian->denda_id = $denda->id;
+        $pengembalian->save();
+
+        //! Membuat  data di Pengembalian Details
+        $dataPengembalian = Pengembalian::where('order_id', $order->id)->first();
+        $pengembalianDetail = new PengembalianDetail;
+        $pengembalianDetail->pengembalian_id = $dataPengembalian->id;
+        $pengembalianDetail->tanggal_kembali = $request->tanggal_kembali;
+        $pengembalianDetail->save();
+
+        //! Update pada Denda 
+        $dataPengembalianDetail = PengembalianDetail::where('pengembalian_id', $dataPengembalian->id)->first();
+        $denda->pengembalianDetail_id = $dataPengembalianDetail->id;
+        $denda->update();
+
+        //! update status pada Order
         $order->status = 2;
         $order->update();
-        return redirect('/history')->with('success', 'Pengembalian Diterima!');
+
+        return redirect('/history')->with('success', 'Pembayaran denda berhasil!');
     }
 
     /**
