@@ -15,9 +15,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Orders</h4>
-                        <div>
-                            <a href="/exportOrder" class="btn btn-info">Cetak PDF</a>
-                        </div>
+                        <div><a href="/order/pdf" class="btn btn-primary">
+                                <i class="far fa-file-pdf"> Cetak PDF</i>
+                            </a></div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

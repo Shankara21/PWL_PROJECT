@@ -75,4 +75,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/dashboard/order', OrderController::class);
     Route::resource('/dashboard/user', UserDashboardController::class);
     Route::resource('/dashboard/denda', DashboardDendaController::class);
+    Route::get('/order/pdf', [OrderController::class, 'cetak_pdf']);
 });

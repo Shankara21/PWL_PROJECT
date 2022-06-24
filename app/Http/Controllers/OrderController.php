@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Models\OrderDetail;
 use App\Models\Pengembalian;
 use App\Models\PengembalianDetail;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -133,5 +134,15 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function cetak_pdf()
+    {
+        $key = OrderDetail::all();
+        $pdf = PDF::loadview('admin.order.order_pdf', [
+            'orderDetails' => $key,
+            // 'title' => 'Export PDF',
+        ])->setPaper('a4', 'portrait');
+        return $pdf->download('GO Rent - Laporan Penyewaan ');
     }
 }
