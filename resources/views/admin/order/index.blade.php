@@ -15,9 +15,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Orders</h4>
-                        <div><a href="/dashboard/category/create" class="btn btn-primary">
-                                <i class="fas fa-plus"> Tambah Data</i>
-                            </a></div>
+                        <div>
+                            <a href="/exportOrder" class="btn btn-info">Cetak PDF</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

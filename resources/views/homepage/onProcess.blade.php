@@ -1,11 +1,3 @@
-@php
-$order = \App\Models\Order::where('user_id', Auth::user() -> id) -> where('status', 1) -> get();
-
-if(!empty($order)){
-$orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
-}
-
-@endphp
 @extends('homepage.layouts.main')
 @section('content')
 <div class="container-xxl py-5 bg-primary hero-header mb-5">
@@ -66,18 +58,20 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                 </tr>
                             </thead>
                             <tbody class="align-baseline">
-                                @if (!empty($order))
+                                @if ($orderDetails != null)
                                 @foreach ($orderDetails as $item)
+                                @if ($item -> order -> status == 1 && $item -> order -> user_id == Auth::user() -> id)
                                 <tr>
                                     <td>
                                         {{ $loop -> iteration }}
                                     </td>
                                     <td>
                                         <img src="@if (!$item -> kendaraan -> image)
-                                                                                {{ asset('img/kendaraan/'.$item -> kendaraan -> slug.'.png') }}
-                                                                                @else
-                                                                                {{asset('storage/'.$item -> kendaraan->image)}}
-                                                                              @endif" alt="" width="200px">
+                                                                                                                    {{ asset('img/kendaraan/'.$item -> kendaraan -> slug.'.png') }}
+                                                                                                                    @else
+                                                                                                                    {{asset('storage/'.$item -> kendaraan->image)}}
+                                                                                                                  @endif"
+                                            alt="" width="200px">
                                     </td>
                                     <td>{{ $item -> kendaraan -> nama }}</td>
                                     <td>
@@ -100,11 +94,16 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                         @endif</td>
                                     <td>Rp.{{ number_format($item -> total_bayar) }}</td>
                                     <td>{{ $item -> catatan }}</td>
-                                    <td><button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    <td>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal">
                                             <img src="{{ asset('img/back.png') }}" alt="" height="40px">
-                                        </button></td>
+                                        </button>
+                                        <a href="" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal" id="panggil_modal">Coba</a>
+                                    </td>
                                 </tr>
+                                @endif
                                 @endforeach
                                 @else
                                 <tr>
@@ -112,7 +111,9 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                                         <h5>Masih belum ada pemesanan</h5>
                                     </td>
                                 </tr>
+
                                 @endif
+
                             </tbody>
                         </table>
                     </div>
@@ -137,12 +138,14 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                             value="{{ date('Y-m-d') }}">
                     </div>
 
-                    @if (!empty($order))
+                    @if ($orderDetails != null)
                     @foreach ($orderDetails as $item)
+                    @if ($item -> order -> status == 1 && $item -> order -> user_id == Auth::user() -> id)
                     <div class="mb-3">
-                        <input type="hidden" class="form-control" id="tanggal" name="order_id"
-                            value="{{ $item -> id }}">
+                        <input type="text" class="form-control" id="tanggal" name="order_id"
+                            value="{{ $item -> order -> id }}">
                     </div>
+                    @endif
                     @endforeach
                     @endif
                 </div>
@@ -154,4 +157,9 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
         </div>
     </div>
 </div>
+<script>
+    const btn = document.querySelectorAll('#panggil_modal');
+
+
+</script>
 @endsection

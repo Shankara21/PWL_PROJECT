@@ -114,11 +114,11 @@ class HomepageController extends Controller
 
     public function onProcess()
     {
-        $data = [
-            'order' => $this->Order->allData()
-        ];
+        // $data = [
+        //     'order' => $this->Order->allData()
+        // ];
         // $order = Order::where('user_id', auth()->user()->id)->where('status', 1)->get();
-
+        $orderDetails = OrderDetail::all();
         // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
         // $order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
         // $length = $order->count();
@@ -131,7 +131,7 @@ class HomepageController extends Controller
         // dd($tes->harga_sewa);
         return view('homepage.onProcess', [
             'title' => 'Checkout',
-
+            'orderDetails' => $orderDetails,
             // 'order' => $order,
             // 'orderDetail' => $orderDetail,
         ]);
@@ -221,8 +221,6 @@ class HomepageController extends Controller
 
     public function export($id)
     {
-
-
         $orderDetails = OrderDetail::where('order_id', $id)->first();
         // return view('export.template1', [
         //     'orderDetails' => $orderDetails
@@ -236,5 +234,13 @@ class HomepageController extends Controller
         ])->setPaper('a4', 'portrait');
         return $pdf->download('GO Rent - Laporan Penyewaan ' . $orderDetails->order->user->name . '.pdf');
         // return $pdf->stream();
+    }
+    public function exportOrder()
+    {
+        $order = OrderDetail::all();
+        return view('export.template2', [
+            'order' => $order,
+            'title' => 'kontol'
+        ]);
     }
 }
