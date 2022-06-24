@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use PDF;
 
 class HomepageController extends Controller
 {
@@ -110,9 +111,14 @@ class HomepageController extends Controller
             'banks' => Bank::all(),
         ]);
     }
+
     public function onProcess()
     {
-        // $order = Order::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        $data = [
+            'order' => $this->Order->allData()
+        ];
+        // $order = Order::where('user_id', auth()->user()->id)->where('status', 1)->get();
+
         // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
         // $order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
         // $length = $order->count();
@@ -125,6 +131,7 @@ class HomepageController extends Controller
         // dd($tes->harga_sewa);
         return view('homepage.onProcess', [
             'title' => 'Checkout',
+
             // 'order' => $order,
             // 'orderDetail' => $orderDetail,
         ]);
@@ -210,5 +217,24 @@ class HomepageController extends Controller
 
 
         return redirect('/history')->with('success', 'Pengembalian Diterima!');
+    }
+
+    public function export($id)
+    {
+
+
+        $orderDetails = OrderDetail::where('order_id', $id)->first();
+        // return view('export.template1', [
+        //     'orderDetails' => $orderDetails
+        // ]);
+        // $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('export.template1', [
+        //     'orderDetails' => $orderDetails
+        // ]);
+        $pdf = PDF::loadview('export.template1', [
+            'orderDetails' => $orderDetails,
+            // 'title' => 'Export PDF',
+        ])->setPaper('a4', 'portrait');
+        return $pdf->download('GO Rent - Laporan Penyewaan ' . $orderDetails->order->user->name . '.pdf');
+        // return $pdf->stream();
     }
 }

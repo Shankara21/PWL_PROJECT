@@ -66,7 +66,7 @@
                                             <strong class="text-danger">Belum melakukan <br>pembayaran!</strong>
                                             @endif
                                         </td>
-                                        <td>Rp. {{ number_format($order -> total_bayar) }}</td>
+                                        <td>Rp. {{ number_format($order -> total_bayar) }} </td>
                                         <td>
                                             @if(!empty($order-> bukti_pembayaran))
                                             <img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt=""
@@ -75,11 +75,14 @@
 
                                         <td>
                                             <div class="d-flex">
-                                                <form action="">
-                                                    <button class="btn btn-warning shadow sharp me-1"><i
-                                                            class="fas fa-check-circle"
-                                                            style="font-size: 1.5em"></i></button>
-                                                </form>
+                                                <a href="/export/{{ $order -> id }}"
+                                                    class="btn btn-primary shadow sharp me-1" @if($order -> order ->
+                                                    status != 2)
+                                                    style="pointer-events: none;"
+                                                    @endif
+                                                    >
+                                                    <i class="fas fa-file-export" style="font-size: 1.5em"></i>
+                                                </a>
                                                 <a href="/dashboard/order/{{$order->id}}"
                                                     class="btn btn-info shadow  sharp me-1"><i class="fas fa-eye "
                                                         style="font-size: 1.5em"></i>

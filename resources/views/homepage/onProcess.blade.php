@@ -1,9 +1,10 @@
 @php
-$order = \App\Models\Order::where('user_id', Auth::user() -> id) -> where('status', 1) -> first();
+$order = \App\Models\Order::where('user_id', Auth::user() -> id) -> where('status', 1) -> get();
 
 if(!empty($order)){
 $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
 }
+
 @endphp
 @extends('homepage.layouts.main')
 @section('content')

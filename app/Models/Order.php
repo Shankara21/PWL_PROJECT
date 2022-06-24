@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
@@ -26,5 +27,12 @@ class Order extends Model
     public function pengembalian()
     {
         return $this->hasOne(Pengembalian::class);
+    }
+    public function allData()
+    {
+        return DB::table('orders')
+            ->join('order_details', 'order_id', '=', 'orders.id')
+            ->where('orders.status', '=', 1)
+            ->get();
     }
 }

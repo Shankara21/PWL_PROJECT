@@ -51,6 +51,7 @@ Route::controller(HomepageController::class)->group(function () {
     Route::get('/profile', 'profile')->middleware('auth');
     Route::Post('/profile', 'update')->middleware('auth');
     Route::post('/return', 'pengembalian')->middleware('auth');
+    Route::get('/export/{id}', 'export')->middleware('auth');
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 Route::resource('/orderDetail', OrderDetailController::class);
