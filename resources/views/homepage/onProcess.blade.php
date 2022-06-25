@@ -96,7 +96,7 @@
                                     <td>{{ $item -> catatan }}</td>
                                     <td>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
+                                            data-bs-target="#exampleModal-{{ $item->order_id }}">
                                             <img src="{{ asset('img/back.png') }}" alt="" height="40px">
                                         </button>
                                         <a href="" class="btn btn-danger" data-bs-toggle="modal"
@@ -122,7 +122,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+@if ($orderDetails != null)
+@foreach ($orderDetails as $item)
+@if ($item -> order -> status == 1 && $item -> order -> user_id == Auth::user() -> id)
+<div class="modal fade" id="exampleModal-{{ $item->order_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <form action="/return" method="POST">
@@ -138,16 +142,12 @@
                             value="{{ date('Y-m-d') }}">
                     </div>
 
-                    @if ($orderDetails != null)
-                    @foreach ($orderDetails as $item)
-                    @if ($item -> order -> status == 1 && $item -> order -> user_id == Auth::user() -> id)
+
                     <div class="mb-3">
                         <input type="text" class="form-control" id="tanggal" name="order_id"
                             value="{{ $item -> order -> id }}">
                     </div>
-                    @endif
-                    @endforeach
-                    @endif
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -157,6 +157,9 @@
         </div>
     </div>
 </div>
+@endif
+@endforeach
+@endif
 <script>
     const btn = document.querySelectorAll('#panggil_modal');
 
