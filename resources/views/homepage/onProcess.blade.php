@@ -93,7 +93,13 @@
                                         {{ 'Dengan Supir + BBM' }}
                                         @endif</td>
                                     <td>Rp.{{ number_format($item -> total_bayar) }}</td>
-                                    <td>{{ $item -> catatan }}</td>
+                                    <td>
+                                        @if ($item -> catatan)
+                                        {{ $item -> catatan }}
+                                        @else
+                                        -
+                                        @endif
+                                    </td>
                                     <td>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal-{{ $item->order_id }}">

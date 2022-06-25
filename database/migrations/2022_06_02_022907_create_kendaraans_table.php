@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('tahun');
             $table->integer('harga');
             $table->string('deskripsi');
+            $table->integer('stock')->default(1);
             $table->timestamps();
         });
     }

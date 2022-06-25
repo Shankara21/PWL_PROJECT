@@ -42,6 +42,11 @@
                 </div>
             </div>
             <div class="col-lg-6 mb-4">
+                <div style="width: 40%" class="text-center">
+                    <h5 class="bg-success rounded text-white p-2"><i class="fas fa-check-circle"></i> Tersedia!</h5>
+                    <h5 class="bg-danger rounded text-white p-2"><i class="fas fa-times-circle"></i> Tidak Tersedia!
+                    </h5>
+                </div>
                 <div class="card">
                     <div class="card-body pt-3">
                         <!-- Bordered Tabs -->

@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use Carbon\Carbon;
 use App\Models\Bank;
 use App\Models\User;
 use App\Models\Brand;
+use App\Models\Denda;
 use App\Models\Order;
 use App\Models\Category;
 use App\Models\Kendaraan;
 use App\Models\Testimoni;
 use App\Models\OrderDetail;
 use App\Models\Pengembalian;
-use App\Models\PengembalianDetail;
 use Illuminate\Http\Request;
+use App\Models\PengembalianDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
-use PDF;
 
 class HomepageController extends Controller
 {
@@ -35,12 +36,14 @@ class HomepageController extends Controller
         $dengan_sopir = $kendaraan->harga + 50000;
         $sopir_bbm = $kendaraan->harga + 100000;
 
+        $orderDetails = OrderDetail::where('kendaraan_id', $kendaraan->id)->first();
         return view('homepage.details', [
             'kendaraan' => $kendaraan,
             'title' => 'Details ' . $kendaraan->name,
             'status' => $main,
             'dengan_sopir' => $dengan_sopir,
             'sopir_bbm' => $sopir_bbm,
+            'orderDetails' => $orderDetails,
         ]);
     }
     public function service()
@@ -158,7 +161,26 @@ class HomepageController extends Controller
     }
     public function details($id)
     {
-        dd($id);
+        $orderDetails = OrderDetail::where('order_id', $id)->first();
+        $pengembalian = Pengembalian::where('order_id', $id)->first();
+        $pengembalianDetails = PengembalianDetail::where('pengembalian_id', $pengembalian->id)->first();
+        $denda = Denda::where('order_detail_id', $orderDetails->id)->first();
+        $selisih = '';
+        $durasi = $orderDetails->lama_sewa * 24;
+        $jangka = date('Y-m-d', strtotime($orderDetails->tanggal_sewa . '+' . $durasi . 'hours'));
+        if ($denda) {
+            $tgl_kembali = Carbon::parse($denda->pengembalianDetail->tanggal_kembali);
+            $selisih = $tgl_kembali->diffInDays($jangka);
+        }
+        return view('homepage.details-history', [
+            'title' => 'Details',
+            'orderDetails' => $orderDetails,
+            'pengembalian' => $pengembalian,
+            'pengembalianDetails' => $pengembalianDetails,
+            'denda' => $denda,
+            'selisih' => $selisih,
+            'tenggang' => $jangka,
+        ]);
     }
     public function update(Request $request)
     {
