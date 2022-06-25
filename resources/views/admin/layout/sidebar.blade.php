@@ -44,6 +44,11 @@
                     <span class="nav-text">Order</span>
                 </a>
             </li>
+            <li><a href="/dashboard/pengembalian" class="" aria-expanded="false">
+                <i class="fas fa-undo"></i>
+                    <span class="nav-text">Pengembalian</span>
+                </a>
+            </li>
             <li><a href="/dashboard/denda" class="" aria-expanded="false">
                 <i class="fas fa-calendar-times"></i>
                 <span class="nav-text">Denda</span>
