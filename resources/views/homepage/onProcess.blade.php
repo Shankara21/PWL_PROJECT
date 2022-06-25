@@ -99,8 +99,6 @@
                                             data-bs-target="#exampleModal-{{ $item->order_id }}">
                                             <img src="{{ asset('img/back.png') }}" alt="" height="40px">
                                         </button>
-                                        <a href="" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal" id="panggil_modal">Coba</a>
                                     </td>
                                 </tr>
                                 @endif
@@ -126,7 +124,8 @@
 @if ($orderDetails != null)
 @foreach ($orderDetails as $item)
 @if ($item -> order -> status == 1 && $item -> order -> user_id == Auth::user() -> id)
-<div class="modal fade" id="exampleModal-{{ $item->order_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal-{{ $item->order_id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <form action="/return" method="POST">
@@ -144,7 +143,7 @@
 
 
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="tanggal" name="order_id"
+                        <input type="hidden" class="form-control" id="tanggal" name="order_id"
                             value="{{ $item -> order -> id }}">
                     </div>
 

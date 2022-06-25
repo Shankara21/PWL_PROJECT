@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Denda extends Model
 {
     use HasFactory;
+    protected $table = 'dendas';
+    protected $primaryKey = 'id';
 
     protected $guarded = ['id'];
     public function user()
@@ -24,7 +26,7 @@ class Denda extends Model
     }
     public function pengembalianDetail()
     {
-        return $this->belongsTo(PengembalianDetail::class);
+        return $this->belongsTo(PengembalianDetail::class, 'pengembalianDetail_id');
     }
     public function bank()
     {

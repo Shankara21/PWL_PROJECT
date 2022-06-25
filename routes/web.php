@@ -53,6 +53,7 @@ Route::controller(HomepageController::class)->group(function () {
     Route::post('/return', 'pengembalian')->middleware('auth');
     Route::get('/export/{id}', 'export')->middleware('auth');
     Route::get('/exportOrder', 'exportOrder')->middleware('auth');
+    Route::get('/details/{id}', 'details')->middleware('auth');
 });
 Route::post('/contact', [ContactsController::class, 'store']);
 Route::resource('/orderDetail', OrderDetailController::class);

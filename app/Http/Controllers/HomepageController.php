@@ -140,10 +140,11 @@ class HomepageController extends Controller
     {
         // $order = Order::where('user_id', auth()->user()->id)->get();
         // $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        $orderDetails = OrderDetail::all();
         return view('homepage.history', [
             'title' => 'History',
             // 'order' => $order,
-            // 'orderDetail' => $orderDetail,
+            'orderDetails' => $orderDetails,
         ]);
     }
     public function profile()
@@ -154,6 +155,10 @@ class HomepageController extends Controller
             'title' => 'Profile',
 
         ]);
+    }
+    public function details($id)
+    {
+        dd($id);
     }
     public function update(Request $request)
     {

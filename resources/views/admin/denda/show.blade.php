@@ -28,7 +28,7 @@
                             </div>
                             <hr>
                             <div class="col-6">
-                                <table class="table">
+                                <table class="table table-borderless">
                                     <tbody>
                                         <tr>
                                             <th scope="row">
@@ -45,9 +45,8 @@
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>
-                                                    {{ $denda -> bank -> name }}
-                                                </h4>
+                                                <img src="{{ asset('img/payments/'.$denda -> bank -> name.'.png') }}"
+                                                    alt="" width="150px">
                                             </td>
                                         </tr>
                                         <tr>
@@ -61,6 +60,17 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">
+                                                <h4>Jatuh tempo</h4>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>
+                                                    {{ $tenggang }}
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
                                                 <h4>Tanggal Kembali</h4>
                                             </th>
                                             <th>:</th>
@@ -70,97 +80,36 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Tanggal Kembali</h4>
+                                                <h4>Keterlambatan</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
                                                 <h4>
-                                                    @if ($pengembalianDetail !== null)
-                                                    @if ($pengembalianDetail -> tanggal_kembali)
-                                                    {{ $pengembalianDetail -> tanggal_kembali }}
-                                                    @else
-                                                    -
-                                                    @endif
-                                                    @else
-                                                    -
-                                                    @endif
-                                                </h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <h4>Denda</h4>
-                                            </th>
-                                            <th>:</th>
-                                            <td>
-                                                <h4>
-                                                    @if ($pengembalian !== null)
-                                                    @if ($pengembalian -> denda_id)
-                                                    Rp. {{ number_format($pengembalian -> denda -> total) }}
-                                                    @else
-                                                    -
-                                                    @endif
-                                                    @else
-                                                    -
-                                                    @endif
-                                                </h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <h4>Durasi Sewa</h4>
-                                            </th>
-                                            <th>:</th>
-                                            <td>
-                                                <h4>{{ $orderDetail -> lama_sewa }} hari</h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <h4>Total Pembayaran</h4>
-                                            </th>
-                                            <th>:</th>
-                                            <td>
-                                                <h4>Rp.{{ number_format($orderDetail -> total_bayar) }}</h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <h4>Keterangan Sewa</h4>
-                                            </th>
-                                            <th>:</th>
-                                            <td>
-                                                @if ($orderDetail -> opsi == 1)
-                                                <h4>Lepas Kunci</h4>
-                                                @elseif ($orderDetail -> opsi == 2)
-                                                <h4>Dengan Sopir</h4>
-                                                @elseif ($orderDetail -> opsi == 3)
-                                                <h4>Dengan Sopir + BBM</h4>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <h4>Catatan Sewa</h4>
-                                            </th>
-                                            <th>:</th>
-                                            <td>
-                                                <h4>
-                                                    @if ($orderDetail -> catatan)
-                                                    {{ $orderDetail -> catatan }}
-                                                    @else
-                                                    -
-                                                    @endif
-                                                </h4>
-                                            </td>
-                                        </tr>
+                                                    @if($selisih)
 
+                                                    <span class="badge bg-danger">{{ $selisih }} Hari</span>
+                                                    @else
+                                                    -
+                                                    @endif
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <h4>Total Denda</h4>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>Rp.{{ number_format($denda -> total) }}</h4>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="col-6">
-                                <img src="{{ asset('img/kendaraan/'.$orderDetail -> kendaraan -> slug.'.png') }}" alt=""
-                                    height="250px">
+                                {{-- <img src="{{ asset('img/kendaraan/'.$orderDetail -> kendaraan -> slug.'.png') }}"
+                                alt=""
+                                height="250px"> --}}
                             </div>
                         </div>
                     </div>

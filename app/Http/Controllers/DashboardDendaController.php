@@ -52,11 +52,12 @@ class DashboardDendaController extends Controller
     {
         $durasi = $denda->orderDetail->lama_sewa * 24;
         $jangka = date('Y-m-d', strtotime($denda->orderDetail->tanggal_sewa . '+' . $durasi . 'hours'));
-        dd($denda->pengembalianDetail);
         $tgl_kembali = Carbon::parse($denda->pengembalianDetail->tanggal_kembali);
         $selisih = $tgl_kembali->diffInDays($jangka);
         return view('admin.denda.show', [
             'denda' => $denda,
+            'selisih' => $selisih,
+            'tenggang' => $jangka
         ]);
     }
 

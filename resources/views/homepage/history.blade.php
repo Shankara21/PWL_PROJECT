@@ -1,13 +1,3 @@
-@php
-$order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('status', 2) -> first();
-
-if(!empty($order)){
-$orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
-$pengembalian = \App\Models\Pengembalian::where('order_id', $order -> id)->first();
-$pengembalianDetail = \App\Models\PengembalianDetail::where('pengembalian_id', $pengembalian -> id) -> first();
-}
-
-@endphp
 @extends('homepage.layouts.main')
 
 @section('content')
@@ -70,11 +60,20 @@ $pengembalianDetail = \App\Models\PengembalianDetail::where('pengembalian_id', $
                                     <th scope="col">Option</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Catatan</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="align-baseline">
-                                @if (!empty($order))
+                                @if ($orderDetails != null)
                                 @foreach ($orderDetails as $item)
+                                @if ($item -> order -> status == 2 && $item -> order -> user_id == Auth::user() -> id)
+                                @php
+                                $pengembalian = \App\Models\Pengembalian::where('order_id', $item -> order_id)->first();
+                                $pengembalianDetails = \App\Models\PengembalianDetail::where('pengembalian_id',
+                                $pengembalian -> id)->first();
+                                // dd($pengembalianDetails);
+                                // dd($denda -> pengembalianDetail -> tanggal_kembali);
+                                @endphp
                                 <tr>
                                     <td>
                                         {{ $loop -> iteration }}
@@ -97,8 +96,8 @@ $pengembalianDetail = \App\Models\PengembalianDetail::where('pengembalian_id', $
                                         @endif
                                     </td>
                                     <td>{{ $item -> tanggal_sewa }}</td>
-                                    <td>{{ $item -> lama_sewa }}</td>
-                                    <td>{{ $pengembalianDetail -> tanggal_kembali }}</td>
+                                    <td>{{ $item -> lama_sewa }} hari</td>
+                                    <td>{{ $pengembalianDetails -> tanggal_kembali }}</td>
                                     <td>@if ($item -> opsi == 1)
                                         {{ 'Tanpa Sopir' }}
                                         @elseif ($item -> opsi == 2)
@@ -114,7 +113,10 @@ $pengembalianDetail = \App\Models\PengembalianDetail::where('pengembalian_id', $
                                         -
                                         @endif
                                     </td>
+                                    <td><a href="/details/{{ $item -> id }}" class="btn btn-primary"
+                                            title="Lihat Details"><i class="fas fa-eye"></i></a></td>
                                 </tr>
+                                @endif
                                 @endforeach
                                 @else
                                 <tr>
