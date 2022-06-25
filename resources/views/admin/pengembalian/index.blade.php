@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Pengambalian</h4>
-                        <div><a href="/pengembalian/pdf" class="btn btn-primary">
+                        <div><a href="/return/pdf" class="btn btn-primary">
                                 <i class="far fa-file-pdf"> Cetak PDF</i>
                             </a></div>
                     </div>
