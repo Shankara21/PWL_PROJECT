@@ -80,4 +80,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/dashboard/pengembalian', PengembalianController::class);
     Route::get('/order/pdf', [OrderController::class, 'cetak_pdf']);
     Route::get('/return/pdf', [PengembalianController::class, 'cetak_pdf']);
+    Route::get('/cetak/denda', [DashboardDendaController::class, 'cetak_pdf']);
 });

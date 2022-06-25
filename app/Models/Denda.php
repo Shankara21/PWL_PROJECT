@@ -18,7 +18,7 @@ class Denda extends Model
     }
     public function orderDetail()
     {
-        return $this->belongsTo(OrderDetail::class);
+        return $this->belongsTo(OrderDetail::class, 'order_detail_id');
     }
     public function pengembalian()
     {
