@@ -95,7 +95,7 @@ class DendaController extends Controller
      */
     public function show(Denda $denda)
     {
-        //
+        dd($denda);
     }
 
     /**

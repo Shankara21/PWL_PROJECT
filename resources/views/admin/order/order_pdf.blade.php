@@ -159,10 +159,10 @@
         </div>
         {{-- <div id="project">
             <div><span>PROJECT</span> Penyewaan {{ $orderDetails -> kendaraan -> category -> nama }}</div>
-            <div><span>CLIENT</span> {{ $orderDetails -> order -> user -> name }}</div>
-            <div><span>ADDRESS</span> {{ $orderDetails -> order -> user -> address }}</div>
-            <div><span>EMAIL</span> {{ $orderDetails -> order -> user -> email }}</div>
-            <div><span>PHONE</span> {{ $orderDetails -> order -> user -> phone }}</div>
+        <div><span>CLIENT</span> {{ $orderDetails -> order -> user -> name }}</div>
+        <div><span>ADDRESS</span> {{ $orderDetails -> order -> user -> address }}</div>
+        <div><span>EMAIL</span> {{ $orderDetails -> order -> user -> email }}</div>
+        <div><span>PHONE</span> {{ $orderDetails -> order -> user -> phone }}</div>
         </div> --}}
     </header>
     <main>
@@ -186,7 +186,13 @@
                     <td class="service">{{ $order->lama_sewa }} Hari</td>
                     <td class="service">{{ $order->order->bank->name }}</td>
                     <td class="service">{{ $order->total_bayar }}</td>
-                    <td class="service">{{ $order->catatan }}</td>
+                    <td class="service">
+                        @if ($order->catatan )
+                        {{ $order->catatan }}
+                        @else
+                        -
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
 

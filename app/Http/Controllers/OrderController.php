@@ -92,8 +92,13 @@ class OrderController extends Controller
         $mainOrder = Order::find($order->id);
         $orderDetail = OrderDetail::where('order_id', $order->id)->first();
         $pengembalian = Pengembalian::where('order_id', $mainOrder->id)->first();
-        $pengembalianDetail = PengembalianDetail::where('pengembalian_id', $pengembalian->id)->first();
+        if ($pengembalian) {
+            $pengembalianDetail = PengembalianDetail::where('pengembalian_id', $pengembalian->id)->first();
+        } else {
+            $pengembalianDetail = null;
+        }
 
+        // dd($pengembalianDetail);
         return view('admin.order.show', [
             'order' => $mainOrder,
             'orderDetail' => $orderDetail,
@@ -143,6 +148,6 @@ class OrderController extends Controller
             'orderDetails' => $key,
             // 'title' => 'Export PDF',
         ])->setPaper('a4', 'portrait');
-        return $pdf->download('GO Rent - Laporan Penyewaan ');
+        return $pdf->download('GO Rent - Laporan Penyewaan.pdf');
     }
 }

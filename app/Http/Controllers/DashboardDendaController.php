@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Denda;
+use App\Models\PengembalianDetail;
 use Illuminate\Http\Request;
 
 class DashboardDendaController extends Controller
@@ -48,7 +50,14 @@ class DashboardDendaController extends Controller
      */
     public function show(Denda $denda)
     {
-        //
+        $durasi = $denda->orderDetail->lama_sewa * 24;
+        $jangka = date('Y-m-d', strtotime($denda->orderDetail->tanggal_sewa . '+' . $durasi . 'hours'));
+        dd($denda->pengembalianDetail);
+        $tgl_kembali = Carbon::parse($denda->pengembalianDetail->tanggal_kembali);
+        $selisih = $tgl_kembali->diffInDays($jangka);
+        return view('admin.denda.show', [
+            'denda' => $denda,
+        ]);
     }
 
     /**

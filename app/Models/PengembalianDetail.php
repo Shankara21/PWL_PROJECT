@@ -18,6 +18,6 @@ class PengembalianDetail extends Model
     }
     public function denda()
     {
-        return $this->belongsTo(Denda::class);
+        return $this->hasOne(Denda::class);
     }
 }

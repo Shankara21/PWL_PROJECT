@@ -17,4 +17,8 @@ class OrderDetail extends Model
     {
         return $this->belongsTo(Kendaraan::class);
     }
+    public function denda()
+    {
+        return $this->hasOne(Denda::class);
+    }
 }

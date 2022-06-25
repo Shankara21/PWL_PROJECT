@@ -14,7 +14,7 @@ class Denda extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function orderDetails()
+    public function orderDetail()
     {
         return $this->belongsTo(OrderDetail::class);
     }
@@ -22,7 +22,7 @@ class Denda extends Model
     {
         return $this->belongsTo(Pengembalian::class);
     }
-    public function pengembalianDetails()
+    public function pengembalianDetail()
     {
         return $this->belongsTo(PengembalianDetail::class);
     }
