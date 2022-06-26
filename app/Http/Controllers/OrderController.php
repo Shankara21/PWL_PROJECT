@@ -22,6 +22,7 @@ class OrderController extends Controller
         $order = OrderDetail::all();
         return view('admin.order.index', [
             'orders' => $order,
+            'title' => 'Order',
         ]);
     }
 
@@ -104,6 +105,7 @@ class OrderController extends Controller
             'orderDetail' => $orderDetail,
             'pengembalian' => $pengembalian,
             'pengembalianDetail' => $pengembalianDetail,
+            'title' => 'Detail Order',
         ]);
     }
 

@@ -20,6 +20,7 @@ class DashboardController extends Controller
     public function index()
     {
         return view('admin.index', [
+            'title' => 'Dashboard',
             'user' => User::count(),
             'brand' => Brand::count(),
             'category' => Category::count(),

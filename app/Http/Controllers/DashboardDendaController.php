@@ -19,6 +19,7 @@ class DashboardDendaController extends Controller
     {
         return view('admin.denda.index', [
             'dendas' => Denda::all(),
+            'title' => 'Denda',
         ]);
     }
 
@@ -58,7 +59,8 @@ class DashboardDendaController extends Controller
         return view('admin.denda.show', [
             'denda' => $denda,
             'selisih' => $selisih,
-            'tenggang' => $jangka
+            'tenggang' => $jangka,
+            'title' => 'Detail Denda',
         ]);
     }
 

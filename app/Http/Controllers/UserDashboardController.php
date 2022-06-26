@@ -18,6 +18,7 @@ class UserDashboardController extends Controller
     {
         return view('admin.user.index', [
             'users' => User::all(),
+            'title' => 'User',
         ]);
     }
 
@@ -28,7 +29,9 @@ class UserDashboardController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        return view('admin.user.create', [
+            'title' => 'Tambah User',
+        ]);
     }
 
     /**
@@ -81,6 +84,7 @@ class UserDashboardController extends Controller
     {
         return view('admin.user.edit', [
             'user' => $user,
+            'title' => 'Edit User',
         ]);
     }
 

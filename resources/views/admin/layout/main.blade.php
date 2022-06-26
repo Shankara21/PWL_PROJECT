@@ -15,7 +15,7 @@
 	<meta name="format-detection" content="telephone=no">
 
 	<!-- PAGE TITLE HERE -->
-	<title>GO Rent Dashboard</title>
+	<title>GO Rent Dashboard - {{ $title }}</title>
 
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="{{asset('admin/images/favicon.png')}}">

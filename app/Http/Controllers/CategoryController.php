@@ -18,6 +18,7 @@ class CategoryController extends Controller
     {
         return view('admin.kategori.index', [
             'categories' => Category::all(),
+            'title' => 'Category',
         ]);
     }
 
@@ -28,7 +29,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori.create');
+        return view('admin.kategori.create', [
+            'title' => 'Tambah Category',
+        ]);
     }
 
     /**
@@ -72,6 +75,7 @@ class CategoryController extends Controller
     {
         return view('admin.kategori.edit', [
             'category' => $category,
+            'title' => 'Edit Category',
         ]);
     }
 

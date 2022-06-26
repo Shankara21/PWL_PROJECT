@@ -18,6 +18,7 @@ class BankController extends Controller
     {
         return view('admin.bank.index', [
             'banks' => Bank::all(),
+            'title' => 'Bank',
         ]);
     }
 
@@ -28,7 +29,9 @@ class BankController extends Controller
      */
     public function create()
     {
-        return view('admin.bank.create');
+        return view('admin.bank.create', [
+            'title' => 'Tambah Bank',
+        ]);
     }
 
     /**
@@ -74,6 +77,7 @@ class BankController extends Controller
     {
         return view('admin.bank.edit', [
             'bank' => $bank,
+            'title' => 'Edit Bank',
         ]);
     }
 

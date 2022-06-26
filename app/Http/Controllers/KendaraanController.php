@@ -25,6 +25,7 @@ class KendaraanController extends Controller
             'brands' => Brand::all(),
             'categories' => Category::all(),
             'types' => Type::all(),
+            'title' => 'Kendaraan',
         ]);
     }
 
@@ -39,6 +40,7 @@ class KendaraanController extends Controller
             'brands' => Brand::all(),
             'categories' => Category::all(),
             'types' => Type::all(),
+            'title' => 'Tambah Kendaraan',
         ]);
     }
 
@@ -86,6 +88,7 @@ class KendaraanController extends Controller
             'brand' => Brand::all(),
             'category' => Category::all(),
             'type' => Type::all(),
+            'title' => 'Detail Kendaraan',
         ]);
     }
 
@@ -102,6 +105,7 @@ class KendaraanController extends Controller
             'brands' => Brand::all(),
             'categories' => Category::all(),
             'types' => Type::all(),
+            'title' => 'Edit Kendaraan',
         ]);
     }
 

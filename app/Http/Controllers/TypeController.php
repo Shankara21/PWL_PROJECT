@@ -18,6 +18,7 @@ class TypeController extends Controller
     {
         return view('admin.tipe.index', [
             'types' => Type::all(),
+            'title' => 'Type',
         ]);
     }
 
@@ -28,7 +29,9 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.tipe.create');
+        return view('admin.tipe.create', [
+            'title' => 'Tambah Type',
+        ]);
     }
 
     /**
@@ -72,6 +75,7 @@ class TypeController extends Controller
     {
         return view('admin.tipe.edit', [
             'type' => Type::all(),
+            'title' => 'Edit Type',
         ]);
     }
 

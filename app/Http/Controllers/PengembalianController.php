@@ -19,6 +19,7 @@ class PengembalianController extends Controller
     {
         return view('admin.pengembalian.index', [
             'returns' => PengembalianDetail::all(),
+            'title' => 'Pengembalian',
         ]);
     }
 
@@ -53,6 +54,7 @@ class PengembalianController extends Controller
     {
         return view('admin.pengembalian.show', [
             'return' => PengembalianDetail::find($pengembalian->id),
+            'title' => 'Detail Pengembalian',
         ]);
     }
 

@@ -17,6 +17,7 @@ class ContactsController extends Controller
     {
         return view('admin.contacts.index', [
             'contacts' => Contacts::all(),
+            'title' => 'Contact',
         ]);
     }
 

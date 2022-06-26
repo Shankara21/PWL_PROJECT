@@ -18,6 +18,7 @@ class BrandController extends Controller
     {
         return view('admin.brand.index', [
             'brands' => Brand::all(),
+            'title' => 'Brand',
         ]);
     }
 
@@ -28,7 +29,9 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.brand.create');
+        return view('admin.brand.create',[
+            'title' => 'Tambah Brand',
+        ]);
     }
 
     /**
@@ -70,6 +73,7 @@ class BrandController extends Controller
     {
         return view('admin.brand.edit', [
             'brand' => $brand,
+            'title' => 'Edit Brand',
         ]);
     }
 
