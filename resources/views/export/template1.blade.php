@@ -39,7 +39,7 @@
         }
 
         #logo img {
-            width: 90px;
+            width: 200px;
         }
 
         h1,
@@ -56,7 +56,7 @@
             font-weight: normal;
             text-align: center;
             margin: 0 0 20px 0;
-            background: url(dimension.png);
+            background: url('img/dimension.png');
         }
 
         #project {
@@ -151,7 +151,9 @@
 
 <body>
     <header class="clearfix">
-
+        <div id="logo">
+            <img src="{{ public_path('img/logoo.png') }}" alt="" width="250px">
+        </div>
         <h1 style="margin-top:2em ;">Pesanan ke-{{ $orderDetails -> order_id }}</h1>
         <div id="company" class="clearfix">
             <div>GO Rent</div>

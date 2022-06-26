@@ -71,10 +71,13 @@ $cekStock = $kendaraan -> stock;
                                 @foreach ($orderDetails as $item)
                                 <tr>
                                     <td>
-                                        <form action="/orderDetail/{{ $item -> id }}" method="Post">
+                                        <form action="/orderDetail/{{ $item -> id }}" method="Post"
+                                            id="data-{{ $item -> id }}">
                                             @method('DELETE')
                                             @csrf
-                                            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn btn-danger delete"
+                                                data-name="{{ $item -> kendaraan -> nama }}"
+                                                data-slug="{{ $item -> id }}"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                     <td><img src="@if (!$item -> kendaraan -> image)
@@ -153,4 +156,37 @@ $cekStock = $kendaraan -> stock;
         </div>
     </div>
 </div>
+
+@endsection
+@section('sweetAlert')
+<script>
+    const deleteButton = document.getelementbyClassName('delete');
+deleteButton.addEventListener('click', function(event){
+    event.preventDefault();
+
+    const postSlug = this.dataset.slug;
+    const postTitle = this.dataset.name;
+
+    Swal.fire({
+        title:'Apakah kamu yakin menghapus data ini?',
+        text:'Kamu akan menghapus pesanan '+postTitle,
+        icon:'warning',
+        showCancelButton:true,
+        confirmButtonColor:'#3085d6',
+        cancelButtonColor:'#d33',
+        confirmButtonText:'Ya, hapus!',
+    }).then((result)=>{
+        if(result.isConfirmed){
+            const dataSlug = document.getElementById('data-'+postSlug);
+            dataSlug.submit();
+            Swal.fire(
+                'Berhasil!',
+                'Pesanan berhasil dihapus',
+                'success'
+            )
+        }
+    })
+    })
+
+</script>
 @endsection

@@ -39,7 +39,7 @@
         }
 
         #logo img {
-            width: 90px;
+            width: 200px;
         }
 
         h1,
@@ -56,7 +56,7 @@
             font-weight: normal;
             text-align: center;
             margin: 0 0 20px 0;
-            background: url(dimension.png);
+            background: url('img/dimension.png');
         }
 
         #project {
@@ -151,19 +151,15 @@
 
 <body>
     <header class="clearfix">
+        <div id="logo">
+            <img src="{{ public_path('img/logoo.png') }}" alt="" width="250px">
+        </div>
         <div id="company" class="clearfix">
             <div>GO Rent</div>
             <div>Jl. Pahlawan No.10, Kec.Blimbing,<br /> Kota Malang, Jawa Timur 65126</div>
             <div>0341-1234567</div>
             <div>GoRent@gmail.com</div>
         </div>
-        {{-- <div id="project">
-            <div><span>PROJECT</span> Penyewaan {{ $orderDetails -> kendaraan -> category -> nama }}</div>
-        <div><span>CLIENT</span> {{ $orderDetails -> order -> user -> name }}</div>
-        <div><span>ADDRESS</span> {{ $orderDetails -> order -> user -> address }}</div>
-        <div><span>EMAIL</span> {{ $orderDetails -> order -> user -> email }}</div>
-        <div><span>PHONE</span> {{ $orderDetails -> order -> user -> phone }}</div>
-        </div> --}}
     </header>
     <main>
         <h5>Laporan Denda</h5>

@@ -90,6 +90,9 @@
     <script src="/js/main.js"></script>
     <!-- Template Javascript -->
     {{-- <script src="{{ asset('js/main.js') }}"></script> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @yield('sweetAlert')
 </body>
 
 </html>
