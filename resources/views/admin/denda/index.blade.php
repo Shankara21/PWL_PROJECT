@@ -66,23 +66,10 @@
 
                                         <td>
                                             <div class="d-flex">
-                                                <form action="">
-                                                    <button class="btn btn-warning shadow sharp me-1"><i
-                                                            class="fas fa-check-circle"
-                                                            style="font-size: 1.5em"></i></button>
-                                                </form>
                                                 <a href="/dashboard/denda/{{$denda->id}}"
                                                     class="btn btn-info shadow  sharp me-1"><i class="fas fa-eye "
                                                         style="font-size: 1.5em"></i>
                                                 </a>
-                                                <form action="/dashboard/category/{{ $denda->slug }}" method="POST"
-                                                    class="d-inline">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button class="btn btn-danger shadow  sharp"
-                                                        onclick="return confirm('Yakin?')"><i class="fa fa-trash "
-                                                            style="font-size: 1.5em"></i></button>
-                                                </form>
                                             </div>
                                         </td>
                                         @endforeach
