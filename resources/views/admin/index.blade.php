@@ -359,6 +359,36 @@
 											</div>
 										</div>
 									</div>
+                                    <div class="col-xl-6 col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div
+													class="card-title d-flex align-items-start justify-content-between">
+													<i class="fas fa-undo fa-2x" style="color: orange"></i>
+
+												</div>
+												<h4 class="fw-semibold d-block mb-1">Pengembalian</h4>
+												<h4>
+													<h3 class="card-title mb-2 d-inline pr-3">{{ $order }}</h3>
+												</h4>
+											</div>
+										</div>
+									</div>
+                                    <div class="col-xl-6 col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<div
+													class="card-title d-flex align-items-start justify-content-between">
+													<i class="fas fa-calendar-times fa-2x" style="color: orange"></i>
+
+												</div>
+												<h4 class="fw-semibold d-block mb-1">Denda</h4>
+												<h4>
+													<h3 class="card-title mb-2 d-inline pr-3">{{ $order }}</h3>
+												</h4>
+											</div>
+										</div>
+									</div>
 								</div>
 
 							</div>

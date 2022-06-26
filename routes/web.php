@@ -21,6 +21,7 @@ use App\Http\Controllers\DashboardDendaController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\UserDashboardController;
 
 /*
@@ -76,5 +77,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('/dashboard/order', OrderController::class);
     Route::resource('/dashboard/user', UserDashboardController::class);
     Route::resource('/dashboard/denda', DashboardDendaController::class);
+    Route::resource('/dashboard/pengembalian', PengembalianController::class);
     Route::get('/order/pdf', [OrderController::class, 'cetak_pdf']);
+    Route::get('/return/pdf', [PengembalianController::class, 'cetak_pdf']);
+    Route::get('/cetak/denda', [DashboardDendaController::class, 'cetak_pdf']);
 });

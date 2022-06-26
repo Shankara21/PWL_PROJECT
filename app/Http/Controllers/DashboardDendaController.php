@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Denda;
 use App\Models\PengembalianDetail;
 use Illuminate\Http\Request;
+use PDF;
 
 class DashboardDendaController extends Controller
 {
@@ -93,5 +94,15 @@ class DashboardDendaController extends Controller
     public function destroy(Denda $denda)
     {
         //
+    }
+
+    public function cetak_pdf()
+    {
+        $denda = Denda::all();
+        $pdf = PDF::loadview('admin.denda.denda_pdf', [
+            'dendas' => $denda,
+            // 'title' => 'Export PDF',
+        ])->setPaper('a4', 'portrait');
+        return $pdf->download('GO Rent - Laporan Denda.pdf');
     }
 }

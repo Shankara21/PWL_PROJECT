@@ -15,8 +15,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Denda</h4>
-                        <div><a href="/dashboard/category/create" class="btn btn-primary">
-                                <i class="fas fa-plus"> Tambah Data</i>
+                        <div><a href="/cetak/denda" class="btn btn-primary">
+                            <i class="far fa-file-pdf"> Cetak PDF</i>
                             </a></div>
                     </div>
                     <div class="card-body">

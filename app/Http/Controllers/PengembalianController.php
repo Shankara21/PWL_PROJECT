@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pengembalian;
 use App\Http\Requests\StorePengembalianRequest;
 use App\Http\Requests\UpdatePengembalianRequest;
+use App\Models\PengembalianDetail;
+use PDF;
 
 class PengembalianController extends Controller
 {
@@ -15,7 +17,9 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pengembalian.index', [
+            'returns' => PengembalianDetail::all(),
+        ]);
     }
 
     /**
@@ -47,7 +51,9 @@ class PengembalianController extends Controller
      */
     public function show(Pengembalian $pengembalian)
     {
-        //
+        return view('admin.pengembalian.show', [
+            'return' => PengembalianDetail::find($pengembalian->id),
+        ]);
     }
 
     /**
@@ -82,5 +88,15 @@ class PengembalianController extends Controller
     public function destroy(Pengembalian $pengembalian)
     {
         //
+    }
+
+    public function cetak_pdf()
+    {
+        $key = PengembalianDetail::all();
+        $pdf = PDF::loadview('admin.pengembalian.return_pdf', [
+            'returns' => $key,
+            // 'title' => 'Export PDF',
+        ])->setPaper('a4', 'portrait');
+        return $pdf->download('GO Rent - Laporan Pengembalian.pdf');
     }
 }
