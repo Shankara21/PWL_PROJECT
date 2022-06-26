@@ -4,6 +4,12 @@ $order = \App\Models\Order::where('user_id', auth()->user()->id) -> where('statu
 if(!empty($order)){
 $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get();
 }
+
+if (!empty($orderDetails)) {
+$kendaraan = \App\Models\Kendaraan::where('id', $orderDetails[0] -> kendaraan_id) -> first();
+$cekStock = $kendaraan -> stock;
+}
+
 @endphp
 @extends('homepage.layouts.main')
 
@@ -132,7 +138,17 @@ $orderDetails = \App\Models\OrderDetail::where('order_id', $order -> id) -> get(
                 </div>
                 <a href="/checkout" class="btn btn-primary w-100 @if (empty($order))
                     disabled
+                @endif @if (!empty($order))
+                    @if ($cekStock == 0)
+                    disabled
+                @endif
                 @endif">Checkout</a>
+                @if (!empty($order))
+                @if ($cekStock == 0)
+                <span class="text-danger text-start"><strong class="fst-italic">*Maaf kendaraan yang anda pilih
+                        tidak tersedia</strong></span>
+                @endif
+                @endif
             </div>
         </div>
     </div>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreOrderDetailRequest;
 use App\Models\Bank;
+use App\Models\Kendaraan;
 use App\Models\OrderDetail;
 
 class checkoutController extends Controller
@@ -29,6 +30,8 @@ class checkoutController extends Controller
         // dd($request->all());
         $order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
         $orderDetail = OrderDetail::where('order_id', $order->id)->first();
+        $kendaraan = Kendaraan::where('id', $orderDetail->kendaraan_id)->first();
+
         $validatedData = $request->validate([
             'berkas' => 'image|file',
             'bukti_pembayaran' => 'image|file',
@@ -42,6 +45,9 @@ class checkoutController extends Controller
         if ($request->file('bukti_pembayaran')) {
             $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
         }
+
+        $ubahStock = 0;
+        Kendaraan::where('id', $kendaraan->id)->update(['stock' => $ubahStock]);
 
         OrderDetail::where('order_id', $order->id)->update($validatedData);
         $orderr['status'] = $order->status = 1;

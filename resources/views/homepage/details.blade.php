@@ -43,9 +43,12 @@
             </div>
             <div class="col-lg-6 mb-4">
                 <div style="width: 40%" class="text-center">
+                    @if ($kendaraan-> stock == 1)
                     <h5 class="bg-success rounded text-white p-2"><i class="fas fa-check-circle"></i> Tersedia!</h5>
+                    @elseif ($kendaraan-> stock == 0)
                     <h5 class="bg-danger rounded text-white p-2"><i class="fas fa-times-circle"></i> Tidak Tersedia!
                     </h5>
+                    @endif
                 </div>
                 <div class="card">
                     <div class="card-body pt-3">
@@ -198,12 +201,19 @@
                     <span class="text-danger text-start"><strong class="fst-italic">*Anda harus login terlebih
                             dahulu!</strong></span>
                     @endguest
+
                     <div class="btn-modal text-end" style="padding-right: 7em">
                         <button type="button" class="btn btn-primary w-75 " data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop" @guest disabled @endguest>
+                            data-bs-target="#staticBackdrop" @guest disabled @endguest @if ($kendaraan -> stock == 0)
+                            disabled
+                            @endif>
                             Lanjut Pemesanan <i class="fas fa-credit-card"></i>
                         </button>
                     </div>
+                    @if ($kendaraan -> stock == 0)
+                    <span class="text-danger text-start"><strong class="fst-italic">*Maaf kendaraan yang anda pilih
+                            tidak tersedia</strong></span>
+                    @endif
                 </div>
             </div>
         </div>

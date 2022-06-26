@@ -8,6 +8,7 @@ use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDendaRequest;
 use App\Http\Requests\UpdateDendaRequest;
+use App\Models\Kendaraan;
 use App\Models\Pengembalian;
 use App\Models\PengembalianDetail;
 
@@ -43,6 +44,8 @@ class DendaController extends Controller
     {
         $orderDetail = OrderDetail::where('order_id', $request->orderDetail)->first();
         $order = Order::where('id', $request->orderDetail)->where('status', 1)->first();
+
+        $kendaraan = Kendaraan::where('id', $orderDetail->kendaraan_id)->first();
 
         //! Membuat Denda terlebih dahulu 
         $validateData = $request->validate([
@@ -83,6 +86,10 @@ class DendaController extends Controller
         //! update status pada Order
         $order->status = 2;
         $order->update();
+
+        //! Mengembalikan Stock pada kendaraan yang sudah di kembalikan
+        $ubahStock = 1;
+        Kendaraan::where('id', $kendaraan->id)->update(['stock' => $ubahStock]);
 
         return redirect('/history')->with('success', 'Pembayaran denda berhasil!');
     }

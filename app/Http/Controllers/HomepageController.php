@@ -210,7 +210,7 @@ class HomepageController extends Controller
         $durasi = $orderDetail->lama_sewa * 24;
         $jangka = date('Y-m-d', strtotime($orderDetail->tanggal_sewa . '+' . $durasi . 'hours'));
         $order = Order::where('id', $request->order_id)->first();
-
+        $kendaraan = Kendaraan::where('id', $orderDetail->kendaraan_id)->first();
         $tgl_kembali = Carbon::parse($request->tanggal_kembali);
         $selisih = $tgl_kembali->diffInDays($jangka);
         $denda = $selisih * $orderDetail->total_bayar;
@@ -242,6 +242,8 @@ class HomepageController extends Controller
         $pengembalianDetail->tanggal_kembali = $request->tanggal_kembali;
         $pengembalianDetail->save();
 
+        $ubahStock = 1;
+        Kendaraan::where('id', $kendaraan->id)->update(['stock' => $ubahStock]);
 
         return redirect('/history')->with('success', 'Pengembalian Diterima!');
     }

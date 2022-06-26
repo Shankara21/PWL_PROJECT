@@ -157,8 +157,8 @@ class OrderDetailController extends Controller
     {
         $orderDetailId = OrderDetail::where('id', $orderDetail->id)->first();
         $orderId = Order::where('id', $orderDetailId->order_id)->first();
-        $orderId->total -= $orderDetailId->harga_sewa;
-        $orderId->update();
+        // $orderId->total -= $orderDetailId->harga_sewa;
+        // $orderId->update();
         $orderDelete = Order::where('status', 0)->first();
 
         $orderDetailId->delete();
