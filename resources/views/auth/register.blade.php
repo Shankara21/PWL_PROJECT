@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Admin Dashboard</title>
+    <title>Register</title>
 
     <!-- FAVICONS ICON -->
     <link rel="icon" href="/img/icon.png">
