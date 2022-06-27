@@ -85,6 +85,7 @@
                                         <th>Nama Kendaraan</th>
                                         <th>Brand</th>
                                         <th>Category</th>
+                                        <th>Plat Nomor</th>
                                         <th>Tipe</th>
                                         <th>Warna</th>
                                         <th>Harga</th>
@@ -105,11 +106,12 @@
                                             {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
                                             @else
                                             {{asset('storage/'.$kendaraan->image)}}
-                                          @endif" width="250px"></td>
+                                          @endif" width="200px"></td>
                                         <td>{{ $kendaraan->nama }}</td>
                                         <td>{{ $kendaraan->brand->nama }}</td>
                                         <td>{{ $kendaraan->category->nama }}</td>
                                         <td>{{ $kendaraan->type->nama }}</td>
+                                        <td>{{ $kendaraan -> plat_nomor }}</td>
                                         <td>{{ $kendaraan->warna }}</td>
                                         <td>{{ $kendaraan->harga }}</td>
                                         <td>

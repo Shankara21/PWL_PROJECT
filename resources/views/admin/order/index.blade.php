@@ -35,6 +35,7 @@
                                         <th>Status</th>
                                         <th>Payment</th>
                                         <th>Total</th>
+                                        <th>Tanggal Sewa</th>
                                         <th>Bukti Pembayaran</th>
                                         <th>Action</th>
                                     </tr>
@@ -67,12 +68,12 @@
                                             @endif
                                         </td>
                                         <td>Rp. {{ number_format($order -> total_bayar) }} </td>
+                                        <td>{{ $order -> tanggal_sewa }}</td>
                                         <td>
                                             @if(!empty($order-> bukti_pembayaran))
                                             <img src="{{ asset('storage/'.$order -> bukti_pembayaran) }}" alt=""
                                                 width="100px">
                                             @endif
-
                                         <td>
                                             <div class="d-flex">
                                                 <a href="/export/{{ $order -> id }}"

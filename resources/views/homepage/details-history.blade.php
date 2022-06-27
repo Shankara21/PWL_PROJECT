@@ -113,6 +113,17 @@
                             </tr>
                             <tr>
                                 <th class="text-start">
+                                    <h6>Plat Nomor</h6>
+                                </th>
+                                <td>
+                                    <h6>:</h6>
+                                </td>
+                                <td class="text-end">
+                                    <h6>{{ $orderDetails -> kendaraan -> plat_nomor }}</h6>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="text-start">
                                     <h6>Lama sewa</h6>
                                 </th>
                                 <td>
@@ -249,7 +260,7 @@
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit">Sewa
                                 </button>
                             </li>
-                            @if ($orderDetails -> order -> status == 1)
+                            @if ($orderDetails -> opsi == 1)
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-overview">Jaminan
                                 </button>
@@ -265,7 +276,7 @@
                         </ul>
                         <div class="tab-content pt-2">
 
-                            @if ($orderDetails -> order -> status == 1)
+                            @if ($orderDetails -> opsi == 1)
                             <div class="tab-pane fade show active profile-overview" id="profile-overview"
                                 style="height: 400px">
                                 <h6>Berkas Jaminan Persewaan</h6>

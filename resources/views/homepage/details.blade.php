@@ -264,7 +264,7 @@
                                 <label for="" class="form-label">Tanggal Sewa <i
                                         class="fas fa-calendar-alt"></i></label>
                                 <input type="date" class="form-control" name="tanggal_sewa" required
-                                    value="{{ date('Y-m-d') }}">
+                                    value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}">
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Lama sewa @if ($kendaraan -> category -> nama == 'Mobil')

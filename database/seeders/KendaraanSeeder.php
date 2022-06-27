@@ -26,6 +26,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Mobil Avanza merupakan salah satu mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'B 12345 XYZ',
             ],
             [
                 'nama' => 'Fortuner',
@@ -37,6 +38,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Fortuner merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'N 12345 XYZ',
             ],
             [
                 'nama' => 'Yaris',
@@ -48,6 +50,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Citrus',
                 'tahun' => '2020',
                 'deskripsi' => 'Yaris merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'A 12345 XYZ',
             ],
             [
                 'nama' => 'Inova',
@@ -59,6 +62,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Inova merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'M 12345 XYZ',
             ],
             [
                 'nama' => 'Vios',
@@ -70,6 +74,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'Vios merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'C 12345 XYZ',
             ],
             [
                 'nama' => 'Rush',
@@ -81,6 +86,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Rush merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'D 12345 XYZ',
             ],
             [
                 'nama' => 'calya',
@@ -92,6 +98,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'calya merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'E 12345 XYZ',
             ],
             [
                 'nama' => 'Terios',
@@ -103,6 +110,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Terios merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'F 12345 XYZ',
             ],
             [
                 'nama' => 'Sigra',
@@ -114,6 +122,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'Sigra merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'G 12345 XYZ',
             ],
             [
                 'nama' => 'Granmax',
@@ -125,6 +134,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Granmax merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'H 12345 XYZ',
             ],
             [
                 'nama' => 'APV',
@@ -136,6 +146,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'APV merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'I 12345 XYZ',
             ],
             [
                 'nama' => 'Ignis',
@@ -147,6 +158,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Orange',
                 'tahun' => '2020',
                 'deskripsi' => 'Ignis merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'J 12345 XYZ',
             ],
             [
                 'nama' => 'Xl-7',
@@ -158,6 +170,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Orange',
                 'tahun' => '2020',
                 'deskripsi' => 'Xl-7 merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'K 12345 XYZ',
             ],
             [
                 'nama' => 'Ertiga',
@@ -169,6 +182,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Ertiga merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'L 12345 XYZ',
             ],
             [
                 'nama' => 'Terra',
@@ -180,6 +194,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Maroon',
                 'tahun' => '2020',
                 'deskripsi' => 'Terra merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'M 12345 XYZ',
             ],
             [
                 'nama' => 'March',
@@ -191,6 +206,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'March merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'N 12345 XYZ',
             ],
             [
                 'nama' => 'Juke',
@@ -202,6 +218,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Biru',
                 'tahun' => '2020',
                 'deskripsi' => 'Juke merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'O 12345 XYZ',
             ],
             [
                 'nama' => 'Xtrail',
@@ -213,6 +230,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Xtrail merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'P 12345 XYZ',
             ],
             [
                 'nama' => 'Pajero Sport',
@@ -224,6 +242,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Abu-abu',
                 'tahun' => '2020',
                 'deskripsi' => 'Pajero Sport merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'Q 12345 XYZ',
             ],
             [
                 'nama' => 'Xpander',
@@ -235,6 +254,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Xpander merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'R 12345 XYZ',
             ],
             [
                 'nama' => 'Brio',
@@ -246,6 +266,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Kuning',
                 'tahun' => '2020',
                 'deskripsi' => 'Brio merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'S 12345 XYZ',
             ],
             [
                 'nama' => 'CR-V',
@@ -257,6 +278,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'CR-V merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'T 12345 XYZ',
             ],
             [
                 'nama' => 'Mobilio',
@@ -268,6 +290,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Abu-abu',
                 'tahun' => '2020',
                 'deskripsi' => 'Mobilio merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'U 12345 XYZ',
             ],
             [
                 'nama' => 'Jazz',
@@ -279,6 +302,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Jazz merupakan mobil terbaru dari Toyota. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'V 12345 XYZ',
             ],
             [
                 'nama' => 'Mazda 3',
@@ -290,6 +314,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'Mazda 3 merupakan mobil terbaru dari Mazda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'W 12345 XYZ',
             ],
             [
                 'nama' => 'Mazda 2',
@@ -301,6 +326,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'Mazda 2 merupakan mobil terbaru dari Mazda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'X 12345 XYZ',
             ],
             [
                 'nama' => 'Mazda CX-5',
@@ -312,6 +338,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'Mazda CX-5 merupakan mobil terbaru dari Mazda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'Y 12345 XYZ',
             ],
             [
                 'nama' => 'Vixion',
@@ -323,6 +350,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Mazda CX-9 merupakan mobil terbaru dari Mazda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'Z 12345 XYZ',
             ],
             [
                 'nama' => 'Beat',
@@ -334,6 +362,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Beat merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'A 12345 XYZ',
             ],
             [
                 'nama' => 'Cb150R',
@@ -345,6 +374,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Cb150R merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'B 12345 XYZ',
             ],
             [
                 'nama' => 'CBR 150R',
@@ -356,6 +386,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'CBR 150R merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'C 12345 XYZ',
             ],
             [
                 'nama' => 'CRF',
@@ -367,6 +398,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'CRF merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'D 12345 XYZ',
             ],
             [
                 'nama' => 'Supra x 125',
@@ -378,6 +410,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Supra x 125 merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'E 12345 XYZ',
             ],
             [
                 'nama' => 'PCX',
@@ -389,6 +422,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Putih',
                 'tahun' => '2020',
                 'deskripsi' => 'PCX merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'F 12345 XYZ',
             ],
             [
                 'nama' => 'Vario 150',
@@ -400,6 +434,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Vario 150 merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'G 12345 XYZ',
             ],
             [
                 'nama' => 'Scoopy',
@@ -411,6 +446,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Biru',
                 'tahun' => '2020',
                 'deskripsi' => 'Scoopy merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'H 12345 XYZ',
             ],
             [
                 'nama' => 'Aerox',
@@ -422,6 +458,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hitam',
                 'tahun' => '2020',
                 'deskripsi' => 'Aerox merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'I 12345 XYZ',
             ],
             [
                 'nama' => 'R-15',
@@ -433,6 +470,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Biru',
                 'tahun' => '2020',
                 'deskripsi' => 'R-15 merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'J 12345 XYZ',
             ],
             [
                 'nama' => 'WR 150',
@@ -444,6 +482,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Biru',
                 'tahun' => '2020',
                 'deskripsi' => 'WR 150 merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'K 12345 XYZ',
             ],
             [
                 'nama' => 'Nmax',
@@ -455,6 +494,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Abu-abu',
                 'tahun' => '2020',
                 'deskripsi' => 'nmax merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'L 12345 XYZ',
             ],
             [
                 'nama' => 'Ninja 250',
@@ -466,6 +506,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Merah',
                 'tahun' => '2020',
                 'deskripsi' => 'Ninja 250 merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. ',
+                'plat_nomor' => 'M 12345 XYZ',
             ],
             [
                 'nama' => 'KLX',
@@ -477,6 +518,7 @@ class KendaraanSeeder extends Seeder
                 'warna' => 'Hijau',
                 'tahun' => '2020',
                 'deskripsi' => 'KLX merupakan mobil terbaru dari Honda. Mobil ini memiliki mesin 2.0 turbo dengan teknologi VVT dan mesin yang memiliki torsi yang lebih besar dari mobil lainnya. &&&&',
+                'plat_nomor' => 'N 12345 XYZ',
             ]
         ]);
     }

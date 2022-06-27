@@ -144,7 +144,7 @@
                     <div class="mb-3">
                         <label for="tanggal" class="form-label">Tanggal Kembali</label>
                         <input type="date" class="form-control" id="tanggal" name="tanggal_kembali"
-                            value="{{ date('Y-m-d') }}">
+                            value="{{ date('Y-m-d') }}" min="{{ date('Y-m-d') }}">
                     </div>
 
 
