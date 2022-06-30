@@ -55,9 +55,13 @@ class ContactsController extends Controller
      * @param  \App\Models\Contacts  $contacts
      * @return \Illuminate\Http\Response
      */
-    public function show(Contacts $contacts)
+    public function show(Contacts $contacts, $id)
     {
-        //
+        $tes = Contacts::find($id);
+        return view('admin.contacts.show', [
+            'contact' => $tes,
+            'title' => 'Contact',
+        ]);
     }
 
     /**

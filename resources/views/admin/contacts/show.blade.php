@@ -14,7 +14,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/dashboard/pengembalian" class="btn btn-danger">Kembali</a>
+                        <a href="/dashboard/contacts" class="btn btn-danger">Kembali</a>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -29,20 +29,38 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Nama Penyewa</h4>
+                                                <h4>Nama Pengirim</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>{{ $return -> pengembalian -> user -> name }}</h4>
+                                                <h4>{{ $contact -> name }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Tanggal Kembali</h4>
+                                                <h4>Email</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>{{ $return -> tanggal_kembali }}</h4>
+                                                <h4>{{ $contact -> email }}</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <h4>Subject</h4>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>{{ $contact -> subject }}</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <h4>Pesan</h4>
+                                            </th>
+                                            <th>:</th>
+                                            <td>
+                                                <h4>{{ $contact -> message }}</h4>
                                             </td>
                                         </tr>
                                     </tbody>

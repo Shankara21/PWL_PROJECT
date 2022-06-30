@@ -71,7 +71,10 @@ class UserDashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.user.show', [
+            'user' => User::find($id),
+            'title' => 'User',
+        ]);
     }
 
     /**
@@ -98,7 +101,7 @@ class UserDashboardController extends Controller
     public function update(Request $request, User $user)
     {
 
-       $rules = [
+        $rules = [
             'name' => 'required',
             'username' => 'required',
             'phone' => 'required',

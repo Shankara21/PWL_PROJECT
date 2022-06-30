@@ -117,6 +117,7 @@
               </div>
 
               <button type="submit" class="btn btn-primary">Edit Kendaraan</button>
+              <a href="/dashboard/kendaraan" class="btn btn-danger">Kembali</a>
             </form>
           </div>
         </div>

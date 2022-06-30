@@ -6,7 +6,7 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Order</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Pengembalian</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -14,93 +14,80 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/dashboard/denda" class="btn btn-danger">Kembali</a>
+                        <a href="/dashboard/user" class="btn btn-danger">Kembali</a>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <h1 class="d-inline">Detail Denda</h1>
-                                </div>
-                                <div>
-                                    <a href="/export/{{ $denda -> id }}" class=" btn btn-primary center"> Cetak PDF</a>
+                                    <h1 class="d-inline">Detail Pengembalian</h1>
                                 </div>
                             </div>
                             <hr>
                             <div class="col-6">
-                                <table class="table table-borderless align-baseline">
+                                <table class="table table-borderless">
                                     <tbody>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Nama Penyewa</h4>
+                                                <h4>Nama</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>{{ $denda -> user -> name }}</h4>
+                                                <h4>{{ $user -> name }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Pembayaran</h4>
+                                                <h4>Username</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <img src="{{ asset('img/payments/'.$denda -> bank -> name.'.png') }}"
-                                                    alt="" width="350px">
+                                                <h4>{{ $user -> username }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Tanggal Sewa</h4>
+                                                <h4>No Hp</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>{{ $denda -> orderDetail -> tanggal_sewa }}</h4>
+                                                <h4>{{ $user -> phone }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Jatuh tempo</h4>
+                                                <h4>Jenis Kelamin</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>
-                                                    {{ $tenggang }}
-                                                </h4>
+                                                <h4>{{ $user -> gender }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Tanggal Kembali</h4>
+                                                <h4>Alamat</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>{{ $denda -> pengembalianDetail -> tanggal_kembali }}</h4>
+                                                <h4>{{ $user -> address }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Keterlambatan</h4>
+                                                <h4>Role</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>
-                                                    @if($selisih)
-
-                                                    <span class="badge bg-danger">{{ $selisih }} Hari</span>
-                                                    @else
-                                                    -
-                                                    @endif
-                                                </h4>
+                                                <h4>{{ $user -> level }}</h4>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">
-                                                <h4>Total Denda</h4>
+                                                <h4>Email</h4>
                                             </th>
                                             <th>:</th>
                                             <td>
-                                                <h4>Rp.{{ number_format($denda -> total) }}</h4>
+                                                <h4>{{ $user -> email }}</h4>
                                             </td>
                                         </tr>
                                     </tbody>

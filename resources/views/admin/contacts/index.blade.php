@@ -54,9 +54,9 @@
                                         <td>{{ $contact->message }}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="/dashboard/category/{{$contact->slug}}/edit"
+                                                <a href="/dashboard/contacts/{{$contact->id}}"
                                                     class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                        class="fas fa-pencil-alt"></i></a>
+                                                        class="fas fa-eye"></i></a>
                                                 <form action="/dashboard/category/{{ $contact->slug }}" method="POST"
                                                     class="d-inline">
                                                     @method('delete')

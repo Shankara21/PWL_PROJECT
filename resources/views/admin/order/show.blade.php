@@ -14,7 +14,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Orders</h4>
+                        <a href="/dashboard/order" class="btn btn-danger">Kembali</a>
                     </div>
                     <div class="card-body">
                         <div class="row">

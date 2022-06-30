@@ -74,7 +74,7 @@ class TypeController extends Controller
     public function edit(Type $type)
     {
         return view('admin.tipe.edit', [
-            'type' => Type::all(),
+            'type' => $type,
             'title' => 'Edit Type',
         ]);
     }
@@ -92,10 +92,10 @@ class TypeController extends Controller
             'nama' => 'required|string|max:255|unique:categories,nama'
         ]);
         Type::where('id', $type->id)
-        ->update([
-            'nama' => $request->nama,
-            'slug' => Str::slug($request->nama)
-        ]);
+            ->update([
+                'nama' => $request->nama,
+                'slug' => Str::slug($request->nama)
+            ]);
 
         return redirect('/dashboard/type')->with('toast_success', 'Tipe berhasil di edit!');
     }

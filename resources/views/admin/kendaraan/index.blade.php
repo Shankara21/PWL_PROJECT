@@ -83,11 +83,8 @@
                                         </th>
                                         <th>Gambar</th>
                                         <th>Nama Kendaraan</th>
-                                        <th>Brand</th>
-                                        <th>Category</th>
                                         <th>Plat Nomor</th>
                                         <th>Tipe</th>
-                                        <th>Warna</th>
                                         <th>Harga</th>
                                         <th>Action</th>
                                     </tr>
@@ -108,12 +105,9 @@
                                             {{asset('storage/'.$kendaraan->image)}}
                                           @endif" width="200px"></td>
                                         <td>{{ $kendaraan->nama }}</td>
-                                        <td>{{ $kendaraan->brand->nama }}</td>
-                                        <td>{{ $kendaraan->category->nama }}</td>
-                                        <td>{{ $kendaraan->type->nama }}</td>
                                         <td>{{ $kendaraan -> plat_nomor }}</td>
-                                        <td>{{ $kendaraan->warna }}</td>
-                                        <td>{{ $kendaraan->harga }}</td>
+                                        <td>{{ $kendaraan->type->nama }}</td>
+                                        <td>Rp. {{ number_format($kendaraan->harga) }}</td>
                                         <td>
                                             <div class="dropdown ms-auto text-end">
                                                 <div class="btn-link" data-bs-toggle="dropdown">
