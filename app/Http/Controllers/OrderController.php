@@ -19,9 +19,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = OrderDetail::all();
+        $order = OrderDetail::latest();
+        if (request('search')) {
+            $order->where('tanggal_sewa', 'like', '%' . request('search') . '%');
+        }
         return view('admin.order.index', [
-            'orders' => $order,
+            'orders' => $order->get(),
             'title' => 'Order',
         ]);
     }

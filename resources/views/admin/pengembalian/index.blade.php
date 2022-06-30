@@ -20,6 +20,14 @@
                             </a></div>
                     </div>
                     <div class="card-body">
+                        <h5>Pilih tanggal</h5>
+                        <form action="/dashboard/pengembalian">
+                            <div class="input-group mb-3 w-25">
+                                <input type="date" class="form-control" placeholder="Pilih tanggal" name="search"
+                                    value="{{ request('search') }}">
+                                <button class="btn btn-outline-primary" type="submit" id="button-addon2">Cari</button>
+                            </div>
+                        </form>
                         <div class="table-responsive">
                             <table id="example5" class="display text-center" style="min-width: 1000px">
                                 <thead>

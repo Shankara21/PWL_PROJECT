@@ -17,8 +17,12 @@ class PengembalianController extends Controller
      */
     public function index()
     {
+        $pengembalian = PengembalianDetail::latest();
+        if (request('search')) {
+            $pengembalian->where('tanggal_kembali', 'like', '%' . request('search') . '%');
+        }
         return view('admin.pengembalian.index', [
-            'returns' => PengembalianDetail::all(),
+            'returns' => $pengembalian->get(),
             'title' => 'Pengembalian',
         ]);
     }
