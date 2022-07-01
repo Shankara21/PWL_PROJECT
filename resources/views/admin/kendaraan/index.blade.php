@@ -121,13 +121,13 @@
                                                         href="/dashboard/kendaraan/{{$kendaraan->slug}}">Show</a>
                                                     <a class="dropdown-item"
                                                         href="/dashboard/kendaraan/{{$kendaraan->slug}}/edit">Edit</a>
-                                                    <form action="/dashboard/kendaraan/{{ $kendaraan->slug }}"
-                                                        method="POST" class="d-inline">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button class="dropdown-item"
-                                                            onclick="return confirm('Yakin?')">Delete</button>
-                                                    </form>
+                                                        <form action="/dashboard/kendaraan/{{ $kendaraan->slug }}" method="POST" class="d-inline"
+                                                            id="data-{{ $kendaraan->slug }}">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger shadow btn-xs sharp me-1 delete" data-name="{{ $kendaraan->name }}"
+                                                              data-slug="{{ $kendaraan->slug }}"><i class='fa fa-trash'></i></button>
+                                                          </form>
 
                                                 </div>
                                             </div>
@@ -143,4 +143,32 @@
     </div>
 </div>
 @include('sweetalert::alert')
+
+@section('sweetAlert')
+<script>
+    const deleteButton = document.querySelectorAll('.delete');
+      deleteButton.forEach((dBtn) => {
+          dBtn.addEventListener('click', function (event) {
+              event.preventDefault();
+
+              const postSlug = this.dataset.slug;
+              const postTitle = this.dataset.name;
+              Swal.fire({
+                  title: 'Anda Yakin Menghapus Kendaraan Ini ?',
+                  text: "Data Kendaraan : " + postTitle,
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Ya, Hapus!'
+                      }).then((result) => {
+                          if (result.isConfirmed) {
+                              const dataSlug = document.getElementById('data-' + postSlug);
+                              dataSlug.submit();
+                          }
+              })
+          })
+      });
+  </script>
+@endsection
 @endsection

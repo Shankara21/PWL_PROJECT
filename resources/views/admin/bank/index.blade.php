@@ -59,14 +59,13 @@
                                                 <a href="/dashboard/bank/{{$bank->slug}}/edit"
                                                     class="btn btn-primary shadow btn-xs sharp me-1"><i
                                                         class="fas fa-pencil-alt"></i></a>
-                                                <form action="/dashboard/bank/{{ $bank->slug }}" method="POST"
-                                                    class="d-inline">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button class="btn btn-danger shadow btn-xs sharp"
-                                                        onclick="return confirm('Yakin?')"><i
-                                                            class="fa fa-trash"></i></button>
-                                                </form>
+                                                        <form action="/dashboard/bank/{{ $bank->slug }}" method="POST" class="d-inline"
+                                                            id="data-{{ $bank->slug }}">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger shadow btn-xs sharp me-1 delete" data-name="{{ $bank->name }}"
+                                                              data-slug="{{ $bank->slug }}"><i class='fa fa-trash'></i></button>
+                                                          </form>
                                             </div>
                                         </td>
                                         @endforeach
@@ -80,5 +79,33 @@
     </div>
 </div>
 @include('sweetalert::alert')
+
+@section('sweetAlert')
+<script>
+    const deleteButton = document.querySelectorAll('.delete');
+      deleteButton.forEach((dBtn) => {
+          dBtn.addEventListener('click', function (event) {
+              event.preventDefault();
+
+              const postSlug = this.dataset.slug;
+              const postTitle = this.dataset.name;
+              Swal.fire({
+                  title: 'Anda Yakin Menghapus Bank Ini ?',
+                  text: "Data Bank : " + postTitle,
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Ya, Hapus!'
+                      }).then((result) => {
+                          if (result.isConfirmed) {
+                              const dataSlug = document.getElementById('data-' + postSlug);
+                              dataSlug.submit();
+                          }
+              })
+          })
+      });
+  </script>
+@endsection
 
 @endsection

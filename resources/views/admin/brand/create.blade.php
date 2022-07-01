@@ -32,6 +32,7 @@
                                 <div class="row justify-content-end">
                                   <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Tambah Brand</button>
+                                    <a href="/dashboard/brand" class="btn btn-danger">Kembali</a>
                                   </div>
                                 </div>
                               </form>

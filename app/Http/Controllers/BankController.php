@@ -121,7 +121,16 @@ class BankController extends Controller
      */
     public function destroy(Bank $bank)
     {
-        Bank::destroy($bank->id);
-        return redirect('/dashboard/bank')->with('toast_success', 'Bank berhasil di hapus!');
+        $bank = Bank::findOrFail($bank->id);
+        try {
+            $bank->delete();
+            alert()->success('SuccessAlert','Data Berhasil dihapus.');
+        } catch (\Exception $e){
+        if($e->getCode() == "23000"){
+            alert()->error('ErrorAlert','Data tidak bisa dihapus karena berelasi ditabel lain.');
+        }}
+        return redirect('/dashboard/bank');
+        // Bank::destroy($bank->id);
+        // return redirect('/dashboard/bank')->with('toast_success', 'Bank berhasil di hapus!');
     }
 }

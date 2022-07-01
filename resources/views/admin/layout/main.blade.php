@@ -115,6 +115,11 @@
 	<script src="{{asset('admin/js/dlabnav-init.js')}}"></script>
 	<script src="{{asset('admin/js/demo.js')}}"></script>
 	<script src="{{asset('admin/js/styleSwitcher.js')}}"></script>
+
+    {{-- SweetAlert --}}
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  @yield('sweetAlert')
 	<script>
 		function cardsCenter()
 		{

@@ -108,7 +108,16 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::destroy($category->id);
-        return redirect('/dashboard/category')->with('toast_success', 'Kategori berhasil di hapus!');
+        $category = Category::findOrFail($category->id);
+        try {
+            $category->delete();
+            alert()->success('SuccessAlert','Data Berhasil dihapus.');
+        } catch (\Exception $e){
+        if($e->getCode() == "23000"){
+            alert()->error('ErrorAlert','Data tidak bisa dihapus karena berelasi ditabel lain.');
+        }}
+        return redirect('/dashboard/category');
+        // Category::destroy($category->id);
+        // return redirect('/dashboard/category')->with('toast_success', 'Kategori berhasil di hapus!');
     }
 }

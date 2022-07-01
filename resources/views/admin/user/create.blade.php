@@ -103,6 +103,7 @@
 
 
                                   <button type="submit" class="btn btn-primary">Tambah User</button>
+                                  <a href="/dashboard/user" class="btn btn-danger">Kembali</a>
                               </form>
                         </div>
                     </div>

@@ -108,7 +108,16 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        Type::destroy($type->id);
-        return redirect('/dashboard/type')->with('toast_success', 'Tipe berhasil di hapus!');
+        $type = Type::findOrFail($type->id);
+        try {
+            $type->delete();
+            alert()->success('SuccessAlert','Data Berhasil dihapus.');
+        } catch (\Exception $e){
+        if($e->getCode() == "23000"){
+            alert()->error('ErrorAlert','Data tidak bisa dihapus karena berelasi ditabel lain.');
+        }}
+        return redirect('/dashboard/type');
+        // Type::destroy($type->id);
+        // return redirect('/dashboard/type')->with('toast_success', 'Tipe berhasil di hapus!');
     }
 }

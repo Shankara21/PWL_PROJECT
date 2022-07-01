@@ -166,7 +166,16 @@ class KendaraanController extends Controller
      */
     public function destroy(Kendaraan $kendaraan)
     {
-        Kendaraan::destroy($kendaraan->id);
-        return redirect('/dashboard/kendaraan')->with('toast_success', 'Kendaraan berhasil di hapus!');
+        $kendaraan = Kendaraan::findOrFail($kendaraan->id);
+        try {
+            $kendaraan->delete();
+            alert()->success('SuccessAlert','Data Berhasil dihapus.');
+        } catch (\Exception $e){
+        if($e->getCode() == "23000"){
+            alert()->error('ErrorAlert','Data tidak bisa dihapus karena berelasi ditabel lain.');
+        }}
+        return redirect('/dashboard/kendaraan');
+        // Kendaraan::destroy($kendaraan->id);
+        // return redirect('/dashboard/kendaraan')->with('toast_success', 'Kendaraan berhasil di hapus!');
     }
 }

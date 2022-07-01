@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
 use Illuminate\Support\Str;
+use Session;
 
 class BrandController extends Controller
 {
@@ -108,7 +109,17 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        Brand::destroy($brand->id);
-        return redirect('/dashboard/brand')->with('toast_success', 'Brand berhasil di hapus!');
+        $brand = Brand::findOrFail($brand->id);
+        try {
+            $brand->delete();
+            alert()->success('SuccessAlert','Data Berhasil dihapus.');
+        } catch (\Exception $e){
+        if($e->getCode() == "23000"){
+            alert()->error('ErrorAlert','Data tidak bisa dihapus karena berelasi ditabel lain.');
+        }}
+        return redirect('/dashboard/brand');
+
+        // Brand::destroy($brand->id);
+        // return redirect('/dashboard/brand')->with('toast_success', 'Brand berhasil di hapus!');
     }
 }

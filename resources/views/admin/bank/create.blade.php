@@ -55,6 +55,7 @@
                                     <div class="row justify-content-end">
                                   <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Tambah Bank</button>
+                                    <a href="/dashboard/bank" class="btn btn-danger">Kembali</a>
                                   </div>
                                 </div>
                               </form>

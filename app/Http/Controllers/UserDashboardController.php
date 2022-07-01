@@ -132,7 +132,16 @@ class UserDashboardController extends Controller
      */
     public function destroy(User $user)
     {
-        User::where('id', $user->id)->delete();
-        return redirect('/dashboard/user')->with('toast_success', 'User Has Been Deleted');
+        $user = User::findOrFail($user->id);
+        try {
+            $user->delete();
+            alert()->success('SuccessAlert','Data Berhasil dihapus.');
+        } catch (\Exception $e){
+        if($e->getCode() == "23000"){
+            alert()->error('ErrorAlert','Data tidak bisa dihapus karena berelasi ditabel lain.');
+        }}
+        return redirect('/dashboard/user');
+        // User::where('id', $user->id)->delete();
+        // return redirect('/dashboard/user')->with('toast_success', 'User Has Been Deleted');
     }
 }

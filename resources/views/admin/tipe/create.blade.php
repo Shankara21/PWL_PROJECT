@@ -32,6 +32,7 @@
                                 <div class="row justify-content-end">
                                   <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Tambah Tipe</button>
+                                    <a href="/dashboard/type" class="btn btn-danger">Kembali</a>
                                   </div>
                                 </div>
                               </form>
