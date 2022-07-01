@@ -28,43 +28,49 @@
                             <hr>
                             <div class="row">
                                 <div class="col">
-                                    <label for="brand" class="form-label text-center">Brand</label>
-                                    <select class="default-select form-control wide mb-3" name="brand_id">
-                                        @foreach ($brands as $brand)
-                                        @if (old('brand_id') == $brand->id)
-
-                                        <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
-                                        @else
-                                        <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                                    <form action="/dashboard/kendaraan">
+                                        <label for="brand" class="form-label text-center">Brand</label>
+                                        <select class="default-select form-control wide mb-3" name="brand"
+                                            onchange="submit()">
+                                            @foreach ($brands as $brand)
+                                            @if (request('brand') == $brand->id)
+                                            <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
+                                            @else
+                                            <option value="{{ $brand->id }}">{{ $brand->nama }}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                    </form>
                                 </div>
                                 <div class="col">
-                                    <label for="category" class="form-label text-center">Category</label>
-                                    <select class="default-select form-control wide mb-3" name="category_id">
-                                        @foreach ($categories as $category)
-                                        @if (old('category_id') == $category->id)
-
-                                        <option value="{{ $category->id }}">{{ $category->nama }}</option>
-                                        @else
-                                        <option value="{{ $category->id }}">{{ $category->nama }}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                                    <form action="/dashboard/kendaraan">
+                                        <label for="category" class="form-label text-center">Category</label>
+                                        <select class="default-select form-control wide mb-3" name="category"
+                                            onchange="submit()">
+                                            @foreach ($categories as $category)
+                                            @if (request('category') == $category->id)
+                                            <option value="{{ $category->id }}">{{ $category->nama }}</option>
+                                            @else
+                                            <option value="{{ $category->id }}">{{ $category->nama }}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                    </form>
                                 </div>
                                 <div class="col">
-                                    <label for="type" class="form-label text-center">Tipe</label>
-                                    <select class="default-select form-control wide mb-3" name="type_id">
-                                        @foreach ($types as $type)
-                                        @if (old('type_id') == $type->id)
-
-                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
-                                        @else
-                                        <option value="{{ $type->id }}">{{ $type->nama }}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                                    <form action="/dashboard/kendaraan">
+                                        <label for="type" class="form-label text-center">Tipe</label>
+                                        <select class="default-select form-control wide mb-3" name="type"
+                                            onchange="submit()">
+                                            @foreach ($types as $type)
+                                            @if (request('type') == $type->id)
+                                            <option value="{{ $type->id }}">{{ $type->nama }}</option>
+                                            @else
+                                            <option value="{{ $type->id }}">{{ $type->nama }}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                    </form>
                                 </div>
                             </div>
                         </div>

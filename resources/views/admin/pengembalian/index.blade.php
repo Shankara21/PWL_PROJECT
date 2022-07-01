@@ -24,8 +24,7 @@
                         <form action="/dashboard/pengembalian">
                             <div class="input-group mb-3 w-25">
                                 <input type="date" class="form-control" placeholder="Pilih tanggal" name="search"
-                                    value="{{ request('search') }}">
-                                <button class="btn btn-outline-primary" type="submit" id="button-addon2">Cari</button>
+                                    value="{{ request('search') }}" onchange="submit()">
                             </div>
                         </form>
                         <div class="table-responsive">

@@ -23,6 +23,7 @@ class OrderController extends Controller
         if (request('search')) {
             $order->where('tanggal_sewa', 'like', '%' . request('search') . '%');
         }
+
         return view('admin.order.index', [
             'orders' => $order->get(),
             'title' => 'Order',

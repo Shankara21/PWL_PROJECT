@@ -20,8 +20,19 @@ class KendaraanController extends Controller
      */
     public function index()
     {
+        $kendaraans = Kendaraan::latest();
+        if (request('brand')) {
+            $kendaraans->where('brand_id', 'like', '%' . request('brand') . '%');
+        }
+        if (request('category')) {
+            $kendaraans->where('category_id', 'like', '%' . request('category') . '%');
+        }
+        if (request('type')) {
+            $kendaraans->where('type_id', 'like', '%' . request('type') . '%');
+        }
+
         return view('admin.kendaraan.index', [
-            'kendaraans' => Kendaraan::all(),
+            'kendaraans' => $kendaraans->get(),
             'brands' => Brand::all(),
             'categories' => Category::all(),
             'types' => Type::all(),
