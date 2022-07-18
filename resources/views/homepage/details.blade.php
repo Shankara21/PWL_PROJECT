@@ -30,18 +30,19 @@
         <div class="row mt-n2 wow fadeInUp justify-content-center" data-wow-delay="0.1s">
         </div>
         <div class="row  mb-3">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="text-center">
-                    <img class="rounded" src="@if (!$kendaraan -> image)
+                    <img class="rounded mt-5" src="@if (!$kendaraan -> image)
                                             {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
                                             @else
                                             {{asset('storage/'.$kendaraan->image)}}
-                                          @endif" alt="" width="500px">
+                                          @endif" alt="" width="400px">
                     <a class="btn btn-light" href="{{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}"
                         data-lightbox="portfolio" title="Zoom in"><i class="fas fa-eye fa-2x text-primary"></i></a>
                 </div>
             </div>
-            <div class="col-lg-6 mb-4">
+            <div class="col-md-2"></div>
+            <div class="col-md-6 mb-4">
                 <div style="width: 40%" class="text-center">
                     @if ($kendaraan-> stock == 1)
                     <h5 class="bg-success rounded text-white p-2"><i class="fas fa-check-circle"></i> Tersedia!</h5>
@@ -272,7 +273,7 @@
                                     @elseif ($kendaraan -> category -> nama == 'Motor') <i
                                         class="fas fa-motorcycle"></i>
                                     @endif</label>
-                                <input type="number" min="0" class="form-control" name="lama_sewa" value="1" required>
+                                <input type="number" min="1" class="form-control" name="lama_sewa" value="1" required>
                                 <small>*dalam hari</small>
                             </div>
                         </div>

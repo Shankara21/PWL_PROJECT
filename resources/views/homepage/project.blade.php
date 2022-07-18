@@ -13,12 +13,13 @@
     <div class="container my-5 py-5 px-lg-5">
         <div class="row g-5 py-5">
             <div class="col-12 text-center">
-                <h1 class="text-white animated zoomIn">Kendaran</h1>
+                <h1 class="text-white animated zoomIn"><a href="/project" class="text-white">Kendaraan</a></h1>
                 <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Kendaraan</li>
+                        <li class="breadcrumb-item text-white active" aria-current="page"><a href="/project"
+                                class="text-white">Kendaraan</a></li>
                     </ol>
                 </nav>
             </div>
@@ -33,10 +34,11 @@
             <h2 class="mt-2">Recently Launched Collection</h2>
         </div>
         <div class="row mt-n2 wow fadeInUp justify-content-center" data-wow-delay="0.1s">
-            <div class="col-6 mb-5">
+            <div class="col-md-6 col-sm-12 mb-5">
                 <form action="/project ">
                     <div class="input-group mb-5">
-                        <input type="text" class="form-control" placeholder="Mau cari apa?" name="search">
+                        <input type="text" class="form-control" placeholder="Mau cari apa?" name="search"
+                            onchange="submit()">
                         <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
                                 class="fas fa-search fa-2x"></i></button>
                     </div>

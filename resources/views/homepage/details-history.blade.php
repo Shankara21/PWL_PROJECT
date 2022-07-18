@@ -25,9 +25,10 @@
             <h2 class="mt-2">Details history penyewaan </h2>
         </div>
         <div class="row">
+            <h3 class="text-primary mb-3"><a href="/history"><i class="fas fa-arrow-left"></i> Kembali</a></h3>
             <div class="col-lg-7">
-                <div class="w-75 text-center">
-                    <table class="table table-borderless align-baseline">
+                <div class="w-75 text-center ">
+                    <table class="table table-borderless align-baseline overflow-hidden">
                         <tbody>
                             <tr>
                                 <th class="text-start">
@@ -284,8 +285,7 @@
                             </div>
                             @endif
 
-                            <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit"
-                                style="height: 400px">
+                            <div class="tab-pane fade show  profile-edit pt-3" id="profile-edit" style="height: 400px">
                                 <h6>Bukti Pembayaran Sewa</h6>
                                 <img src="{{ asset('storage/'.$orderDetails -> bukti_pembayaran) }}" alt=""
                                     height="300px">
