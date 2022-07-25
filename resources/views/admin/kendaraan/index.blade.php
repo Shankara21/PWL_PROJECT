@@ -18,7 +18,8 @@
                             <div class="row">
                                 <div class="col">
                                     <h4 class="card-title">Kendaraan</h4>
-                                    <a href="/dashboard/kendaraan" class="btn btn-primary"><i class="fas fa-sync"></i> Reset</a>
+                                    <a href="/dashboard/kendaraan" class="btn btn-primary"><i class="fas fa-sync"></i>
+                                        Reset</a>
                                 </div>
                                 <div class="col col-lg-2">
                                     <a href="/dashboard/kendaraan/create" class="btn btn-primary">
@@ -34,7 +35,9 @@
                                         <select class="default-select form-control wide mb-3" name="brand"
                                             onchange="submit()">
                                             @foreach ($brands as $brand)
-                                            <option value="{{ $brand->id }}" {{ request('brand') == $brand->id ? 'selected' : '' }}>{{ $brand->nama }}</option>
+                                            <option value="{{ $brand->id }}"
+                                                {{ request('brand') == $brand->id ? 'selected' : '' }}>
+                                                {{ $brand->nama }}</option>
                                             @endforeach
                                         </select>
                                     </form>
@@ -45,7 +48,9 @@
                                         <select class="default-select form-control wide mb-3" name="category"
                                             onchange="submit()">
                                             @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>{{ $category->nama }}</option>
+                                            <option value="{{ $category->id }}"
+                                                {{ request('category') == $category->id ? 'selected' : '' }}>
+                                                {{ $category->nama }}</option>
                                             @endforeach
                                         </select>
                                     </form>
@@ -56,7 +61,9 @@
                                         <select class="default-select form-control wide mb-3" name="type"
                                             onchange="submit()">
                                             @foreach ($types as $type)
-                                            <option value="{{ $type->id }}" {{ request('type') == $type->id ? 'selected' : '' }}>{{ $type->nama }}</option>
+                                            <option value="{{ $type->id }}"
+                                                {{ request('type') == $type->id ? 'selected' : '' }}>{{ $type->nama }}
+                                            </option>
                                             @endforeach
                                         </select>
                                     </form>
@@ -78,7 +85,7 @@
                                         </th>
                                         <th>Gambar</th>
                                         <th>Nama Kendaraan</th>
-                                        <th>Plat Nomor</th>
+                                        <th>Plat Nomor </th>
                                         <th>Tipe</th>
                                         <th>Harga</th>
                                         <th>Action</th>
@@ -121,13 +128,15 @@
                                                         href="/dashboard/kendaraan/{{$kendaraan->slug}}">Show</a>
                                                     <a class="dropdown-item"
                                                         href="/dashboard/kendaraan/{{$kendaraan->slug}}/edit">Edit</a>
-                                                        <form action="/dashboard/kendaraan/{{ $kendaraan->slug }}" method="POST" class="d-inline"
-                                                            id="data-{{ $kendaraan->slug }}">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button class="btn btn-danger shadow btn-xs sharp me-1 delete" data-name="{{ $kendaraan->name }}"
-                                                              data-slug="{{ $kendaraan->slug }}"><i class='fa fa-trash'></i></button>
-                                                          </form>
+                                                    <form action="/dashboard/kendaraan/{{ $kendaraan->slug }}"
+                                                        method="POST" class="d-inline" id="data-{{ $kendaraan->slug }}">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button class="btn btn-danger shadow btn-xs sharp me-1 delete"
+                                                            data-name="{{ $kendaraan->name }}"
+                                                            data-slug="{{ $kendaraan->slug }}"><i
+                                                                class='fa fa-trash'></i></button>
+                                                    </form>
 
                                                 </div>
                                             </div>
@@ -169,6 +178,6 @@
               })
           })
       });
-  </script>
+</script>
 @endsection
 @endsection
