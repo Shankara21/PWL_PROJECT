@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <table class="table table-borderless">
                                     <tbody>
                                         <tr>
@@ -108,7 +108,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <img src="@if (!$kendaraan -> image)
                                             {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
                                             @else

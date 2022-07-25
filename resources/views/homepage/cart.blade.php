@@ -38,7 +38,7 @@ $cekStock = $kendaraan -> stock;
             <h2 class="mt-2">Pesanan anda</h2>
         </div>
         <div class="row mb-3">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 <div class="btn-group w-100" role="group">
                     <a href="/cart" class="btn btn-outline-primary {{ Request::is('cart') ? 'active' : '' }}">Belum
                         bayar <i class="far fa-credit-card"></i></a>
@@ -52,8 +52,8 @@ $cekStock = $kendaraan -> stock;
             </div>
         </div>
         <div class="row g-4">
-            <div class="col-8">
-                <div class="card">
+            <div class="col-md-8 col-sm-12">
+                <div class="card overflow-auto">
                     <div class="card-body">
                         <table class="table text-center">
                             <thead class="justify-center">
@@ -109,7 +109,7 @@ $cekStock = $kendaraan -> stock;
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-md-4 col-sm-12">
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3 class="card-title text-center">Total</h3>

@@ -24,7 +24,7 @@
             <h2 class="mt-2">Pesanan anda</h2>
         </div>
         <div class="row mb-3">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 <div class="btn-group w-100" role="group">
                     <a href="/cart" class="btn btn-outline-primary {{ Request::is('cart') ? 'active' : '' }}">Belum
                         bayar <i class="far fa-credit-card"></i></a>
@@ -45,7 +45,7 @@
                         Berikan penilaianmu <i class="bi bi-chat-square-dots"></i>
                     </button>
                 </div>
-                <div class="card">
+                <div class="card overflow-auto">
                     <div class="card-body">
                         <table class="table text-center">
                             <thead class="justify-center">

@@ -25,7 +25,7 @@
 
         </div>
         <div class="row mb-3">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 <div class="btn-group w-100" role="group">
                     <a href="/cart" class="btn btn-outline-primary {{ Request::is('cart') ? 'active' : '' }}">Belum
                         bayar <i class="far fa-credit-card"></i></a>
@@ -40,7 +40,7 @@
         </div>
         <div class="row g-4">
             <div class="col-12">
-                <div class="card">
+                <div class="card overflow-auto">
                     <div class="card-body">
                         <table class="table text-center">
                             <thead class="justify-center">
