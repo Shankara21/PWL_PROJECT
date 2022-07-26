@@ -31,7 +31,7 @@ $cekStock = $kendaraan -> stock;
     </div>
 </div>
 
-<div class="container-xxl py-5">
+<div class="container-xxl py-5 overflow-hidden">
     <div class="container px-lg-5">
         <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="position-relative d-inline text-primary ps-4">Keranjang</h6>
@@ -52,8 +52,8 @@ $cekStock = $kendaraan -> stock;
             </div>
         </div>
         <div class="row g-4">
-            <div class="col-8">
-                <div class="card">
+            <div class="col-md-8 col-sm-12">
+                <div class="card overflow-auto">
                     <div class="card-body">
                         <table class="table text-center">
                             <thead class="justify-center">
@@ -109,7 +109,7 @@ $cekStock = $kendaraan -> stock;
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-md-4 col-sm-12">
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3 class="card-title text-center">Total</h3>

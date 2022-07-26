@@ -19,7 +19,7 @@
     </div>
 </div>
 <!-- Portfolio Start -->
-<div class="container-xxl py-5">
+<div class="container-xxl py-5 overflow-hidden">
     <div class="container px-lg-5">
         <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="position-relative d-inline text-primary ps-4">Our Projects</h6>
@@ -32,7 +32,7 @@
         <div class="row  mb-3">
             <div class="col-md-4">
                 <div class="text-center">
-                    <img class="rounded mt-5" src="@if (!$kendaraan -> image)
+                    <img class="rounded mt-5 img-fluid" src="@if (!$kendaraan -> image)
                                             {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
                                             @else
                                             {{asset('storage/'.$kendaraan->image)}}

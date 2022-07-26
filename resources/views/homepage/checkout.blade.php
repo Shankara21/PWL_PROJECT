@@ -42,17 +42,21 @@
                     @enderror
                     <div class="row">
                         @foreach ($banks as $bank)
-                        <div class="col-4 mb-4">
-                            <td style="padding:10px;">
-                                <div class="form-check">
-                                    <label class="form-check-label " for="exampleRadios{{ $loop -> iteration }}">
-                                        <img src="{{ asset($bank->image) }}" alt="" height="100px"
-                                            style="object-fit: fill;border-radius: 20px;" class="img-target">
-                                    </label>
-                                    <input class="form-check-input d-none opt-radio" type="radio" name="bank_id"
-                                        id="exampleRadios{{ $loop -> iteration }}" value="{{ $bank->id }}">
+                        <div class="col mb-4 align-self-center">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-check">
+                                        <label class="form-check-label " for="exampleRadios{{ $loop -> iteration }}">
+                                            <img src="{{ asset($bank->image) }}" alt="" height="100px"
+                                                style="object-fit: fill;border-radius: 20px;" class="img-target">
+                                        </label>
+                                        <input class="form-check-input d-none opt-radio" type="radio" name="bank_id"
+                                            id="exampleRadios{{ $loop -> iteration }}" value="{{ $bank->id }}">
+                                    </div>
                                 </div>
-                            </td>
+                            </div>
+
                         </div>
                         @endforeach
                     </div>
@@ -125,7 +129,7 @@
                 item.style.backgroundColor = 'white';
                 item.style.transform = 'scale(1)';
             });
-            target[index].style.backgroundColor = 'rgba(0,0,0,0.05)';
+            target[index].style.backgroundColor = 'rgba(0,0,0,0.08)';
             target[index].style.transform = 'scale(1.2)';
         });
     });

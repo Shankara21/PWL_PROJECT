@@ -44,96 +44,94 @@
             }
             @endphp
             @if (Auth::user()->level == 'admin')
-            <div class="navbar-nav">
-                <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart" style="font-size: 1.5em"></i>
-                    {{-- @if ($orderDetails != null) --}}
-                    @if ($notifications)
-                    <span class="badge bg-danger"
-                        style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
-                        {{ $notifications }}
-                    </span>
-                    @else
-                    <span></span>
-                    @endif
-                    {{-- @else
-                    @endif --}}
-                </a>
-            </div>
-            <div class="dropdown text-end navbar-nav">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown nav-item nav-link" id="dropdownUser1"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <span>{{Auth::user()->username}}</span>
-                    {{-- <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"> --}}
-                </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1"
-                    style="transform: translateX(-3em)">
-                    <li><a class="dropdown-item" href="/profile"><i class="fas fa-home"></i> Profile</a>
-                    <li><a class="dropdown-item" href="/dashboard"><i class="fas fa-home"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();"><i
-                                class="fas fa-sign-out-alt"></i>
-                            {{ __('Logout') }}
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="navbar-nav">
+                        <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart"
+                                style="font-size: 1.5em"></i>
+                            {{-- @if ($orderDetails != null) --}}
+                            @if ($notifications)
+                            <span class="badge bg-danger"
+                                style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
+                                {{ $notifications }}
+                            </span>
+                            @else
+                            <span></span>
+                            @endif
+                            {{-- @else
+                                    @endif --}}
                         </a>
-                    </li>
-                </ul>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="dropdown text-end navbar-nav">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle {{ Request::is('contact')? 'active' : '' }}"
+                                data-bs-toggle="dropdown">{{ Auth::user() -> username }}</a>
+                            <div class="dropdown-menu m-0">
+                                <a class="dropdown-item" href="/profile"><i class="fas fa-home"></i> Profile</a>
+                                <a class="dropdown-item" href="/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                            document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
+                                    {{ __('Logout') }}
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             @endif
 
 
             @if (Auth::user()->level == 'user')
-            <div class="navbar-nav">
-                <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart" style="font-size: 1.5em"></i>
-                    @if (!empty($orderDetails))
-                    <span class="badge bg-danger"
-                        style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
-                        {{ $notifications }}
-                    </span>
-                    @else
-                    @endif
-                </a>
-            </div>
-            <div class="dropdown text-end navbar-nav">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle nav-item nav-link"
-                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span>{{Auth::user()->name}}</span>
-                    {{-- <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"> --}}
-                </a>
-                <ul class="dropdown-menu text-small" style="transform: translateX(-3em)"
-                    aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="/Profile"><i class="fas fa-home"></i> Profile</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                                                                document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
-                            {{ __('Logout') }}
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+            <div class="row">
+                <div class=" col-lg-4">
+                    <div class="navbar-nav">
+                        <a href="/cart" class="nav-item nav-link"><i class="fas fa-shopping-cart"
+                                style="font-size: 1.5em"></i>
+                            {{-- @if ($orderDetails != null) --}}
+                            @if ($notifications)
+                            <span class="badge bg-danger"
+                                style="transform: translateY(-20px);padding: 3px 6px;border-radius: 30px">
+                                {{ $notifications }}
+                            </span>
+                            @else
+                            <span></span>
+                            @endif
+                            {{-- @else
+                                                            @endif --}}
                         </a>
-
-                    </li>
-                </ul>
+                    </div>
+                </div>
+                <div class=" col-lg-4">
+                    <div class="dropdown text-end navbar-nav">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle {{ Request::is('contact')? 'active' : '' }}"
+                                data-bs-toggle="dropdown">{{ Auth::user() -> username ? Auth::user() -> username : Auth::user() -> name }}</a>
+                            <div class="dropdown-menu m-0" style="transform: translateX(-30px)">
+                                <a class="dropdown-item" href="/profile"><i class="fas fa-home"></i> Profile</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                    document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
+                                    {{ __('Logout') }}
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
             @endif
-
             @endguest
-
-
-
         </div>
     </nav>
-
-
 </div>

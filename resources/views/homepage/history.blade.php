@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<div class="container-xxl py-5">
+<div class="container-xxl py-5 overflow-hidden">
     <div class="container px-lg-5">
         <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="position-relative d-inline text-primary ps-4">Keranjang</h6>
@@ -45,7 +45,7 @@
                         Berikan penilaianmu <i class="bi bi-chat-square-dots"></i>
                     </button>
                 </div>
-                <div class="card">
+                <div class="card overflow-auto">
                     <div class="card-body">
                         <table class="table text-center">
                             <thead class="justify-center">
