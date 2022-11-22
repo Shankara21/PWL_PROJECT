@@ -29,6 +29,9 @@ class BankController extends Controller
      */
     public function create()
     {
+        // return view('admin.bank.create', [
+        //     'title' => 'Tambah Bank',
+        // ]);
         return view('admin.bank.create', [
             'title' => 'Tambah Bank',
         ]);
@@ -64,7 +67,6 @@ class BankController extends Controller
      */
     public function show(Bank $bank)
     {
-        //
     }
 
     /**
@@ -78,6 +80,7 @@ class BankController extends Controller
         return view('admin.bank.edit', [
             'bank' => $bank,
             'title' => 'Edit Bank',
+
         ]);
     }
 
@@ -124,11 +127,12 @@ class BankController extends Controller
         $bank = Bank::findOrFail($bank->id);
         try {
             $bank->delete();
-            alert()->success('SuccessAlert','Data Berhasil dihapus.');
-        } catch (\Exception $e){
-        if($e->getCode() == "23000"){
-            alert()->error('ErrorAlert','Data tidak bisa dihapus karena berelasi ditabel lain.');
-        }}
+            alert()->success('SuccessAlert', 'Data Berhasil dihapus.');
+        } catch (\Exception $e) {
+            if ($e->getCode() == "23000") {
+                alert()->error('ErrorAlert', 'Data tidak bisa dihapus karena berelasi ditabel lain.');
+            }
+        }
         return redirect('/dashboard/bank');
         // Bank::destroy($bank->id);
         // return redirect('/dashboard/bank')->with('toast_success', 'Bank berhasil di hapus!');

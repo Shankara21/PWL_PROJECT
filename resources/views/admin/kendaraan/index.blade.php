@@ -101,11 +101,13 @@
                                                 <label class="form-check-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td><img src="@if (!$kendaraan -> image)
+                                        <td>
+                                            <img src="@if (!$kendaraan -> image)
                                             {{ asset('img/kendaraan/'.$kendaraan -> slug.'.png') }}
                                             @else
                                             {{asset('storage/'.$kendaraan->image)}}
-                                          @endif" width="200px"></td>
+                                          @endif" width="200px">
+                                        </td>
                                         <td>{{ $kendaraan->nama }}</td>
                                         <td>{{ $kendaraan -> plat_nomor }}</td>
                                         <td>{{ $kendaraan->type->nama }}</td>
